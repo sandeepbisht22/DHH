@@ -1,12 +1,18 @@
 import React, { Fragment } from "react";
+import { useHistory } from "react-router";
 import logo from "../../resources/images/desi-hip-hop.png";
-const Navbar = () => {
+const Navbar = (props) => {
+  const history = useHistory();
   return (
     <Fragment>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark bg-gradient">
         <div className="container-fluid">
-          <a className="navbar-brand logo-image" href="#">
-            <img src={logo} className="img-fluid" />
+          <a
+            className="navbar-brand "
+            href="#"
+            onClick={() => history.push("/")}
+          >
+            <img src={logo} className="logo-image" />
           </a>
           <button
             className="navbar-toggler"
@@ -22,13 +28,13 @@ const Navbar = () => {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="#">
-                  Home
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">
-                  Link
+                <a
+                  className="nav-link active"
+                  aria-current="page"
+                  href="#"
+                  onClick={() => history.push("/")}
+                >
+                  !Home
                 </a>
               </li>
               <li className="nav-item dropdown">
@@ -40,17 +46,25 @@ const Navbar = () => {
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
-                  Dropdown
+                  Artist
                 </a>
                 <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li>
-                    <a className="dropdown-item" href="#">
-                      Action
+                    <a
+                      className="dropdown-item"
+                      href="#"
+                      onClick={() => history.push("/artist/rappers")}
+                    >
+                      Rapper
                     </a>
                   </li>
                   <li>
-                    <a className="dropdown-item" href="#">
-                      Another action
+                    <a
+                      className="dropdown-item"
+                      href="#"
+                      onClick={() => history.push("/artist/beatproducers")}
+                    >
+                      Beat Producer
                     </a>
                   </li>
                   <li>
@@ -62,6 +76,15 @@ const Navbar = () => {
                     </a>
                   </li>
                 </ul>
+              </li>
+              <li className="nav-item">
+                <a
+                  className="nav-link"
+                  href="#"
+                  onClick={() => history.push("/reactionChannels")}
+                >
+                  Reaction Channels
+                </a>
               </li>
             </ul>
             <ul className="navbar-nav ms-auto flex-nowrap mb-2 mb-lg-0">
@@ -76,8 +99,12 @@ const Navbar = () => {
                 </a>
               </li>
               <li className="nav-item">
-                <a href="#" className="nav-link">
-                  Blog
+                <a
+                  href="#"
+                  className="nav-link"
+                  onClick={() => history.push("/about")}
+                >
+                  About
                 </a>
               </li>
               <li className="nav-item">
