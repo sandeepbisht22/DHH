@@ -13,6 +13,12 @@
   }
 }
 
+.logo-image {
+  width: 66px;
+  height: 66px;
+  overflow: hidden;
+  margin-top: -6px;
+}
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
