@@ -1,0 +1,40 @@
+{
+    "beatProducer": [
+      {
+        "id": 1,
+        "title": "OG's",
+        "scrollList": [
+            {	
+              "id":1,
+              "name":"OG's beatProducer 1"
+            },
+            {	
+              "id":2,
+              "name":"OG's beatProducer 2"
+            },		  {	
+              "id":3,
+              "name":"OG's beatProducer 3"
+            }			
+        ]
+      },
+      {
+        "id": 2,
+        "title": "Upcoming",
+        "scrollList": [
+            {	
+              "id":1,
+              "name":"Upcoming beatProducer 1"
+            },
+            {	
+              "id":2,
+              "name":"Upcoming beatProducer 2"
+            },		  {	
+              "id":3,
+              "name":"Upcoming beatProducer 3"
+            }			
+        ]
+      }
+
+    ],
+    "techs": []
+  }
