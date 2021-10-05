@@ -55,7 +55,7 @@ const Navbar = (props) => {
                       href="#"
                       onClick={() => history.push("/artist/rappers")}
                     >
-                      Rapper
+                      Rappers
                     </a>
                   </li>
                   <li>
@@ -64,7 +64,7 @@ const Navbar = (props) => {
                       href="#"
                       onClick={() => history.push("/artist/beatproducers")}
                     >
-                      Beat Producer
+                      Beat Producers
                     </a>
                   </li>
                   <li>
