@@ -1,16 +1,24 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import HorizontalScroll from "./../../common/HorizontalScroll";
 const Rappers = () => {
-  let HorizontalScrolls = null;
+  const [horizontalScrolls, setHorizontalScrolls] = useState([]);
+  async function fetchBeatProducerData() {
+    const res = await fetch("http://localhost:5000/rappers");
+    const data = await res.json();
+    setHorizontalScrolls(data);
+  }
   useEffect(() => {
-    //call data fetch for Rappers
-    HorizontalScrolls = fetch("/");
+    try {
+      fetchBeatProducerData();
+    } catch (error) {
+      console.log("error is " + error.message);
+    }
   }, []);
   return (
     <div>
       Rappers
-      {HorizontalScrolls !== null &&
-        HorizontalScrolls.map((horizontalScroll) => (
+      {horizontalScrolls !== null &&
+        horizontalScrolls.map((horizontalScroll) => (
           <HorizontalScroll
             horizontalScroll={horizontalScroll}
           ></HorizontalScroll>

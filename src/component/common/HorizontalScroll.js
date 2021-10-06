@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import ScrollItem from "./ScrollItem";
 
-const HorizontalScroll = ({ title, scrollList }) => {
+const HorizontalScroll = ({ horizontalScroll: { title, scrollList } }) => {
   return (
     <Fragment>
       <h4>{title}</h4>

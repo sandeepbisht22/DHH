@@ -14,7 +14,13 @@
             },		  {	
               "id":3,
               "name":"OG's beatProducer 3"
-            }			
+            }	,		  {	
+              "id":4,
+              "name":"OG's beatProducer 4"
+            }	,		  {	
+              "id":5,
+              "name":"OG's beatProducer 5"
+            }		
         ]
       },
       {
@@ -35,6 +41,47 @@
         ]
       }
 
-    ],
-    "techs": []
+    ],"rappers": [
+      {
+        "id": 1,
+        "title": "OG's",
+        "scrollList": [
+            {	
+              "id":1,
+              "name":"OG's rappers 1"
+            },
+            {	
+              "id":2,
+              "name":"OG's rappers 2"
+            },		  {	
+              "id":3,
+              "name":"OG's rappers 3"
+            }	,		  {	
+              "id":4,
+              "name":"OG's rappers 4"
+            }	,		  {	
+              "id":5,
+              "name":"OG's rappers 5"
+            }		
+        ]
+      },
+      {
+        "id": 2,
+        "title": "Upcoming",
+        "scrollList": [
+            {	
+              "id":1,
+              "name":"Upcoming rappers 1"
+            },
+            {	
+              "id":2,
+              "name":"Upcoming rappers 2"
+            },		  {	
+              "id":3,
+              "name":"Upcoming rappers 3"
+            }			
+        ]
+      }
+
+    ]
   }
