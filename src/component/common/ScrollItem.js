@@ -1,27 +1,38 @@
-import React from "react";
+import React, { Fragment } from "react";
 import PropTypes from "prop-types";
+import { VisibilityContext } from "react-horizontal-scrolling-menu";
 
-const ScrollItem = ({ scrollList }) => {
+const ScrollItem = ({ profileImage, name, onClick, selected }) => {
+  const visibility = React.useContext(VisibilityContext);
+
   return (
-    scrollList !== null &&
-    scrollList.map((scroll) => (
-      <div key={scroll.id} className="col-3">
-        <div class="card">
+    <Fragment>
+      <div
+        onClick={() => onClick(visibility)}
+        style={{
+          width: "300px",
+        }}
+        tabIndex={0}
+      >
+        <div className="card">
           <img
             src={
-              require(`../../resources/artist/images/${scroll.profileImage}`)
-                .default
+              require(`../../resources/artist/images/${profileImage}`).default
             }
           />
-          <div className="card-body">{scroll.name}</div>
+          <div className="card-body">{name}</div>
+          <div>selected: {JSON.stringify(!!selected)}</div>
         </div>
+        <div
+          style={{
+            height: "100px",
+          }}
+        />
       </div>
-    ))
+    </Fragment>
   );
 };
 
-ScrollItem.propTypes = {
-  scrollList: PropTypes.array.isRequired,
-};
+ScrollItem.propTypes = {};
 
 export default ScrollItem;

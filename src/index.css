@@ -18,3 +18,9 @@ code {
   overflow: hidden;
   margin-top: -6px;
 }
+* {
+  -ms-overflow-style: none;
+}
+::-webkit-scrollbar {
+  display: none;
+}

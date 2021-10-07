@@ -16,10 +16,10 @@ const Rappers = () => {
   }, []);
   return (
     <div>
-      Rappers
       {horizontalScrolls !== null &&
         horizontalScrolls.map((horizontalScroll) => (
           <HorizontalScroll
+            key={horizontalScroll.id}
             horizontalScroll={horizontalScroll}
           ></HorizontalScroll>
         ))}
