@@ -5,15 +5,23 @@ const ScrollItem = ({ scrollList }) => {
   return (
     scrollList !== null &&
     scrollList.map((scroll) => (
-      <scroll key={scroll.id} className="col-3">
-        {scroll.name}
-      </scroll>
+      <div key={scroll.id} className="col-3">
+        <div class="card">
+          <img
+            src={
+              require(`../../resources/artist/images/${scroll.profileImage}`)
+                .default
+            }
+          />
+          <div className="card-body">{scroll.name}</div>
+        </div>
+      </div>
     ))
   );
 };
 
 ScrollItem.propTypes = {
-  scrollList: PropTypes.object.isRequired,
+  scrollList: PropTypes.array.isRequired,
 };
 
 export default ScrollItem;

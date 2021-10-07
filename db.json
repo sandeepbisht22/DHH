@@ -6,20 +6,26 @@
         "scrollList": [
             {	
               "id":1,
-              "name":"OG's beatProducer 1"
+              "name":"Divine",
+              "profileImage":"divineProfile.jpg"
             },
             {	
               "id":2,
-              "name":"OG's beatProducer 2"
+              "name":"Karma",
+              "profileImage":"karmaProfile.jpg"
+              
             },		  {	
               "id":3,
-              "name":"OG's beatProducer 3"
+              "name":"Raftaar",
+              "profileImage":"raftaarProfile.jpg"
             }	,		  {	
               "id":4,
-              "name":"OG's beatProducer 4"
+              "name":"SeedheMaut",
+              "profileImage":"seedhemautProfile.jpg"
             }	,		  {	
               "id":5,
-              "name":"OG's beatProducer 5"
+              "name":"MC STAN",
+              "profileImage":"mcstanProfile.jpg"
             }		
         ]
       },
@@ -27,18 +33,30 @@
         "id": 2,
         "title": "Upcoming",
         "scrollList": [
-            {	
-              "id":1,
-              "name":"Upcoming beatProducer 1"
-            },
-            {	
-              "id":2,
-              "name":"Upcoming beatProducer 2"
-            },		  {	
-              "id":3,
-              "name":"Upcoming beatProducer 3"
-            }			
-        ]
+          {	
+            "id":1,
+            "name":"Divine",
+            "profileImage":"divineProfile.jpg"
+          },
+          {	
+            "id":2,
+            "name":"Karma",
+            "profileImage":"karmaProfile.jpg"
+            
+          },		  {	
+            "id":3,
+            "name":"Raftaar",
+            "profileImage":"raftaarProfile.jpg"
+          }	,		  {	
+            "id":4,
+            "name":"SeedheMaut",
+            "profileImage":"seedhemautProfile.jpg"
+          }	,		  {	
+            "id":5,
+            "name":"MC STAN",
+            "profileImage":"mcstanProfile.jpg"
+          }		
+      ]
       }
 
     ],"rappers": [
@@ -46,41 +64,59 @@
         "id": 1,
         "title": "OG's",
         "scrollList": [
-            {	
-              "id":1,
-              "name":"OG's rappers 1"
-            },
-            {	
-              "id":2,
-              "name":"OG's rappers 2"
-            },		  {	
-              "id":3,
-              "name":"OG's rappers 3"
-            }	,		  {	
-              "id":4,
-              "name":"OG's rappers 4"
-            }	,		  {	
-              "id":5,
-              "name":"OG's rappers 5"
-            }		
-        ]
+          {	
+            "id":1,
+            "name":"Divine",
+            "profileImage":"divineProfile.jpg"
+          },
+          {	
+            "id":2,
+            "name":"Karma",
+            "profileImage":"karmaProfile.jpg"
+            
+          },		  {	
+            "id":3,
+            "name":"Raftaar",
+            "profileImage":"raftaarProfile.jpg"
+          }	,		  {	
+            "id":4,
+            "name":"SeedheMaut",
+            "profileImage":"seedhemautProfile.jpg"
+          }	,		  {	
+            "id":5,
+            "name":"MC STAN",
+            "profileImage":"mcstanProfile.jpg"
+          }		
+      ]
       },
       {
         "id": 2,
         "title": "Upcoming",
         "scrollList": [
-            {	
-              "id":1,
-              "name":"Upcoming rappers 1"
-            },
-            {	
-              "id":2,
-              "name":"Upcoming rappers 2"
-            },		  {	
-              "id":3,
-              "name":"Upcoming rappers 3"
-            }			
-        ]
+          {	
+            "id":1,
+            "name":"Divine",
+            "profileImage":"divineProfile.jpg"
+          },
+          {	
+            "id":2,
+            "name":"Karma",
+            "profileImage":"karmaProfile.jpg"
+            
+          },		  {	
+            "id":3,
+            "name":"Raftaar",
+            "profileImage":"raftaarProfile.jpg"
+          }	,		  {	
+            "id":4,
+            "name":"SeedheMaut",
+            "profileImage":"seedhemautProfile.jpg"
+          }	,		  {	
+            "id":5,
+            "name":"MC STAN",
+            "profileImage":"mcstanProfile.jpg"
+          }		
+      ]
       }
 
     ]
