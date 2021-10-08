@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { useState, useContext, Fragment } from "react";
 import ScrollItem from "./ScrollItem";
 import { ScrollMenu, VisibilityContext } from "react-horizontal-scrolling-menu";
 
@@ -17,27 +17,6 @@ const HorizontalScroll = ({ horizontalScroll: { title, scrollList } }) => {
           : currentSelected.concat(id)
       );
     };
-  function LeftArrow() {
-    const { isFirstItemVisible, scrollPrev } =
-      React.useContext(VisibilityContext);
-
-    return (
-      <div disabled={isFirstItemVisible} onClick={() => scrollPrev()}>
-        <i class="fas fa-chevron-circle-left fa-3x"></i>
-      </div>
-    );
-  }
-
-  function RightArrow() {
-    const { isLastItemVisible, scrollNext } =
-      React.useContext(VisibilityContext);
-
-    return (
-      <div disabled={isLastItemVisible} onClick={() => scrollNext()}>
-        <i class="fas fa-chevron-circle-right fa-3x"></i>
-      </div>
-    );
-  }
 
   return (
     <Fragment>
@@ -46,11 +25,12 @@ const HorizontalScroll = ({ horizontalScroll: { title, scrollList } }) => {
         {scrollList !== null &&
           scrollList.map((scroll) => (
             <ScrollItem
+              itemId={"element-" + scroll.id}
               key={scroll.id}
               profileImage={scroll.profileImage}
               name={scroll.name}
-              onClick={handleClick}
-              selected={isItemSelected}
+              onClick={handleClick(scroll.id)}
+              selected={isItemSelected(scroll.id)}
             ></ScrollItem>
           ))}
       </ScrollMenu>
@@ -58,4 +38,23 @@ const HorizontalScroll = ({ horizontalScroll: { title, scrollList } }) => {
   );
 };
 
+const LeftArrow = () => {
+  const { isFirstItemVisible, scrollPrev } = useContext(VisibilityContext);
+
+  return (
+    <div disabled={isFirstItemVisible} onClick={() => scrollPrev()}>
+      <i className="fas fa-chevron-circle-left fa-3x" />
+    </div>
+  );
+};
+
+const RightArrow = () => {
+  const { isLastItemVisible, scrollNext } = useContext(VisibilityContext);
+
+  return (
+    <div disabled={isLastItemVisible} onClick={() => scrollNext()}>
+      <i className="fas fa-chevron-circle-right fa-3x"></i>
+    </div>
+  );
+};
 export default HorizontalScroll;

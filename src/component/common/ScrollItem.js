@@ -1,8 +1,7 @@
 import React, { Fragment } from "react";
-import PropTypes from "prop-types";
 import { VisibilityContext } from "react-horizontal-scrolling-menu";
 
-const ScrollItem = ({ profileImage, name, onClick, selected }) => {
+const ScrollItem = ({ itemId, profileImage, name, onClick, selected }) => {
   const visibility = React.useContext(VisibilityContext);
 
   return (
@@ -10,7 +9,7 @@ const ScrollItem = ({ profileImage, name, onClick, selected }) => {
       <div
         onClick={() => onClick(visibility)}
         style={{
-          width: "300px",
+          width: "350px",
         }}
         tabIndex={0}
       >
