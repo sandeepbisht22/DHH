@@ -20,7 +20,7 @@ const HorizontalScroll = ({ horizontalScroll: { title, scrollList } }) => {
 
   return (
     <Fragment>
-      <h4>{title}</h4>
+      <h1>{title}</h1>
       <ScrollMenu LeftArrow={LeftArrow} RightArrow={RightArrow}>
         {scrollList !== null &&
           scrollList.map((scroll) => (
@@ -42,7 +42,11 @@ const LeftArrow = () => {
   const { isFirstItemVisible, scrollPrev } = useContext(VisibilityContext);
 
   return (
-    <div disabled={isFirstItemVisible} onClick={() => scrollPrev()}>
+    <div
+      disabled={isFirstItemVisible}
+      onClick={() => scrollPrev()}
+      className="mt-5 pt-5"
+    >
       <i className="fas fa-chevron-circle-left fa-3x" />
     </div>
   );
@@ -52,7 +56,11 @@ const RightArrow = () => {
   const { isLastItemVisible, scrollNext } = useContext(VisibilityContext);
 
   return (
-    <div disabled={isLastItemVisible} onClick={() => scrollNext()}>
+    <div
+      disabled={isLastItemVisible}
+      onClick={() => scrollNext()}
+      className="mt-5 pt-5"
+    >
       <i className="fas fa-chevron-circle-right fa-3x"></i>
     </div>
   );

@@ -13,7 +13,7 @@ const ScrollItem = ({ itemId, profileImage, name, onClick, selected }) => {
         }}
         tabIndex={0}
       >
-        <div className="card">
+        <div className="card" style={{ height: "300px" }}>
           <img
             src={
               require(`../../resources/artist/images/${profileImage}`).default
