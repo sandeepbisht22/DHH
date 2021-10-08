@@ -6,17 +6,6 @@ const HorizontalScroll = ({ horizontalScroll: { title, scrollList } }) => {
   const [selected, setSelected] = useState([]);
   const [position, setPosition] = useState(0);
   const isItemSelected = (id) => !!selected.find((el) => el === id);
-  const handleClick =
-    (id) =>
-    ({ getItemById, scrollToItem }) => {
-      const itemSelected = isItemSelected(id);
-
-      setSelected((currentSelected) =>
-        itemSelected
-          ? currentSelected.filter((el) => el !== id)
-          : currentSelected.concat(id)
-      );
-    };
 
   return (
     <Fragment>
@@ -29,7 +18,6 @@ const HorizontalScroll = ({ horizontalScroll: { title, scrollList } }) => {
               key={scroll.id}
               profileImage={scroll.profileImage}
               name={scroll.name}
-              onClick={handleClick(scroll.id)}
               selected={isItemSelected(scroll.id)}
             ></ScrollItem>
           ))}

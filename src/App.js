@@ -4,6 +4,8 @@ import Navbar from "./component/layout/Navbar";
 import Home from "./component/pages/Home";
 import About from "./component/pages/About";
 import Rappers from "./component/Artist/rappers/Rappers";
+import Rapper from "./component/Artist/rappers/Rapper";
+
 import BeatProducers from "./component/Artist/beat Producer/BeatProducers";
 import ReactionChannels from "./component/reaction Channel/ReactionChannels";
 
@@ -27,6 +29,7 @@ function App() {
               path="/reactionChannels"
               component={ReactionChannels}
             />
+            <Route exact path="/artist/rappers/:rapper" component={Rapper} />
           </Switch>
         </Fragment>
       </Router>
