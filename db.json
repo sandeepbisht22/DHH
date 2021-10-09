@@ -119,5 +119,37 @@
       ]
       }
 
+    ],"rappersinfos":[
+      {
+        "name":"Divine",
+        "pageimage":"divineProfile.jpg",
+        "about":"Vivian Fernandes, better known by his stage name Divine, is an Indian rapper from Mumbai, Maharashtra. He started to gain popularity after the release of his song \"Yeh Mera Bombay\" (2013). He broke through with the release of his song \"Mere Gully Mein\" featuring fellow Mumbai rapper Naezy. On 12 December 2020, Divine became the first Indian rapper to be featured on Spotify Times Square billboard in New York City for his album Punya Paap, which had claimed the top spot on Apple Music India",
+        "title":"OG"
+
+      },
+      {
+        "name":"Karma",
+        "pageimage":"karmaProfile.jpg",
+        "about":"some data",
+        "title":"OG"
+      },
+      {
+        "name":"Raftaar",
+        "pageimage":"raftaarProfile.jpg",
+        "about":"some data",
+        "title":"OG"
+      },
+      {
+        "name":"SeedheMaut",
+        "pageimage":"seedhemautProfile.jpg",
+        "about":"some data",
+        "title":"OG"
+      },
+      {
+        "name":"MC STAN",
+        "pageimage":"mcstanProfile.jpg",
+        "about":"some data",
+        "title":"OG"
+      }
     ]
   }

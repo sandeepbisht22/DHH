@@ -19,7 +19,8 @@ const ScrollItem = ({ itemId, profileImage, name, onClick, selected }) => {
           <img
             className="card-img-top"
             src={
-              require(`../../resources/artist/images/${profileImage}`).default
+              require(`../../resources/artist/images/profile/${profileImage}`)
+                .default
             }
           />
           <div className="card-body">
