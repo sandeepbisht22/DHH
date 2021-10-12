@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import About from "./../../pages/About";
+import SocialMedia from "./../../common/SocialMedia";
 
 const Rapper = ({ match }) => {
   const [rapperInfo, setRapperInfo] = useState([]);
@@ -22,7 +22,7 @@ const Rapper = ({ match }) => {
     loading && (
       <div>
         <div className="d-inline-flex flex-row">
-          <div className="p-2">
+          <div>
             <img
               src={
                 require(`../../../resources/artist/images/page/${rapperInfo[0].pageimage}`)
@@ -30,7 +30,7 @@ const Rapper = ({ match }) => {
               }
             />
           </div>
-          <div className="p-10">
+          <div>
             <h1>
               {rapperInfo[0].name} - The [{rapperInfo[0].title} ]of DHH
             </h1>
@@ -38,8 +38,12 @@ const Rapper = ({ match }) => {
           </div>
         </div>
         <div className="d-flex flex-row">
-          <div className="p-8">SOngs famous</div>
-          <div className="p-4">social links</div>
+          <div>SOngs famous</div>
+          <div>
+            {rapperInfo[0].sociallinks.map((socialaccount) => (
+              <SocialMedia socialaccount={socialaccount}></SocialMedia>
+            ))}
+          </div>
         </div>
       </div>
     )
