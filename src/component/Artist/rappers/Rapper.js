@@ -39,9 +39,9 @@ const Rapper = ({ match }) => {
         </div>
         <div className="d-flex flex-row">
           <div>SOngs famous</div>
-          <div>
-            {rapperInfo[0].sociallinks.map((socialaccount) => (
-              <SocialMedia socialaccount={socialaccount}></SocialMedia>
+          <div className="container">
+            {rapperInfo[0].sociallinks.map((socialaccount, i) => (
+              <SocialMedia socialaccount={socialaccount} i={i}></SocialMedia>
             ))}
           </div>
         </div>

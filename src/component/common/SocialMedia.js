@@ -1,14 +1,16 @@
 import React, { Fragment } from "react";
 
-const SocialMedia = ({ socialaccount }) => {
+const SocialMedia = ({ socialaccount, i }) => {
   const socialMediaMap = {
     instagram: "fab fa-instagram-square fa-5x",
     facebook: "fab fa-facebook-square fa-5x",
     youtube: "fab fa-youtube-square fa-5x",
     twitter: "fab fa-twitter-square fa-5x",
+    spotify: "fab fa-spotify fa-5x",
+    apple: "fab fa-apple fa-5x",
   }; //will move this thing in database later
   const entries = Object.entries(socialaccount);
-  const socialMediaMapEntries = Object.entries(socialMediaMap);
+  const secondColumnStart = socialMediaMap.length / 2;
 
   const keyValue = entries[0][0];
   let className = null;
@@ -22,9 +24,12 @@ const SocialMedia = ({ socialaccount }) => {
   return (
     <Fragment>
       {
-        <a href={clickLink} className="d-flex">
-          <i className={className} style={{ color: "black" }}></i>
-        </a>
+        `{ (i == 0 || i == secondColumnStart) && <div className="col-md-6"> }`
+          <a href={clickLink} className="d-flex">
+            <i className={className} style={{ color: "black" }}></i>
+          </a>
+        { (i == 0 || i == secondColumnStart) && </div> })}
+
       }
     </Fragment>
   );
