@@ -43,9 +43,11 @@ const YoutubeVideo = ({ channelId, youtubeKey }) => {
         <div className="container">
           <div className="row">
             {channelInfos.map((channelInfo) => (
-              <div className="col-md-4">
-                <img src={channelInfo.snippet.thumbnails.url.medium} />
-                <span>channelInfo.snippet.title</span>
+              <div className="col-md-6">
+                <img src={channelInfo.snippet.thumbnails.medium.url} />
+                <div style={{ color: "#FFFFFF" }}>
+                  {channelInfo.snippet.title}
+                </div>
               </div>
             ))}
           </div>

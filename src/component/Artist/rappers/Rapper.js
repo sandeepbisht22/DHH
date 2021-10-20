@@ -31,23 +31,23 @@ const Rapper = ({ match }) => {
             />
           </div>
           <div>
-            <h1>
+            <h1 style={{ color: "#61892F" }}>
               {rapperInfo[0].name} - The [{rapperInfo[0].title} ]of DHH
             </h1>
-            <div>{rapperInfo[0].about}</div>
+            <div style={{ color: "#FFFFFF" }}>{rapperInfo[0].about}</div>
           </div>
         </div>
         <div className="container-fluid" style={{ margin: "0px" }}>
           <div className="row">
             <div className="col-md-8">
-              <h3>Famous Bars</h3>
+              <h3 style={{ color: "#61892F" }}>Famous Bars</h3>
               <YoutubeVideo
                 youtubeKey="AIzaSyB47-Z2ZklkZUzSVKohYBoazrKVqM3ddxc"
                 channelId="UCrtOnzd9dWH9lXTAB-64Hfg"
               ></YoutubeVideo>
             </div>
             <div className="col-md-4">
-              <h3>Social Links</h3>
+              <h3 style={{ color: "#61892F" }}>Social Links</h3>
               <div class="container">
                 <div className="row">
                   {rapperInfo[0].sociallinks.map((socialaccount, i) => (

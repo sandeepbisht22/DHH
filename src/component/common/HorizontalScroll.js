@@ -9,7 +9,7 @@ const HorizontalScroll = ({ horizontalScroll: { title, scrollList } }) => {
 
   return (
     <Fragment>
-      <h1>{title}</h1>
+      <h1 style={{ color: "#61892F" }}>{title}</h1>
       <ScrollMenu LeftArrow={LeftArrow} RightArrow={RightArrow}>
         {scrollList !== null &&
           scrollList.map((scroll) => (
@@ -31,6 +31,7 @@ const LeftArrow = () => {
 
   return (
     <div
+      style={{ color: "#61892F" }}
       disabled={isFirstItemVisible}
       onClick={() => scrollPrev()}
       className="mt-5 pt-5"
@@ -45,6 +46,7 @@ const RightArrow = () => {
 
   return (
     <div
+      style={{ color: "#61892F" }}
       disabled={isLastItemVisible}
       onClick={() => scrollNext()}
       className="mt-5 pt-5"

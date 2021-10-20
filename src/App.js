@@ -11,7 +11,7 @@ import ReactionChannels from "./component/reaction Channel/ReactionChannels";
 
 function App() {
   return (
-    <div>
+    <div style={{ backgroundColor: "#272727" }}>
       <Router>
         <Fragment>
           <Navbar></Navbar>
