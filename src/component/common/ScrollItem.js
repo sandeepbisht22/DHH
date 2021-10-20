@@ -18,14 +18,16 @@ const ScrollItem = ({ itemId, profileImage, name, onClick, selected }) => {
         <div className="card " style={{ height: "300px" }}>
           <img
             className="card-img-top"
+            style={{ object_fit: "cover" }}
             src={
               require(`../../resources/artist/images/profile/${profileImage}`)
                 .default
             }
           />
           <div className="card-body">
-            <div className="card-text">{name}</div>
-            {/* <div>selected: {JSON.stringify(!!selected)}</div> */}
+            <div className="card-text" style={{ color: "#61892F" }}>
+              {name}
+            </div>
           </div>
         </div>
         <div
