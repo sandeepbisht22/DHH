@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import SocialMedia from "./../../common/SocialMedia";
-
+import YoutubeVideo from "../../common/YoutubeVideo";
 const Rapper = ({ match }) => {
   const [rapperInfo, setRapperInfo] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -39,8 +39,15 @@ const Rapper = ({ match }) => {
         </div>
         <div className="container-fluid" style={{ margin: "0px" }}>
           <div className="row">
-            <div className="col-xxl-8">SOngs famous</div>
-            <div className="col-xxl-4">
+            <div className="col-md-8">
+              <h3>Famous Bars</h3>
+              <YoutubeVideo
+                youtubeKey="AIzaSyB47-Z2ZklkZUzSVKohYBoazrKVqM3ddxc"
+                channelId="UCrtOnzd9dWH9lXTAB-64Hfg"
+              ></YoutubeVideo>
+            </div>
+            <div className="col-md-4">
+              <h3>Social Links</h3>
               <div class="container">
                 <div className="row">
                   {rapperInfo[0].sociallinks.map((socialaccount, i) => (
