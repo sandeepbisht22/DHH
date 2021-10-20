@@ -37,12 +37,21 @@ const Rapper = ({ match }) => {
             <div>{rapperInfo[0].about}</div>
           </div>
         </div>
-        <div className="d-flex flex-row">
-          <div>SOngs famous</div>
-          <div className="container">
-            {rapperInfo[0].sociallinks.map((socialaccount, i) => (
-              <SocialMedia socialaccount={socialaccount} i={i}></SocialMedia>
-            ))}
+        <div className="container-fluid" style={{ margin: "0px" }}>
+          <div className="row">
+            <div className="col-xxl-8">SOngs famous</div>
+            <div className="col-xxl-4">
+              <div class="container">
+                <div className="row">
+                  {rapperInfo[0].sociallinks.map((socialaccount, i) => (
+                    <SocialMedia
+                      socialaccount={socialaccount}
+                      i={i}
+                    ></SocialMedia>
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

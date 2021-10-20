@@ -24,12 +24,9 @@ const SocialMedia = ({ socialaccount, i }) => {
   return (
     <Fragment>
       {
-        `{ (i == 0 || i == secondColumnStart) && <div className="col-md-6"> }`
-          <a href={clickLink} className="d-flex">
-            <i className={className} style={{ color: "black" }}></i>
-          </a>
-        { (i == 0 || i == secondColumnStart) && </div> })}
-
+        <a href={clickLink} className="col-md-6">
+          <i className={className} style={{ color: "black" }}></i>
+        </a>
       }
     </Fragment>
   );
