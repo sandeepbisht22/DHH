@@ -24,7 +24,7 @@ const SocialMedia = ({ socialaccount, i }) => {
   return (
     <Fragment>
       {
-        <a href={clickLink} className="col-md-6">
+        <a href={clickLink} className="col-md-6 p-2 text-center">
           <i className={className} style={{ color: "#FFFFFF" }}></i>
         </a>
       }

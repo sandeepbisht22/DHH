@@ -22,8 +22,13 @@ const Rapper = ({ match }) => {
     loading && (
       <div>
         <div className="d-inline-flex flex-row">
-          <div>
+          <div className="pe-3 pb-3 ps-3">
             <img
+              style={{
+                height: "400px",
+                width: "300px",
+              }}
+              className="border border-5 border-white"
               src={
                 require(`../../../resources/artist/images/page/${rapperInfo[0].pageimage}`)
                   .default
@@ -47,7 +52,9 @@ const Rapper = ({ match }) => {
               ></YoutubeVideo>
             </div>
             <div className="col-md-4">
-              <h3 style={{ color: "#61892F" }}>Social Links</h3>
+              <h3 style={{ color: "#61892F" }} className="text-center">
+                Social Links
+              </h3>
               <div class="container">
                 <div className="row">
                   {rapperInfo[0].sociallinks.map((socialaccount, i) => (

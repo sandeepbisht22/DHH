@@ -15,7 +15,10 @@ const ScrollItem = ({ itemId, profileImage, name, onClick, selected }) => {
         }}
         tabIndex={0}
       >
-        <div className="card " style={{ height: "300px" }}>
+        <div
+          className="card "
+          style={{ height: "300px", backgroundColor: "#272727" }}
+        >
           <img
             className="card-img-top"
             style={{ object_fit: "cover" }}
