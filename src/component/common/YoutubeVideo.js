@@ -40,12 +40,72 @@ const YoutubeVideo = ({ channelId, youtubeKey }) => {
   return (
     channelInfos.length > 0 && (
       <Fragment>
-        <div className="container">
+        <div className="container ps-0">
           <div className="row">
             {channelInfos.map((channelInfo) => (
-              <div className="col-md-8">
-                <div>
-                  <img src={channelInfo.snippet.thumbnails.default.url} />
+              <div className="col-md-8 pb-4">
+                <div className="pb-1 d-flex">
+                  <a
+                    href={`https://www.youtube.com/watch?v=${channelInfo.id.videoId}`}
+                    class=""
+                  >
+                    <img
+                      src={channelInfo.snippet.thumbnails.medium.url}
+                      className="border border-3 rounded"
+                    />
+                  </a>
+                  <div className="ps-3">
+                    <div className="ps-2 flex-column">
+                      <div className="pb-1">
+                        <i
+                          class="fas fa-thumbs-up fa-3x"
+                          style={{ color: "#FFFFFF" }}
+                        ></i>
+                        <span
+                          className="ps-2 ms-2"
+                          style={{ color: "#FFFFFF" }}
+                        >
+                          12334
+                        </span>
+                      </div>
+                      <div className="pb-1">
+                        <i
+                          class="fas fa-thumbs-down fa-3x"
+                          style={{ color: "#FFFFFF" }}
+                        ></i>
+                        <span
+                          className="ps-2 ms-2"
+                          style={{ color: "#FFFFFF" }}
+                        >
+                          12334
+                        </span>
+                      </div>
+                      <div className="pb-1">
+                        <i
+                          class="fas fa-eye fa-3x"
+                          style={{ color: "#FFFFFF" }}
+                        ></i>
+                        <span
+                          className="ps-2 ms-2"
+                          style={{ color: "#FFFFFF" }}
+                        >
+                          12334
+                        </span>
+                      </div>
+                      <div className="pb-1">
+                        <i
+                          class="fas fa-comments fa-3x"
+                          style={{ color: "#FFFFFF" }}
+                        ></i>
+                        <span
+                          className="ps-2 ms-2"
+                          style={{ color: "#FFFFFF" }}
+                        >
+                          12334
+                        </span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
                 <div style={{ color: "#FFFFFF" }}>
                   {channelInfo.snippet.title}
