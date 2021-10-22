@@ -48,7 +48,7 @@ const Rapper = ({ match }) => {
               <h3 style={{ color: "#61892F" }}>Famous Bars</h3>
               <YoutubeVideo
                 youtubeKey="AIzaSyB47-Z2ZklkZUzSVKohYBoazrKVqM3ddxc"
-                channelId="UCrtOnzd9dWH9lXTAB-64Hfg"
+                channelId="UCMXMp3Lc6v6v8dJH5ZGwtqA"
               ></YoutubeVideo>
             </div>
             <div className="col-md-4">

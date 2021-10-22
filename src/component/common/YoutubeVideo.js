@@ -7,12 +7,14 @@ const YoutubeVideo = ({ channelId, youtubeKey }) => {
   async function getChannelYoutubeInfo() {
     if (channelVideoInfos.length === 0) {
       const res = await fetch(
-        // `https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelId=${channelId}&maxResults=5&order=viewCount&key=${youtubeKey}`
-        "http://localhost:5000/sampleyoutubefirstcall"
+        `https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelId=${channelId}&maxResults=5&order=viewCount&key=${youtubeKey}`
+        // "http://localhost:5000/sampleyoutubefirstcall"
       );
       const channelJson = await res.json();
       //channelInfos = channelJson.items;
-      setChannelInfos(channelJson[0].items);
+      setChannelInfos(channelJson.items);
+
+      // setChannelInfos(channelJson[0].items);
       //      channelInfos = channelJson[0].items;
 
       console.log(channelInfos);
@@ -21,14 +23,14 @@ const YoutubeVideo = ({ channelId, youtubeKey }) => {
     await Promise.all(
       channelInfos.map(async (channelInfo) => {
         const response = await fetch(
-          //   `https://www.googleapis.com/youtube/v3/videos?part=statistics&id=${channelInfo.id.videoId}&key=${youtubeKey}`
-          "http://localhost:5000/sampleyoutubesecondcall"
+          `https://www.googleapis.com/youtube/v3/videos?part=statistics&id=${channelInfo.id.videoId}&key=${youtubeKey}`
+          // "http://localhost:5000/sampleyoutubesecondcall"
         );
         const data = await response.json();
         setChannelVideoInfos((channelVideoInfos) => [
           ...channelVideoInfos,
-          data[0].items,
-          //data.items,
+          // data[0].items,
+          data.items,
         ]);
         console.log(channelVideoInfos);
       })
