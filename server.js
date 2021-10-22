@@ -1,2 +1,3 @@
-import { Express } from "express";
-import connectDB from "./config/db";
+import Express from "express";
+import { connectMongoDB } from "./config/db.mjs";
+connectMongoDB();

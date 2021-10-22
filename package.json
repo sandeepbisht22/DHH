@@ -15,6 +15,7 @@
     "type": "git",
     "url": "git+https://github.com/sandeepbisht22/DHH.git"
   },
+  "type":"module",
   "author": "Sandeep Bisht",
   "license": "ISC",
   "bugs": {
