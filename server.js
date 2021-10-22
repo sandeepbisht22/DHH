@@ -1,5 +1,6 @@
 import express from "express";
 import { connectMongoDB } from "./config/db.mjs";
+import { expressRouter } from "./routes/rappers.mjs";
 const app = express();
 
 // Making DB connection
@@ -14,4 +15,5 @@ app.get("/", (req, res) => {
 });
 const PORT = process.env.PORT || 5000;
 
+app.use("/artist/rappers", expressRouter);
 app.listen(PORT, () => console.log(`Server started on ${PORT}`));
