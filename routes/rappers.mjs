@@ -3,7 +3,7 @@ import { rapperModel } from "../models/Rappers.mjs";
 const rapperRouter = express.Router();
 /***
  * @route Get artist/rappers
- * @description Will fetch information of all the rappers with given title ID
+ * @description Will GET information of all the rappers with given title ID
  */
 rapperRouter.get("/", async (req, res) => {
   try {

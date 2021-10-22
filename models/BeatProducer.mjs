@@ -9,7 +9,7 @@ const beatProducerSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  socialLinks: {
+  sociallinks: {
     type: Array,
     required: true,
   },

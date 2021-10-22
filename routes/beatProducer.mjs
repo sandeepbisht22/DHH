@@ -1,7 +1,10 @@
 import express from "express";
 import { beatProducerModel } from "../models/BeatProducer.mjs";
 const beatProducerRouter = express.Router();
-
+/**
+ * @route /artist/beatProdcuer
+ * @description Will Get information about all the beat producers
+ */
 beatProducerRouter.get("/", async (req, res) => {
   try {
     console.log("[Process Start] Will fetch all beat producer info");
