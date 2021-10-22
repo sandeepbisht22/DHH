@@ -1,11 +1,11 @@
 import express from "express";
 import { rapperModel } from "../models/Rappers.mjs";
-const expressRouter = express.Router();
+const rapperRouter = express.Router();
 /***
  * @route Get artist/rappers
  * @description Will fetch information of all the rappers with given title ID
  */
-expressRouter.get("/", async (req, res) => {
+rapperRouter.get("/", async (req, res) => {
   try {
     console.log(
       "[Process start] Will fetch Rappers info for rappers with title " + ""
@@ -22,4 +22,4 @@ expressRouter.get("/", async (req, res) => {
   }
 });
 
-export { expressRouter };
+export { rapperRouter };

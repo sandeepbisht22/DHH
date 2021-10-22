@@ -1,6 +1,7 @@
 import express from "express";
 import { connectMongoDB } from "./config/db.mjs";
-import { expressRouter } from "./routes/rappers.mjs";
+import { rapperRouter } from "./routes/rappers.mjs";
+import { beatProducerRouter } from "./routes/beatProducer.mjs";
 const app = express();
 
 // Making DB connection
@@ -15,5 +16,6 @@ app.get("/", (req, res) => {
 });
 const PORT = process.env.PORT || 5000;
 
-app.use("/artist/rappers", expressRouter);
+app.use("/artist/rappers", rapperRouter);
+app.use("/artist/beatProdcuer", beatProducerRouter);
 app.listen(PORT, () => console.log(`Server started on ${PORT}`));
