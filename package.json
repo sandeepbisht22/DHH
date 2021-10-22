@@ -1,0 +1,34 @@
+{
+  "name": "dhh",
+  "version": "1.0.0",
+  "description": "One place for Desi Hip Hop lovers",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "server":"nodemon server.js",
+    "clinet":"npm start --prefix client",
+    "clientinstall":"npm install --prefix client",
+    "dev":"concurrently \"npm run server\" \"npm run client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sandeepbisht22/DHH.git"
+  },
+  "author": "Sandeep Bisht",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sandeepbisht22/DHH/issues"
+  },
+  "homepage": "https://github.com/sandeepbisht22/DHH#readme",
+  "dependencies": {
+    "config": "^3.3.6",
+    "express": "^4.17.1",
+    "express-validator": "^6.13.0",
+    "mongoose": "^6.0.12"
+  },
+  "devDependencies": {
+    "concurrently": "^6.3.0",
+    "nodemon": "^2.0.14"
+  }
+}
