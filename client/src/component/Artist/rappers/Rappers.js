@@ -20,7 +20,7 @@ const Rappers = () => {
     try {
       console.log("Start executing calls");
       axios
-        .all(titles.map((title) => axios.get(`/artist/rappers/${title}`)))
+        .all(titles.map((title) => axios.get(`/artist/rappers/title/${title}`)))
         .then(
           axios.spread(function (...res) {
             // all requests are now complete

@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from "react";
 import SocialMedia from "./../../common/SocialMedia";
 import YoutubeVideo from "../../common/YoutubeVideo";
+import axios from "axios";
 const Rapper = ({ match }) => {
   const [rapperInfo, setRapperInfo] = useState([]);
   const [loading, setLoading] = useState(false);
   async function fetchArtistData(rapperName) {
-    const res = await fetch(
-      `http://localhost:5000/rappersinfos?name=${rapperName}`
-    );
-    const data = await res.json();
-    setRapperInfo(data);
+    // const res = await fetch(
+    //   `http://localhost:5000/rappersinfos?name=${rapperName}`
+    // );
+    const res = await axios.get(`/artist/rappers/name/${rapperName}`);
+    // const data = await res.json();
+    setRapperInfo(res.data);
     setLoading(!loading);
   }
   useEffect(() => {
@@ -30,7 +32,7 @@ const Rapper = ({ match }) => {
               }}
               className="border border-5 border-white"
               src={
-                require(`../../../resources/artist/images/page/${rapperInfo[0].pageimage}`)
+                require(`../../../resources/artist/images/page/${rapperInfo[0].profileImage}`)
                   .default
               }
             />
