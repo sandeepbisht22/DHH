@@ -1,12 +1,31 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import HorizontalScroll from "./../../common/HorizontalScroll";
 
 const BeatProducers = () => {
   const [horizontalScrolls, setHorizontalScrolls] = useState([]);
+  const titles = ["OG"];
   async function fetchBeatProducerData() {
-    const res = await fetch("http://localhost:5000/beatProducer");
-    const data = await res.json();
-    setHorizontalScrolls(data);
+    // const res = await fetch("http://localhost:5000/beatProducer");
+    // const data = await res.json();
+    try {
+      console.log("Start executing calls");
+      axios
+        .all(
+          titles.map((title) =>
+            axios.get(`/artist/beatProdcuer/title/${title}`)
+          )
+        )
+        .then(
+          axios.spread(function (...res) {
+            // all requests are now complete
+            console.log("final response is" + res);
+            setHorizontalScrolls(res);
+          })
+        );
+    } catch (error) {
+      console.log("Error is " + error);
+    }
   }
   useEffect(() => {
     try {

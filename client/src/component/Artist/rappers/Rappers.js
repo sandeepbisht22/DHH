@@ -5,18 +5,6 @@ const Rappers = () => {
   const titles = ["OG", "Upcoming"];
   const [horizontalScrolls, setHorizontalScrolls] = useState([]);
   function fetchBeatProducerData() {
-    // Promise.all(
-    //   titles.map((title) => {
-    //     return axios
-    //       .get(`/artist/rapper/${title}`)
-    //       .then((resp) =>
-    //         setHorizontalScrolls((horizontalScrolls) => [
-    //           ...horizontalScrolls,
-    //           resp.json(),
-    //         ])
-    //       );
-    //   })
-    // );
     try {
       console.log("Start executing calls");
       axios
@@ -31,11 +19,6 @@ const Rappers = () => {
     } catch (error) {
       console.log("Error is " + error);
     }
-
-    // const res = await fetch("http://localhost:5000/rappers");
-
-    //const data = await res.json();
-    //setHorizontalScrolls(data);
   }
   useEffect(() => {
     try {

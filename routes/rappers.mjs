@@ -5,7 +5,7 @@ const rapperRouter = express.Router();
  * @route Get artist/rappers
  * @description Will GET information of all the rappers with given title ID
  */
-rapperRouter.get("title/:title", async (req, res) => {
+rapperRouter.get("/title/:title", async (req, res) => {
   try {
     console.log(
       "[Process start] Will fetch Rappers info for rappers with title " +
@@ -20,6 +20,10 @@ rapperRouter.get("title/:title", async (req, res) => {
   }
 });
 
+/***
+ * @route Get artist/rappers/:name
+ * @description Will GET information of single rapper based on provided name
+ */
 rapperRouter.get("/name/:name", async (req, res) => {
   try {
     console.log(
