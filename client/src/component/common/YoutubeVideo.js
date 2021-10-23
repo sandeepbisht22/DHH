@@ -42,21 +42,22 @@ const YoutubeVideo = ({ channelId, youtubeKey }) => {
   return (
     channelInfos.length > 0 && (
       <Fragment>
-        <div className="container ps-0">
+        {/* <div className="container ps-0">
           <div className="row">
-            {channelInfos.map((channelInfo) => (
-              <div className="col-md-8 pb-4">
-                <div className="pb-1 d-flex">
-                  <a
-                    href={`https://www.youtube.com/watch?v=${channelInfo.id.videoId}`}
-                    class=""
-                  >
-                    <img
-                      src={channelInfo.snippet.thumbnails.medium.url}
-                      className="border border-3 rounded"
-                    />
-                  </a>
-                  <div className="ps-3">
+             */}
+        {channelInfos.map((channelInfo) => (
+          <div className="col-md-3">
+            <div className="pb-1">
+              <a
+                href={`https://www.youtube.com/watch?v=${channelInfo.id.videoId}`}
+                class=""
+              >
+                <img
+                  src={channelInfo.snippet.thumbnails.medium.url}
+                  className="border border-3 rounded"
+                />
+              </a>
+              {/* <div className="ps-3">
                     <div className="ps-2 flex-column">
                       <div className="pb-1">
                         <i
@@ -107,15 +108,15 @@ const YoutubeVideo = ({ channelId, youtubeKey }) => {
                         </span>
                       </div>
                     </div>
-                  </div>
-                </div>
-                <div style={{ color: "#FFFFFF" }}>
-                  {channelInfo.snippet.title}
-                </div>
-              </div>
-            ))}
+                  </div> */}
+            </div>
+            <div style={{ color: "#FFFFFF" }} className="flex-wrap ">
+              {channelInfo.snippet.title}
+            </div>
           </div>
-        </div>
+        ))}
+        {/* </div>
+        </div> */}
       </Fragment>
     )
   );

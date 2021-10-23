@@ -45,28 +45,25 @@ const Rapper = ({ match }) => {
           </div>
         </div>
         <div className="container-fluid" style={{ margin: "0px" }}>
-          <div className="row">
-            <div className="col-md-8">
-              <h3 style={{ color: "#61892F" }}>Famous Bars</h3>
+          <h3 style={{ color: "#61892F" }}>Famous Bars</h3>
+          <div className="scroll">
+            <div className="row flex-row flex-nowrap">
               <YoutubeVideo
                 youtubeKey="AIzaSyB47-Z2ZklkZUzSVKohYBoazrKVqM3ddxc"
                 channelId="UCMXMp3Lc6v6v8dJH5ZGwtqA"
               ></YoutubeVideo>
             </div>
-            <div className="col-md-4">
-              <h3 style={{ color: "#61892F" }} className="text-center">
-                Social Links
-              </h3>
-              <div class="container">
-                <div className="row">
-                  {rapperInfo[0].sociallinks.map((socialaccount, i) => (
-                    <SocialMedia
-                      socialaccount={socialaccount}
-                      i={i}
-                    ></SocialMedia>
-                  ))}
-                </div>
-              </div>
+          </div>
+        </div>
+        <div className="col-md-12">
+          <h3 style={{ color: "#61892F" }} className="text-center">
+            Social Links
+          </h3>
+          <div class="container-fluid">
+            <div className="row justify-content-md-center">
+              {rapperInfo[0].sociallinks.map((socialaccount, i) => (
+                <SocialMedia socialaccount={socialaccount} i={i}></SocialMedia>
+              ))}
             </div>
           </div>
         </div>

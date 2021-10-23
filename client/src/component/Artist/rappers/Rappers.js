@@ -30,10 +30,11 @@ const Rappers = () => {
   return (
     <div>
       {horizontalScrolls !== null &&
-        horizontalScrolls.map((horizontalScroll) => (
+        horizontalScrolls.map((horizontalScroll, i) => (
           <HorizontalScroll
-            key={horizontalScroll.id}
+            key={i}
             horizontalScroll={horizontalScroll}
+            title={titles[i]}
           ></HorizontalScroll>
         ))}
     </div>

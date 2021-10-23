@@ -18,6 +18,12 @@ code {
   overflow: hidden;
   margin-top: -6px;
 }
+.scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
 * {
   -ms-overflow-style: none;
 }

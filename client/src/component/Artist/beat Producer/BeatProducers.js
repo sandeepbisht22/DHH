@@ -38,9 +38,10 @@ const BeatProducers = () => {
     <div>
       Beat Producers
       {horizontalScrolls !== null &&
-        horizontalScrolls.map((horizontalScroll) => (
+        horizontalScrolls.map((horizontalScroll, i) => (
           <HorizontalScroll
             horizontalScroll={horizontalScroll}
+            title={titles[i]}
           ></HorizontalScroll>
         ))}
     </div>
