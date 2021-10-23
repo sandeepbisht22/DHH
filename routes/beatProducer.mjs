@@ -5,12 +5,16 @@ const beatProducerRouter = express.Router();
  * @route /artist/beatProdcuer
  * @description Will Get information about all the beat producers
  */
-beatProducerRouter.get("/", async (req, res) => {
+beatProducerRouter.get("/:title", async (req, res) => {
   try {
-    console.log("[Process Start] Will fetch all beat producer info");
-
+    console.log(
+      "[Process start] Will fetch Beat Producers info for rappers with title " +
+        req.rapper.title
+    );
     //in future will fetch based on the title
-    const beatProducer = await beatProducerModel.find({});
+    const beatProducer = await beatProducerModel.find({
+      title: req.params.title,
+    });
     res.json(beatProducer);
     console.log("[Sucess] Beat Producer data fetched and send to front end");
   } catch (error) {

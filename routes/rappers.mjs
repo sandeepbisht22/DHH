@@ -5,15 +5,13 @@ const rapperRouter = express.Router();
  * @route Get artist/rappers
  * @description Will GET information of all the rappers with given title ID
  */
-rapperRouter.get("/", async (req, res) => {
+rapperRouter.get("/:title", async (req, res) => {
   try {
     console.log(
-      "[Process start] Will fetch Rappers info for rappers with title " + ""
-      // req.rapper.title
+      "[Process start] Will fetch Rappers info for rappers with title " +
+        req.params.title
     );
-    // const rappers = await rapperModel.find(req.rapper.title);
-    const rappers = await rapperModel.find({});
-    console.log("Rappers info is " + rappers);
+    const rappers = await rapperModel.find({ title: req.params.title }).exec();
     res.json(rappers);
     console.log("[Success] Rappers info sent to front end");
   } catch (error) {

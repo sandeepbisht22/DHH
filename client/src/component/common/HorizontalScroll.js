@@ -2,11 +2,13 @@ import React, { useState, useContext, Fragment } from "react";
 import ScrollItem from "./ScrollItem";
 import { ScrollMenu, VisibilityContext } from "react-horizontal-scrolling-menu";
 
-const HorizontalScroll = ({ horizontalScroll: { title, scrollList } }) => {
+const HorizontalScroll = ({ horizontalScroll }) => {
   const [selected, setSelected] = useState([]);
   const [position, setPosition] = useState(0);
   const isItemSelected = (id) => !!selected.find((el) => el === id);
-
+  const scrollList = horizontalScroll.data;
+  //temp
+  const title = "some Title";
   return (
     <Fragment>
       <h1 style={{ color: "#61892F" }}>{title}</h1>
@@ -14,11 +16,11 @@ const HorizontalScroll = ({ horizontalScroll: { title, scrollList } }) => {
         {scrollList !== null &&
           scrollList.map((scroll) => (
             <ScrollItem
-              itemId={"element-" + scroll.id}
-              key={scroll.id}
+              itemId={"element-" + scroll._id}
+              key={scroll._id}
               profileImage={scroll.profileImage}
               name={scroll.name}
-              selected={isItemSelected(scroll.id)}
+              selected={isItemSelected(scroll._id)}
             ></ScrollItem>
           ))}
       </ScrollMenu>
