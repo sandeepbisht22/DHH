@@ -9,7 +9,7 @@ const ScrollItem = ({ itemId, profileImage, name, onClick, selected }) => {
   return (
     <Fragment>
       <div
-        onClick={() => history.push(`/artist/rappers/${name}`, name)}
+        onClick={() => history.push(`/artist/beatproducers/${name}`, name)}
         style={{
           width: "350px",
         }}

@@ -8,7 +8,7 @@ import Rapper from "./component/Artist/rappers/Rapper";
 
 import BeatProducers from "./component/Artist/beat Producer/BeatProducers";
 import ReactionChannels from "./component/reaction Channel/ReactionChannels";
-
+import BeatProducer from "./component/Artist/beat Producer/BeatProducer";
 function App() {
   return (
     <div style={{ backgroundColor: "#272727" }}>
@@ -30,6 +30,11 @@ function App() {
               component={ReactionChannels}
             />
             <Route exact path="/artist/rappers/:rapper" component={Rapper} />
+            <Route
+              exact
+              path="/artist/beatproducers/:beatProducer"
+              component={BeatProducer}
+            />
           </Switch>
         </Fragment>
       </Router>

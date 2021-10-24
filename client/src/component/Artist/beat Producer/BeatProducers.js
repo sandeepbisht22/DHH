@@ -13,7 +13,7 @@ const BeatProducers = () => {
       axios
         .all(
           titles.map((title) =>
-            axios.get(`/artist/beatProdcuer/title/${title}`)
+            axios.get(`/artist/beatProducer/title/${title}`)
           )
         )
         .then(
