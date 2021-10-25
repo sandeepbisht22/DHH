@@ -1,10 +1,15 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import HorizontalScroll from "./../../common/HorizontalScroll";
-
+import { actions } from "../../../state/actions";
 const BeatProducers = () => {
+  const artistType = "beatProducer";
   const [horizontalScrolls, setHorizontalScrolls] = useState([]);
   const titles = ["OG"];
+  const dispatch = useDispatch();
+  dispatch(actions.currentArtistType("beatProducers"));
+
   async function fetchBeatProducerData() {
     // const res = await fetch("http://localhost:5000/beatProducer");
     // const data = await res.json();
@@ -13,7 +18,7 @@ const BeatProducers = () => {
       axios
         .all(
           titles.map((title) =>
-            axios.get(`/artist/beatProducer/title/${title}`)
+            axios.get(`/artist/${artistType}/title/${title}`)
           )
         )
         .then(

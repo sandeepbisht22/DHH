@@ -1,15 +1,17 @@
 import React, { Fragment } from "react";
 import { useHistory } from "react-router";
 import { VisibilityContext } from "react-horizontal-scrolling-menu";
+import { useSelector } from "react-redux";
 
 const ScrollItem = ({ itemId, profileImage, name, onClick, selected }) => {
   const visibility = React.useContext(VisibilityContext);
   const history = useHistory();
-
+  const artistType = useSelector((state) => state.artist.artistType);
+  console.log("artist type is " + artistType);
   return (
     <Fragment>
       <div
-        onClick={() => history.push(`/artist/beatproducers/${name}`, name)}
+        onClick={() => history.push(`/artist/${artistType}/${name}`, name)}
         style={{
           width: "350px",
         }}
