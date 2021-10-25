@@ -50,7 +50,7 @@ const YoutubeVideo = ({ channelId, youtubeKey }) => {
             <div className="pb-1">
               <a
                 href={`https://www.youtube.com/watch?v=${channelInfo.id.videoId}`}
-                class=""
+                target="_blank"
               >
                 <img
                   src={channelInfo.snippet.thumbnails.medium.url}

@@ -1,10 +1,34 @@
-import { ARTIST_TYPE } from "../types";
-
+import { ARTIST_TYPE, ARTISTS_INFO } from "../types";
+import axios from "axios";
 export const currentArtistType = (artist) => async (dispatch) => {
   try {
     dispatch({
       type: ARTIST_TYPE,
       payload: artist,
     });
-  } catch (error) {}
+  } catch (error) {
+    //TODO
+  }
+};
+
+export const artistsInfo = (artistType, titles) => async (dispatch) => {
+  try {
+    console.log("Start executing calls inside for");
+    axios
+      .all(
+        titles.map((title) => axios.get(`/artist/${artistType}/title/${title}`))
+      )
+      .then(
+        axios.spread(function (...res) {
+          // all requests are now complete
+          console.log("final response is" + res);
+          dispatch({
+            type: ARTISTS_INFO,
+            payload: res,
+          });
+        })
+      );
+  } catch (error) {
+    console.log("Error is " + error);
+  }
 };
