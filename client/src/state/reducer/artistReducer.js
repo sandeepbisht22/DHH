@@ -1,4 +1,4 @@
-import { ARTIST_TYPE, ARTISTS_INFO } from "../types";
+import { ARTIST_TYPE, ARTISTS_INFO, CURRENT_ARTIST } from "../types";
 
 const initialState = {
   artists: null,
@@ -19,6 +19,12 @@ export default (state = initialState, action) => {
       return {
         ...state,
         artists: action.payload,
+      };
+    }
+    case CURRENT_ARTIST: {
+      return {
+        ...state,
+        currArtist: action.payload,
       };
     }
     default: {

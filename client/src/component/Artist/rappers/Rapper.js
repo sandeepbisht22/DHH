@@ -1,27 +1,21 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import SocialMedia from "./../../common/SocialMedia";
 import YoutubeVideo from "../../common/YoutubeVideo";
-import axios from "axios";
+import { actions } from "../../../state/actions";
+import { useSelector, useDispatch } from "react-redux";
 const Rapper = ({ match }) => {
-  const [rapperInfo, setRapperInfo] = useState([]);
-  const [loading, setLoading] = useState(false);
-  async function fetchArtistData(rapperName) {
-    // const res = await fetch(
-    //   `http://localhost:5000/rappersinfos?name=${rapperName}`
-    // );
-    const res = await axios.get(`/artist/rappers/name/${rapperName}`);
-    // const data = await res.json();
-    setRapperInfo(res.data);
-    setLoading(!loading);
-  }
+  const dispatch = useDispatch();
+
+  const artistType = useSelector((state) => state.artist.artistType);
+  const currArtist = useSelector((state) => state.artist.currArtist);
   useEffect(() => {
     try {
-      fetchArtistData(match.params.rapper);
+      dispatch(actions.currentArtistInfo(artistType, match.params.rapper));
     } catch (error) {}
   }, [match.params.rapper]);
 
   return (
-    loading && (
+    currArtist !== null && (
       <div>
         <div className="d-inline-flex flex-row">
           <div className="pe-3 pb-3 ps-3">
@@ -32,16 +26,16 @@ const Rapper = ({ match }) => {
               }}
               className="border border-5 border-white"
               src={
-                require(`../../../resources/artist/images/page/${rapperInfo[0].profileImage}`)
+                require(`../../../resources/artist/images/page/${currArtist.profileImage}`)
                   .default
               }
             />
           </div>
           <div>
             <h1 style={{ color: "#61892F" }}>
-              {rapperInfo[0].name} - The [{rapperInfo[0].title} ]of DHH
+              {currArtist.name} - The [{currArtist.title} ]of DHH
             </h1>
-            <div style={{ color: "#FFFFFF" }}>{rapperInfo[0].about}</div>
+            <div style={{ color: "#FFFFFF" }}>{currArtist.about}</div>
           </div>
         </div>
         <div className="container-fluid" style={{ margin: "0px" }}>
@@ -59,9 +53,9 @@ const Rapper = ({ match }) => {
           <h3 style={{ color: "#61892F" }} className="text-center">
             Social Links
           </h3>
-          <div class="container-fluid">
+          <div className="container-fluid">
             <div className="row justify-content-md-center">
-              {rapperInfo[0].sociallinks.map((socialaccount, i) => (
+              {currArtist.sociallinks.map((socialaccount, i) => (
                 <SocialMedia socialaccount={socialaccount} i={i}></SocialMedia>
               ))}
             </div>

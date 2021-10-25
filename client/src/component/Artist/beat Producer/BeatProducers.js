@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import HorizontalScroll from "./../../common/HorizontalScroll";
 import { actions } from "../../../state/actions";
 const BeatProducers = () => {
-  const artistType = "beatProducer";
+  const artistType = "beatProducers";
   const titles = ["OG"];
   const dispatch = useDispatch();
   dispatch(actions.currentArtistType("beatProducers"));

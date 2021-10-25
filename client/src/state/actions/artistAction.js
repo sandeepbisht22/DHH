@@ -1,4 +1,4 @@
-import { ARTIST_TYPE, ARTISTS_INFO } from "../types";
+import { ARTIST_TYPE, ARTISTS_INFO, CURRENT_ARTIST } from "../types";
 import axios from "axios";
 export const currentArtistType = (artist) => async (dispatch) => {
   try {
@@ -32,3 +32,16 @@ export const artistsInfo = (artistType, titles) => async (dispatch) => {
     console.log("Error is " + error);
   }
 };
+
+export const currentArtistInfo =
+  (artistType, rapperName) => async (dispatch) => {
+    try {
+      const res = await axios.get(`/artist/${artistType}/name/${rapperName}`);
+      dispatch({
+        type: CURRENT_ARTIST,
+        payload: res.data[0],
+      });
+    } catch (error) {
+      //TODO
+    }
+  };
