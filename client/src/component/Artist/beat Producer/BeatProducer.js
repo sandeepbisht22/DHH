@@ -16,7 +16,7 @@ const BeatProducer = ({ match }) => {
         actions.currentArtistInfo(artistType, match.params.beatProducer)
       );
     } catch (error) {}
-  }, [match.params.beatProducer]);
+  }, []);
 
   return (
     currArtist !== null && (
