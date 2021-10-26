@@ -18,7 +18,7 @@ const BeatProducers = () => {
     }
   }, []);
   return (
-    <div>
+    <div style={{ backgroundColor: "#272727" }}>
       Beat Producers
       {artists !== null &&
         artists.map((horizontalScroll, i) => (

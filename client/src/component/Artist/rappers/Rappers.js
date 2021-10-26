@@ -19,7 +19,7 @@ const Rappers = () => {
   }, []);
 
   return (
-    <div>
+    <div style={{ backgroundColor: "#272727" }}>
       {artists !== null &&
         artists.map((horizontalScroll, i) => (
           <HorizontalScroll

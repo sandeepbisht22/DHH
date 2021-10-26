@@ -16,7 +16,7 @@ const Rapper = ({ match }) => {
 
   return (
     currArtist !== null && (
-      <div>
+      <div style={{ backgroundColor: "#272727" }}>
         <div className="d-inline-flex flex-row">
           <div className="pe-3 pb-3 ps-3">
             <img

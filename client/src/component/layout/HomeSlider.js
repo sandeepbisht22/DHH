@@ -15,40 +15,40 @@ const HomeSlider = () => {
     slidesToScroll: 1,
   };
   return (
-    <div style={{ "background-color": "white" }} className="px-5 py-2">
+    <div style={{ backgroundColor: "white" }} className="px-5 py-2">
       <Slider {...settings}>
-        <div class="card">
-          <img class="card-img" src={rapperImage} alt="" />
+        <div className="card">
+          <img className="card-img" src={rapperImage} alt="" />
           <div className="card-img-overlay overlay-grey text-white d-flex justify-content-center align-items-center">
             <h2>MC</h2>
           </div>
         </div>
-        <div class="card">
-          <img class="card-img" src={djImage} alt="" />
+        <div className="card">
+          <img className="card-img" src={djImage} alt="" />
           <div className="card-img-overlay overlay-grey text-white d-flex justify-content-center align-items-center">
             <h2>DJing</h2>
           </div>
         </div>
-        <div class="card">
-          <img class="card-img" src={bboyImage} alt="" />
+        <div className="card">
+          <img className="card-img" src={bboyImage} alt="" />
           <div className="card-img-overlay overlay-grey text-white d-flex justify-content-center align-items-center">
             <h2>B-Boying</h2>
           </div>
         </div>
-        <div class="card">
-          <img class="card-img" src={GrafImage} alt="" />
+        <div className="card">
+          <img className="card-img" src={GrafImage} alt="" />
           <div className="card-img-overlay overlay-grey text-white d-flex justify-content-center align-items-center">
             <h2>Graffiti </h2>
           </div>
         </div>
-        <div class="card">
-          <img class="card-img" src={beatBoxerImage} alt="" />
+        <div className="card">
+          <img className="card-img" src={beatBoxerImage} alt="" />
           <div className="card-img-overlay overlay-grey text-white d-flex justify-content-center align-items-center">
             <h2>Beat-Boxing</h2>
           </div>
         </div>
-        <div class="card">
-          <img class="card-img" src={GrafImage} alt="" />
+        <div className="card">
+          <img className="card-img" src={GrafImage} alt="" />
           <div className="card-img-overlay overlay-grey text-white d-flex justify-content-center align-items-center">
             <h2>Graffiti </h2>
           </div>

@@ -16,7 +16,7 @@ function App() {
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <div style={{ backgroundColor: "#272727" }}>
+        <div>
           <Router>
             <Fragment>
               <Navbar></Navbar>

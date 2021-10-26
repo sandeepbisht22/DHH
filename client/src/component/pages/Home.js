@@ -1,44 +1,12 @@
-import React from "react";
+import React, { Fragment } from "react";
 import HomeSlider from "../layout/HomeSlider";
+import Footer from "../layout/Footer";
 const Home = () => {
   return (
-    <div>
+    <Fragment>
       <HomeSlider></HomeSlider>
-      {/* <div className="scroll">
-        <div className="row flex-row flex-nowrap">
-          <div className="col-3">
-            <div className="card card-block">Card</div>
-          </div>
-          <div className="col-3">
-            <div className="card card-block">Card</div>
-          </div>
-          <div className="col-3">
-            <div className="card card-block">Card</div>
-          </div>
-          <div className="col-3">
-            <div className="card card-block">Card</div>
-          </div>
-          <div className="col-3">
-            <div className="card card-block">Card</div>
-          </div>{" "}
-          <div className="col-3">
-            <div className="card card-block">Card</div>
-          </div>{" "}
-          <div className="col-3">
-            <div className="card card-block">Card</div>
-          </div>{" "}
-          <div className="col-3">
-            <div className="card card-block">Card</div>
-          </div>{" "}
-          <div className="col-3">
-            <div className="card card-block">Card</div>
-          </div>{" "}
-          <div className="col-3">
-            <div className="card card-block">Card</div>
-          </div>
-        </div>
-      </div> */}
-    </div>
+      <Footer></Footer>
+    </Fragment>
   );
 };
 
