@@ -12,6 +12,12 @@ code {
     monospace;
 }
 
+.nav-fix {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
 .logo-image {
   width: 96px;
   height: 66px;
