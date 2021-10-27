@@ -1,26 +1,31 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router";
-
+import { loginUser } from "../../state/actions/userAction";
 const Login = () => {
   const [user, setUser] = useState({
     email: "",
     password: "",
   });
 
-  const history = useHistory();
   const { email, password } = user;
+
+  const history = useHistory();
   const submit = (e) => {
     e.preventDefault();
     console.log("submit called");
     try {
       if (email === "" && password === "") {
-        //TODO alert send
         console.log("Please Fill both field");
       } else {
-        //TODO Authinticate user
-        console.log(
-          "user is " + user.email + " and password is " + user.password
-        );
+        if (email === "" || password === "") {
+          //TODO throw alert
+        } else {
+          loginUser({
+            email,
+            password,
+          });
+        }
+        console.log("user is " + email + " and password is " + password);
       }
     } catch (error) {
       //TODO
@@ -30,7 +35,7 @@ const Login = () => {
   const onChange = (e) => {
     setUser({
       ...user,
-      [e.target.name]: [e.target.value],
+      [e.target.name]: e.target.value,
     });
   };
 
@@ -80,6 +85,7 @@ const Login = () => {
                   type="email"
                   name="email"
                   className="form-control"
+                  value={email}
                   id="inputEmail"
                   placeholder="yourEmail@sample.com"
                   onChange={onChange}
@@ -94,6 +100,7 @@ const Login = () => {
                   name="password"
                   className="form-control"
                   id="inputPassword"
+                  value={password}
                   minLength="6"
                   onChange={onChange}
                 />
