@@ -19,5 +19,6 @@ const PORT = process.env.PORT || 5000;
 
 app.use("/artist/rappers", rapperRouter);
 app.use("/artist/beatProducers", beatProducerRouter);
-app.use("/user/auth", userRouter);
+app.use("/user", userRouter);
+app.use("/auth", authRouter);
 app.listen(PORT, () => console.log(`Server started on ${PORT}`));

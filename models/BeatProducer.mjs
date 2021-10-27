@@ -24,6 +24,10 @@ const beatProducerSchema = mongoose.Schema({
     type: String,
     required: true,
   },
+  date: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
 const beatProducerModel = mongoose.model("beatProducer", beatProducerSchema);

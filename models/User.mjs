@@ -1,26 +1,20 @@
+import { text } from "express";
 import mongoose from "mongoose";
 
-const rapperSchema = mongoose.Schema({
+const userSchema = mongoose.Schema({
   name: {
     type: String,
     required: true,
   },
-  title: {
+  email: {
     type: String,
     required: true,
   },
-  about: {
+  phoneno: {
     type: String,
     required: true,
   },
-  sociallinks: {
-    type: Array,
-    required: true,
-  },
-  originalName: {
-    type: String,
-  },
-  profileImage: {
+  password: {
     type: String,
     required: true,
   },
@@ -29,7 +23,5 @@ const rapperSchema = mongoose.Schema({
     default: Date.now,
   },
 });
-
-const rapperModel = mongoose.model("rapper", rapperSchema);
-
-export { rapperModel };
+const userModel = mongoose.model("user", userSchema);
+export { userModel };
