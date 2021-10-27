@@ -89,8 +89,12 @@ const Navbar = (props) => {
             </ul>
             <ul className="navbar-nav ms-auto flex-nowrap mb-2 mb-lg-0">
               <li className="nav-item">
-                <a href="#" className="nav-link">
-                  Our Solution
+                <a
+                  href="#"
+                  className="nav-link"
+                  onClick={() => history.push("/about")}
+                >
+                  Contact
                 </a>
               </li>
               <li className="nav-item">
@@ -108,8 +112,12 @@ const Navbar = (props) => {
                 </a>
               </li>
               <li className="nav-item">
-                <a href="#" className="nav-link">
-                  Contact
+                <a
+                  href="#"
+                  className="nav-link"
+                  onClick={() => history.push("/login")}
+                >
+                  Login
                 </a>
               </li>
             </ul>

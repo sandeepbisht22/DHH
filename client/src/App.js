@@ -11,7 +11,8 @@ import ReactionChannels from "./component/reaction Channel/ReactionChannels";
 import BeatProducer from "./component/Artist/beat Producer/BeatProducer";
 import { persistor, store } from "./store";
 import { PersistGate } from "redux-persist/integration/react";
-
+import Login from "./component/auth/Login";
+import SignUp from "./component/auth/SignUp";
 function App() {
   return (
     <Provider store={store}>
@@ -44,6 +45,8 @@ function App() {
                   path="/artist/beatproducers/:beatProducer"
                   component={BeatProducer}
                 />
+                <Route exact path="/login" component={Login} />
+                <Route exact path="/signup" component={SignUp} />
               </Switch>
             </Fragment>
           </Router>
