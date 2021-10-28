@@ -13,6 +13,8 @@ import { persistor, store } from "./store";
 import { PersistGate } from "redux-persist/integration/react";
 import Login from "./component/auth/Login";
 import SignUp from "./component/auth/SignUp";
+import PrivateRoute from "./component/routing/PrivateRoute";
+
 function App() {
   return (
     <Provider store={store}>
@@ -22,25 +24,29 @@ function App() {
             <Fragment>
               <Navbar></Navbar>
               <Switch>
-                <Route exact path="/" component={Home} />
+                <PrivateRoute exact path="/" component={Home} />
                 <Route exact path="/about" component={About} />
-                <Route exact path="/artist/rappers" component={Rappers} />
-                <Route
+                <PrivateRoute
+                  exact
+                  path="/artist/rappers"
+                  component={Rappers}
+                />
+                <PrivateRoute
                   exact
                   path="/artist/beatproducers"
                   component={BeatProducers}
                 />
-                <Route
+                <PrivateRoute
                   exact
                   path="/reactionChannels"
                   component={ReactionChannels}
                 />
-                <Route
+                <PrivateRoute
                   exact
                   path="/artist/rappers/:rapper"
                   component={Rapper}
                 />
-                <Route
+                <PrivateRoute
                   exact
                   path="/artist/beatproducers/:beatProducer"
                   component={BeatProducer}
