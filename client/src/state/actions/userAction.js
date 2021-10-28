@@ -1,4 +1,9 @@
-import { LOGIN_USER_SUCCESS, REGISTER_USER_SUCCESS, LOAD_USER } from "../types";
+import {
+  LOGIN_USER_SUCCESS,
+  REGISTER_USER_SUCCESS,
+  LOAD_USER,
+  LOGOUT_USER,
+} from "../types";
 import axios from "axios";
 import setAuthToken from "../../utils/setAuthnToken";
 
@@ -53,4 +58,11 @@ export const loginUser = (formData) => async (dispatch) => {
     payload: res.data,
   });
   loadUser();
+};
+
+//Logout USer
+export const logoutUser = () => async (dispatch) => {
+  dispatch({
+    type: LOGOUT_USER,
+  });
 };

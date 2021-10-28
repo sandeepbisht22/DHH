@@ -1,8 +1,30 @@
 import React, { Fragment } from "react";
 import { useHistory } from "react-router";
 import logo from "../../resources/images/desi-hip-hop.png";
+import { useDispatch, useSelector } from "react-redux";
+import { userActions } from "../../state/actions";
+
 const Navbar = (props) => {
+  const dispatch = useDispatch();
   const history = useHistory();
+  const onLogout = () => {
+    dispatch(userActions.logoutUser());
+  };
+  const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
+  const authLinks = (
+    <Fragment>
+      <a href="#" className="nav-link" onClick={onLogout}>
+        Logout
+      </a>
+    </Fragment>
+  );
+  const GuestLinks = (
+    <Fragment>
+      <a href="#" className="nav-link" onClick={() => history.push("/login")}>
+        Login
+      </a>
+    </Fragment>
+  );
   return (
     <Fragment>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark bg-gradient">
@@ -112,13 +134,7 @@ const Navbar = (props) => {
                 </a>
               </li>
               <li className="nav-item">
-                <a
-                  href="#"
-                  className="nav-link"
-                  onClick={() => history.push("/login")}
-                >
-                  Login
-                </a>
+                {isAuthenticated ? authLinks : GuestLinks}
               </li>
             </ul>
           </div>
