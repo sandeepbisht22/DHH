@@ -14,6 +14,7 @@ import { PersistGate } from "redux-persist/integration/react";
 import Login from "./component/auth/Login";
 import SignUp from "./component/auth/SignUp";
 import PrivateRoute from "./component/routing/PrivateRoute";
+import Alerts from "./component/layout/Alerts";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Router>
             <Fragment>
               <Navbar></Navbar>
+              <Alerts></Alerts>
               <Switch>
                 <PrivateRoute exact path="/" component={Home} />
                 <Route exact path="/about" component={About} />

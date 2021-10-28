@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
-import { userActions } from "../../state/actions";
+import { userActions, alertActions } from "../../state/actions";
 import loginArtist from "../../resources/images/LoginArtist.jpg";
+import { setAlert } from "./../../state/actions/alertAction";
 const Login = () => {
   const dispatch = useDispatch();
   const [user, setUser] = useState({
@@ -51,10 +52,16 @@ const Login = () => {
   useEffect(() => {
     if (isAuthenticated) {
       history.push("/");
-      if (error === "invalid Email" || error === "invalid Password") {
-        //setAlert(error, "danger");
-        //        clearErrors();
-      }
+    }
+    if (
+      error !== "" &&
+      error !== null &&
+      error.msg !== null &&
+      error.msg !== ""
+    ) {
+      dispatch(alertActions.setAlert(error, "danger"));
+      // setAlert(error, "danger");
+      //       clearErrors();
     }
   }, [error, isAuthenticated, history]);
   return (
