@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { userActions } from "../../state/actions";
+import loginArtist from "../../resources/images/LoginArtist.jpg";
 const Login = () => {
   const dispatch = useDispatch();
   const [user, setUser] = useState({
@@ -66,7 +67,11 @@ const Login = () => {
             color: "#61892F",
           }}
         >
-          <div className="col-4 border border-3">Full Image</div>
+          <div className="col-4 border border-3">
+            <div className="d-flex align-items-center justify-content-center ">
+              <img src={loginArtist} alt="" className="mt-2" />
+            </div>
+          </div>
           <div className="col-7 border border-3">
             <h2 className="text-center">Login</h2>
             <div className="row mt-3">
