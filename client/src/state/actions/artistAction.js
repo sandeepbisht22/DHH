@@ -34,9 +34,9 @@ export const artistsInfo = (artistType, titles) => async (dispatch) => {
 };
 
 export const currentArtistInfo =
-  (artistType, rapperName) => async (dispatch) => {
+  (artistType, artistName) => async (dispatch) => {
     try {
-      const res = await axios.get(`/artist/${artistType}/name/${rapperName}`);
+      const res = await axios.get(`/artist/${artistType}/name/${artistName}`);
       dispatch({
         type: CURRENT_ARTIST,
         payload: res.data[0],
