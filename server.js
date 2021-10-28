@@ -3,6 +3,8 @@ import { connectMongoDB } from "./config/db.mjs";
 import { rapperRouter } from "./routes/rappers.mjs";
 import { beatProducerRouter } from "./routes/beatProducer.mjs";
 import { userRouter } from "./routes/user.mjs";
+import { authRouter } from "./routes/auth.mjs";
+
 const app = express();
 
 // Making DB connection

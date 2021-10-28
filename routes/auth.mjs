@@ -22,14 +22,14 @@ authRouter.post(
 
     const { email, password } = req.body;
     try {
-      const user = userModel.findOne({ email: email });
+      const user = await userModel.findOne({ email });
 
       if (!user) {
         return res.status(400).json({ msg: "User does not exist" });
       }
 
       const isMatch = await bycrpt.compare(password, user.password);
-
+      console.log("Is match " + isMatch);
       if (!isMatch) {
         return res.status(400).json({ msg: "Incorrect password" });
       }
@@ -38,12 +38,13 @@ authRouter.post(
           id: user.id,
         },
       };
+      console.log("Sending to client");
 
       jwt.sign(
         payload,
         config.get("jwtSecret"),
         { expiresIn: 36000 },
-        (res, error) => {
+        (error, token) => {
           if (error) throw error;
           res.json({ token });
         }

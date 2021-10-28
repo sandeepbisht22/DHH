@@ -9,9 +9,9 @@ const userRouter = Router();
 userRouter.post(
   "/",
   [
-    body("name", "Please add a name").not.isEmpty(),
+    body("name", "Please add a name").not().isEmpty(),
     body("email", "Enter a valid Email").isEmail(),
-    body("password", "Password is required").isStrongPassword(),
+    body("password", "Password is required").exists(),
     body("phoneno", "Enter a number").isNumeric(),
   ],
   async (req, res) => {
@@ -20,22 +20,22 @@ userRouter.post(
       return res.status(400).json({ errors: errors.array() });
     }
     //1. Destructure req into params
-    const [name, password, email, phoneno] = req.body;
+    const { name, password, email, phoneno } = req.body;
     //2. Check if user is present on database
-    const user = await userModel.findOne({ email: email });
+    let user = await userModel.findOne({ email: email });
     if (user) {
       return res.status(400).json({ msg: "user already exist" });
     }
 
-    user = new user({
+    user = new userModel({
       name,
       email,
       phoneno,
       password,
     });
     //3. decrypt data and send it to client
-    const salt = bycrypt.genSalt(10);
-    user.password = bycrypt.hash(password, salt);
+    const salt = await bycrypt.genSalt(10);
+    user.password = await bycrypt.hash(password, salt);
     //4. Save on database
     await user.save();
     //5.send response
