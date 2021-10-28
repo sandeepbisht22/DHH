@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import SocialMedia from "./../../common/SocialMedia";
 import YoutubeVideo from "../../common/YoutubeVideo";
-import { actions } from "../../../state/actions";
+import { artistActions } from "../../../state/actions";
 import { useSelector, useDispatch } from "react-redux";
 const Rapper = ({ match }) => {
   const dispatch = useDispatch();
@@ -10,7 +10,9 @@ const Rapper = ({ match }) => {
   const currArtist = useSelector((state) => state.artist.currArtist);
   useEffect(() => {
     try {
-      dispatch(actions.currentArtistInfo(artistType, match.params.rapper));
+      dispatch(
+        artistActions.currentArtistInfo(artistType, match.params.rapper)
+      );
     } catch (error) {}
   }, [match.params.rapper]);
 

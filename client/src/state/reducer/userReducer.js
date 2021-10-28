@@ -1,4 +1,4 @@
-import { LOGIN_USER_SUCCESS, REGISTER_USER_SUCCESS } from "../types";
+import { LOGIN_USER_SUCCESS, REGISTER_USER_SUCCESS, LOAD_USER } from "../types";
 
 const initialState = {
   token: localStorage.getItem("token"),
@@ -18,7 +18,13 @@ export default (state = initialState, action) => {
         isAuthenticated: true,
         loading: false,
       };
-
+    case LOAD_USER:
+      return {
+        ...state,
+        isAuthenticated: true,
+        loading: false,
+        user: action.payload,
+      };
     default:
       return {
         ...state,

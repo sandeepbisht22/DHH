@@ -2,17 +2,17 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import HorizontalScroll from "./../../common/HorizontalScroll";
-import { actions } from "../../../state/actions";
+import { artistActions } from "../../../state/actions";
 const BeatProducers = () => {
   const artistType = "beatProducers";
   const titles = ["OG"];
   const dispatch = useDispatch();
-  dispatch(actions.currentArtistType("beatProducers"));
+  dispatch(artistActions.currentArtistType("beatProducers"));
   const artists = useSelector((state) => state.artist.artists);
 
   useEffect(() => {
     try {
-      dispatch(actions.artistsInfo(artistType, titles));
+      dispatch(artistActions.artistsInfo(artistType, titles));
     } catch (error) {
       console.log("error is " + error.message);
     }

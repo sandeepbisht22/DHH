@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import SocialMedia from "./../../common/SocialMedia";
 import YoutubeVideo from "../../common/YoutubeVideo";
 import { useSelector, useDispatch } from "react-redux";
-import { actions } from "../../../state/actions";
+import { artistActions } from "../../../state/actions";
 
 const BeatProducer = ({ match }) => {
   const dispatch = useDispatch();
@@ -13,7 +13,7 @@ const BeatProducer = ({ match }) => {
   useEffect(() => {
     try {
       dispatch(
-        actions.currentArtistInfo(artistType, match.params.beatProducer)
+        artistActions.currentArtistInfo(artistType, match.params.beatProducer)
       );
     } catch (error) {}
   }, []);

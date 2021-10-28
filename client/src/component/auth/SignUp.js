@@ -1,12 +1,16 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router";
 import { signUpUser } from "../../state/actions/userAction";
+import { useSelector } from "react-redux";
 
 const SignUp = () => {
+  const history = useHistory();
+
   const [user, setUser] = useState({
     name: "",
     email: "",
     phoneno: "",
-    password1: "",
+    password: "",
     password2: "",
   });
 
@@ -19,12 +23,12 @@ const SignUp = () => {
       email === "" ||
       name === "" ||
       phoneno === "" ||
-      password1 === "" ||
+      password === "" ||
       password2 === ""
     ) {
       //TODO throw alert to show empty field
       console.log("Fill every field");
-    } else if (password1 !== password2) {
+    } else if (password !== password2) {
       //TODO throw alert to show that password1 is not equal to password2
       console.log("password1 is not equal to password2");
     } else {
@@ -33,7 +37,6 @@ const SignUp = () => {
         email,
         phoneno,
         password,
-        password2,
       });
     }
     console.log("On Submit called");
@@ -45,7 +48,18 @@ const SignUp = () => {
       [e.target.name]: e.target.value,
     });
   };
+  const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
+  const error = useSelector((state) => state.user.error);
 
+  useEffect(() => {
+    if (isAuthenticated) {
+      history.push("/");
+      if (error === "invalid Email" || error === "invalid Password") {
+        //setAlert(error, "danger");
+        //        clearErrors();
+      }
+    }
+  }, [error, isAuthenticated, history]);
   return (
     <div style={{ backgroundColor: "grey" }}>
       <div className="container d-flex justify-content-center pb-5">
@@ -100,15 +114,15 @@ const SignUp = () => {
               />
             </div>
             <div className="mb-3">
-              <label htmlFor="password1" className="form-label">
+              <label htmlFor="password" className="form-label">
                 Password
               </label>
               <input
                 type="text"
                 className="form-control"
                 name="password"
-                id="password1"
-                value={password1}
+                id="password"
+                value={password}
                 onChange={onChange}
               />
             </div>

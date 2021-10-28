@@ -1,1 +1,2 @@
-export * as actions from "./artistAction";
+export * as artistActions from "./artistAction";
+export * as userActions from "./userAction";

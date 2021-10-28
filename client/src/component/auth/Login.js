@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router";
-import { loginUser } from "../../state/actions/userAction";
+import { useDispatch, useSelector } from "react-redux";
+import { userActions } from "../../state/actions";
 const Login = () => {
+  const dispatch = useDispatch();
   const [user, setUser] = useState({
     email: "",
     password: "",
@@ -12,23 +14,22 @@ const Login = () => {
   const history = useHistory();
   const submit = (e) => {
     e.preventDefault();
-    console.log("submit called");
+    console.log("Login called");
     try {
       if (email === "" && password === "") {
         console.log("Please Fill both field");
       } else {
-        if (email === "" || password === "") {
-          //TODO throw alert
-        } else {
-          loginUser({
+        dispatch(
+          userActions.loginUser({
             email,
             password,
-          });
-        }
-        console.log("user is " + email + " and password is " + password);
+          })
+        );
       }
     } catch (error) {
-      //TODO
+      console.log(
+        "[ LOGIN ] Error while loggin in due to exception" + error.message
+      );
     }
   };
 
@@ -43,6 +44,18 @@ const Login = () => {
     history.push("/signup");
   };
 
+  const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
+  const error = useSelector((state) => state.user.error);
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      history.push("/");
+      if (error === "invalid Email" || error === "invalid Password") {
+        //setAlert(error, "danger");
+        //        clearErrors();
+      }
+    }
+  }, [error, isAuthenticated, history]);
   return (
     <div style={{ backgroundColor: "grey" }}>
       <div className="container py-5">
