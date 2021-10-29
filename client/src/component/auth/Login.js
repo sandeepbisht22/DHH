@@ -73,12 +73,10 @@ const Login = () => {
             color: "#61892F",
           }}
         >
-          <div className="col-4 border border-3">
-            <div className="d-flex align-items-center justify-content-center ">
-              <img src={loginArtist} alt="" className="mt-2" />
-            </div>
+          <div className="col-md-4 d-flex justify-content-center align-items-center-center border border-3 ">
+            <img src={loginArtist} alt="" className="img-fluid" />
           </div>
-          <div className="col-7 border border-3">
+          <div className="col-md-7 border border-3">
             <h2 className="text-center">Login</h2>
             <div className="row mt-3">
               <section className="d-flex justify-content-evenly pt-2">
