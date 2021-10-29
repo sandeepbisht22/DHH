@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router";
 import { signUpUser } from "../../state/actions/userAction";
 import { useSelector } from "react-redux";
-
+import LogoutGoogle from "./LogoutGoogle";
+import LoginGoogle from "./LoginGoogle";
 const SignUp = () => {
   const history = useHistory();
 
@@ -71,13 +72,10 @@ const SignUp = () => {
       >
         <div className="col-md-4 border border-3 d-flex justify-content-evenly align-items-center">
           <div className="card text-center card-signup">
-            <a href="!#" className="text-decoration-none">
-              <i
-                className="fab fa-google fa-5x card-img-top"
-                style={{ color: "grey" }}
-              ></i>
-              <h6>Google Sign in</h6>
-            </a>
+            <div className="text-decoration-none">
+              <LoginGoogle />
+            </div>
+            <h6>Google Sign in</h6>
           </div>
           <div className="card text-center card-signup">
             <h2>OR</h2>

@@ -3,6 +3,8 @@ import { useHistory } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { userActions, alertActions } from "../../state/actions";
 import loginArtist from "../../resources/images/LoginArtist.jpg";
+import LoginGoogle from "./LoginGoogle";
+import LogoutGoogle from "./LogoutGoogle";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -79,20 +81,17 @@ const Login = () => {
           <div className="col-md-7 border border-3">
             <h2 className="text-center">Login</h2>
             <div className="row mt-3">
-              <section className="d-flex justify-content-evenly pt-2">
-                <a href="!#">
-                  <i
-                    className="fab fa-google fa-3x"
-                    style={{ color: "grey" }}
-                  ></i>
-                </a>
-                <a href="!#">
-                  <i
-                    className="fab fa-facebook fa-3x"
-                    style={{ color: "grey" }}
-                  ></i>
-                </a>
-              </section>
+              <div className="d-flex justify-content-evenly align-items-center pt-2">
+                <LoginGoogle />
+                <div>
+                  <a href="!#">
+                    <i
+                      className="fab fa-facebook fa-3x"
+                      style={{ color: "grey" }}
+                    ></i>
+                  </a>
+                </div>
+              </div>
             </div>
             <hr />
             <h6 className="text-center">OR</h6>

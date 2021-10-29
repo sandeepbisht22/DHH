@@ -120,8 +120,12 @@ const Navbar = (props) => {
                 </a>
               </li>
               <li className="nav-item">
-                <a href="#" className="nav-link">
-                  How We Help
+                <a
+                  href="#"
+                  className="nav-link"
+                  onClick={() => history.push("/test")}
+                >
+                  Test
                 </a>
               </li>
               <li className="nav-item">
