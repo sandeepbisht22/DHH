@@ -61,16 +61,38 @@ const SignUp = () => {
     }
   }, [error, isAuthenticated, history]);
   return (
-    <div style={{ backgroundColor: "grey" }}>
-      <div className="container d-flex justify-content-center pb-5">
-        <div
-          className="row mt-5"
-          style={{
-            width: "50vh",
-            backgroundColor: "#272727",
-            color: "#61892F",
-          }}
-        >
+    <div style={{ backgroundColor: "grey" }} className="container py-4">
+      <div
+        className="row justify-content-center p-3"
+        style={{
+          backgroundColor: "#272727",
+          color: "#61892F",
+        }}
+      >
+        <div className="col-md-4 border border-3 d-flex justify-content-evenly align-items-center">
+          <div className="card text-center card-signup">
+            <a href="!#" className="text-decoration-none">
+              <i
+                className="fab fa-google fa-5x card-img-top"
+                style={{ color: "grey" }}
+              ></i>
+              <h6>Google Sign in</h6>
+            </a>
+          </div>
+          <div className="card text-center card-signup">
+            <h2>OR</h2>
+          </div>
+          <div className="card text-center card-signup">
+            <a href="!#" className="text-decoration-none">
+              <i
+                className="fab fa-facebook fa-5x card-img-top"
+                style={{ color: "grey" }}
+              ></i>
+              <h6>Facebook Sign in</h6>
+            </a>
+          </div>
+        </div>
+        <div className="col-md-6 border border-3">
           <form onSubmit={onSubmit} className="py-3">
             <div className="mb-3">
               <label htmlFor="name" className="form-label">

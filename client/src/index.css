@@ -29,7 +29,10 @@ code {
   -webkit-overflow-scrolling: touch;
   -ms-overflow-style: -ms-autohiding-scrollbar;
 }
-
+.card-signup {
+  background-color: #272727 !important;
+  color: #61892f;
+}
 * {
   -ms-overflow-style: none;
 }
