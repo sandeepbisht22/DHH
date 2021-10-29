@@ -3,7 +3,7 @@ import { useHistory } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { userActions, alertActions } from "../../state/actions";
 import loginArtist from "../../resources/images/LoginArtist.jpg";
-import { setAlert } from "./../../state/actions/alertAction";
+
 const Login = () => {
   const dispatch = useDispatch();
   const [user, setUser] = useState({
@@ -60,8 +60,7 @@ const Login = () => {
       error.msg !== ""
     ) {
       dispatch(alertActions.setAlert(error, "danger"));
-      // setAlert(error, "danger");
-      //       clearErrors();
+      dispatch(userActions.clearErrors());
     }
   }, [error, isAuthenticated, history]);
   return (

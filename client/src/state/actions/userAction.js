@@ -6,6 +6,7 @@ import {
   LOAD_USER,
   LOGOUT_USER,
   AUTH_FAIL,
+  CLEAR_ERROR,
 } from "../types";
 import axios from "axios";
 import setAuthToken from "../../utils/setAuthnToken";
@@ -85,5 +86,12 @@ export const loginUser = (formData) => async (dispatch) => {
 export const logoutUser = () => async (dispatch) => {
   dispatch({
     type: LOGOUT_USER,
+  });
+};
+
+//Clear all errors
+export const clearErrors = () => async (dispatch) => {
+  dispatch({
+    type: CLEAR_ERROR,
   });
 };
