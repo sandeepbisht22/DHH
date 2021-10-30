@@ -12,12 +12,14 @@ userRouter.post(
     body("name", "Please add a name").not().isEmpty(),
     body("email", "Enter a valid Email").isEmail(),
     body("password", "Password is required").exists(),
-    body("phoneno", "Enter a number").isNumeric(),
   ],
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
+      return res.status(400).json({
+        errors: errors.array(),
+        msg: "error while checking body values",
+      });
     }
     //1. Destructure req into params
     const { name, password, email, phoneno } = req.body;

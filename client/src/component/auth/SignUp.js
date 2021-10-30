@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router";
-import { signUpUser } from "../../state/actions/userAction";
-import { useSelector } from "react-redux";
-import LogoutGoogle from "./LogoutGoogle";
+import { userActions } from "../../state/actions";
+import { useSelector, useDispatch } from "react-redux";
 import LoginGoogle from "./LoginGoogle";
+
 const SignUp = () => {
   const history = useHistory();
-
+  const dispatch = useDispatch();
   const [user, setUser] = useState({
     name: "",
     email: "",
@@ -33,12 +33,14 @@ const SignUp = () => {
       //TODO throw alert to show that password1 is not equal to password2
       console.log("password1 is not equal to password2");
     } else {
-      signUpUser({
-        name,
-        email,
-        phoneno,
-        password,
-      });
+      dispatch(
+        userActions.signUpUser({
+          name,
+          email,
+          phoneno,
+          password,
+        })
+      );
     }
     console.log("On Submit called");
   };
@@ -55,10 +57,9 @@ const SignUp = () => {
   useEffect(() => {
     if (isAuthenticated) {
       history.push("/");
-      if (error === "invalid Email" || error === "invalid Password") {
-        //setAlert(error, "danger");
-        //        clearErrors();
-      }
+    } else if (error === "invalid Email" || error === "invalid Password") {
+      //setAlert(error, "danger");
+      //        clearErrors();
     }
   }, [error, isAuthenticated, history]);
   return (

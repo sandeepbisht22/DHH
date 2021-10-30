@@ -12,7 +12,6 @@ const userSchema = mongoose.Schema({
   },
   phoneno: {
     type: String,
-    required: true,
   },
   password: {
     type: String,
@@ -21,6 +20,10 @@ const userSchema = mongoose.Schema({
   date: {
     type: Date,
     default: Date.now,
+  },
+  usersource: {
+    type: String,
+    default: "signUpForm",
   },
 });
 const userModel = mongoose.model("user", userSchema);
