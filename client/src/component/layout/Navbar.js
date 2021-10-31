@@ -24,10 +24,20 @@ const Navbar = (props) => {
   });
 
   const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
+  const user = useSelector((state) => state.user.user);
+  console.log(
+    "user is " +
+      JSON.stringify(user) +
+      "and authentication is " +
+      isAuthenticated
+  );
   const authLinks = (
     <Fragment>
       <a>
         <LogoutGoogle></LogoutGoogle>
+      </a>
+      <a className="navbar-brand " href="#" onClick={() => history.push("/")}>
+        {user !== null && user.name}
       </a>
     </Fragment>
   );

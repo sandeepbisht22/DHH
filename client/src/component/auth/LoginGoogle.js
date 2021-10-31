@@ -9,7 +9,6 @@ const LoginGoogle = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const onSuccess = (res) => {
-    console.log("Login Sucess currentUSer " + JSON.stringify(res));
     try {
       dispatch(userActions.loginViaGoogle(res.profileObj.email));
     } catch (error) {

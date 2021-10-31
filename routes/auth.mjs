@@ -60,7 +60,7 @@ authRouter.post(
 
 authRouter.get("/", authMiddleware, async (req, res) => {
   try {
-    const user = userModel.findById(req.user.id).select("-password");
+    const user = await userModel.findById(req.user.id).select("-password");
     res.json(user);
   } catch (error) {
     console.error(error.message);

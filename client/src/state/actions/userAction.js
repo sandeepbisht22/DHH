@@ -13,15 +13,17 @@ import axios from "axios";
 import setAuthToken from "../../utils/setAuthnToken";
 
 //Will store logged in or Signed up user
-export const loadUser = async () => async (dispatch) => {
+export const loadUser = () => async (dispatch) => {
   console.log("load User is called");
   setAuthToken(localStorage.token);
   try {
-    const res = await axios.get("/user");
-    dispatchEvent({
+    const res = await axios.get("/auth");
+    console.log("loading user with value" + res);
+    dispatch({
       type: LOAD_USER,
       payload: res.data,
     });
+    console.log("loading user  completed");
   } catch (error) {
     //TODO
     dispatch({
@@ -46,7 +48,7 @@ export const signUpUser = (formData) => async (dispatch) => {
       type: SIGNUP_USER_SUCCESS,
       payload: res.data,
     });
-    loadUser();
+    loadUser()(dispatch);
   } catch (errors) {
     dispatch({
       type: SIGNUP_FAIL,
@@ -67,12 +69,13 @@ export const loginUser = (formData) => async (dispatch) => {
     };
     //Will make a rest call to check if we can login and the set token returned
     const res = await axios.post("/auth", formData, config);
-
+    console.log("dispatching for LOGIN_USER_SUCCESS");
     dispatch({
       type: LOGIN_USER_SUCCESS,
       payload: res.data,
     });
-    loadUser();
+    console.log("LOGIN_USER_SUCCESS returned");
+    loadUser()(dispatch);
   } catch (errors) {
     dispatch({
       type: LOGIN_USER_FAIL,

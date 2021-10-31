@@ -55,12 +55,7 @@ const Login = () => {
     if (isAuthenticated) {
       history.push("/");
     }
-    if (
-      error !== "" &&
-      error !== null &&
-      error.msg !== null &&
-      error.msg !== ""
-    ) {
+    if (error !== null) {
       dispatch(alertActions.setAlert(error, "danger"));
       dispatch(userActions.clearErrors());
     }
