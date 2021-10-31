@@ -7,6 +7,7 @@ import {
   LOGOUT_USER,
   AUTH_FAIL,
   CLEAR_ERROR,
+  LOGIN_VIA_GOOGLE,
 } from "../types";
 import axios from "axios";
 import setAuthToken from "../../utils/setAuthnToken";
@@ -40,7 +41,6 @@ export const signUpUser = (formData) => async (dispatch) => {
     };
     //Have  to make rest call for registering user
     const res = await axios.post("/user", formData, config);
-    console.log("Sign up res.data " + res.data);
 
     dispatch({
       type: SIGNUP_USER_SUCCESS,
@@ -67,7 +67,6 @@ export const loginUser = (formData) => async (dispatch) => {
     };
     //Will make a rest call to check if we can login and the set token returned
     const res = await axios.post("/auth", formData, config);
-    console.log("Login res.data " + res.data);
 
     dispatch({
       type: LOGIN_USER_SUCCESS,
@@ -80,6 +79,15 @@ export const loginUser = (formData) => async (dispatch) => {
       payload: errors.response.data.msg,
     });
   }
+};
+export const loginViaGoogle = (email) => async (dispatch) => {
+  const res = await axios.get(`/user/${email}`);
+  console.log("User res from google info");
+  console.log(JSON.stringify(res));
+  dispatch({
+    type: LOGIN_VIA_GOOGLE,
+    payload: res.data,
+  });
 };
 
 //Logout USer

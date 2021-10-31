@@ -58,4 +58,26 @@ userRouter.post(
   }
 );
 
+userRouter.get("/:email", [], async (req, res) => {
+  let user = await userModel.findOne({ email: req.params.email });
+  if (user) {
+    const payload = {
+      user: {
+        id: user.id,
+      },
+    };
+    console.log("user found with id" + user.id);
+    jwt.sign(
+      payload,
+      config.get("jwtSecret"),
+      { expiresIn: 36000 },
+      (error, token) => {
+        if (error) throw error;
+        res.json({ token });
+      }
+    );
+  } else {
+    return res.status(400).json({ msg: "user already exist" });
+  }
+});
 export { userRouter };

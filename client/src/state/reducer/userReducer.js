@@ -7,6 +7,7 @@ import {
   LOGOUT_USER,
   AUTH_FAIL,
   CLEAR_ERROR,
+  LOGIN_VIA_GOOGLE,
 } from "../types";
 
 const initialState = {
@@ -20,6 +21,7 @@ export default (state = initialState, action) => {
   switch (action.type) {
     case LOGIN_USER_SUCCESS:
     case SIGNUP_USER_SUCCESS:
+    case LOGIN_VIA_GOOGLE:
       localStorage.setItem("token", action.payload.token);
       return {
         ...state,

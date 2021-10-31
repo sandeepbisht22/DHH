@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router";
-import { userActions } from "../../state/actions";
+import { userActions, alertActions } from "../../state/actions";
 import { useSelector, useDispatch } from "react-redux";
 import LoginGoogle from "./LoginGoogle";
 
@@ -58,8 +58,8 @@ const SignUp = () => {
     if (isAuthenticated) {
       history.push("/");
     } else if (error === "invalid Email" || error === "invalid Password") {
-      //setAlert(error, "danger");
-      //        clearErrors();
+      dispatch(alertActions.setAlert(error, "danger"));
+      dispatch(userActions.clearErrors());
     }
   }, [error, isAuthenticated, history]);
   return (

@@ -83,14 +83,14 @@ const Login = () => {
             <div className="row mt-3">
               <div className="d-flex justify-content-evenly align-items-center pt-2">
                 <LoginGoogle />
-                <div>
+                {/* <div>
                   <a href="!#">
                     <i
                       className="fab fa-facebook fa-3x"
                       style={{ color: "grey" }}
                     ></i>
                   </a>
-                </div>
+                </div> */}
               </div>
             </div>
             <hr />
