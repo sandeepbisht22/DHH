@@ -27,9 +27,6 @@ const Navbar = (props) => {
   const authLinks = (
     <Fragment>
       <a>
-        <button onClick={googleLogout} className="button">
-          Logout
-        </button>
         <LogoutGoogle></LogoutGoogle>
       </a>
     </Fragment>
@@ -155,7 +152,9 @@ const Navbar = (props) => {
               </li>
 
               <li className="nav-item">
-                {isAuthenticated ? authLinks : GuestLinks}
+                <a href="#" className="nav-link">
+                  {isAuthenticated ? authLinks : GuestLinks}
+                </a>
               </li>
             </ul>
           </div>
