@@ -33,12 +33,37 @@ const Navbar = (props) => {
   );
   const authLinks = (
     <Fragment>
-      <a>
-        <LogoutGoogle></LogoutGoogle>
-      </a>
-      <a className="navbar-brand " href="#" onClick={() => history.push("/")}>
-        {user !== null && user.name}
-      </a>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            id="navbarDropdown"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Account
+          </a>
+
+          <div
+            class="dropdown-menu dropdown-menu-end"
+            aria-labelledby="navbarDropdown"
+          >
+            <a
+              className="dropdown-item"
+              href="#"
+              onClick={() => history.push("/user")}
+            >
+              <i className="fas fa-user-ninja pe-2"></i>
+              {user !== null && user.name}{" "}
+            </a>
+            <a class="dropdown-item" href="#">
+              <LogoutGoogle></LogoutGoogle>
+            </a>
+          </div>
+        </li>
+      </ul>
     </Fragment>
   );
   const GuestLinks = (
@@ -161,11 +186,7 @@ const Navbar = (props) => {
                 </a>
               </li>
 
-              <li className="nav-item">
-                <a href="#" className="nav-link">
-                  {isAuthenticated ? authLinks : GuestLinks}
-                </a>
-              </li>
+              {isAuthenticated ? authLinks : GuestLinks}
             </ul>
           </div>
         </div>

@@ -16,6 +16,8 @@ import SignUp from "./component/auth/SignUp";
 import PrivateRoute from "./component/routing/PrivateRoute";
 import Alerts from "./component/layout/Alerts";
 import Test from "./component/Test";
+import User from "./component/pages/User";
+
 function App() {
   return (
     <Provider store={store}>
@@ -56,6 +58,7 @@ function App() {
                 <Route exact path="/login" component={Login} />
                 <Route exact path="/signup" component={SignUp} />
                 <Route exact path="/test" component={Test} />
+                <Route exact path="/user" component={User} />
               </Switch>
             </Fragment>
           </Router>
