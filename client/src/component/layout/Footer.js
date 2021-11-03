@@ -3,7 +3,6 @@ import React from "react";
 const Footer = () => {
   return (
     <footer className="bg-dark text-center text-white my-4">
-      footer here
       <div className="container p-4">
         <section className="mb-4">
           <a

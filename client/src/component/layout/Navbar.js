@@ -1,29 +1,22 @@
-import React, { Fragment } from "react";
+import React, { useEffect, Fragment } from "react";
 import { useHistory } from "react-router";
 import logo from "../../resources/images/desi-hip-hop.png";
 import { useDispatch, useSelector } from "react-redux";
 import { userActions } from "../../state/actions";
-import { useGoogleLogout } from "react-google-login";
 import LogoutGoogle from "../auth/LogoutGoogle";
 const Navbar = (props) => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const clientId = process.env.REACT_APP_GOOGLE_O_AUTH_CLIENT_ID;
-  const onLogoutSuccess = (res) => {
-    console.log("Logout reached");
-    dispatch(userActions.logoutUser());
-  };
-  const onFailure = () => {
-    console.log("Logout failed");
-    dispatch(userActions.logoutUser());
-  };
-  const { googleLogout } = useGoogleLogout({
-    clientId,
-    onLogoutSuccess,
-    onFailure,
-  });
-
   const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
+
+  useEffect(() => {
+    try {
+      dispatch(userActions.loadUser());
+    } catch (error) {
+      console.log("Error while loading user call");
+    }
+  }, []);
+
   const user = useSelector((state) => state.user.user);
   console.log(
     "user is " +

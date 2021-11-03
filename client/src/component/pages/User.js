@@ -34,7 +34,7 @@ const User = () => {
 
             <form onSubmit={onSubmit} style={{ width: "100%" }}>
               <div className="mb-3">
-                <label forHtml="userName" className="form-label">
+                <label htmlFor="userName" className="form-label">
                   User Name
                 </label>
                 <input
@@ -48,7 +48,7 @@ const User = () => {
                 />
               </div>
               <div className="mb-3">
-                <label forHtml="userEmail" className="form-label">
+                <label htmlFor="userEmail" className="form-label">
                   User Email
                 </label>
                 <input
@@ -62,7 +62,7 @@ const User = () => {
                 />
               </div>
               <div className="mb-3">
-                <label forHtml="userPhone" className="form-label">
+                <label htmlFor="userPhone" className="form-label">
                   User Phone Number
                 </label>
                 <input
