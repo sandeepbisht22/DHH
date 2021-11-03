@@ -33,10 +33,10 @@ const Navbar = (props) => {
   );
   const authLinks = (
     <Fragment>
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
+      <ul className="navbar-nav ml-auto">
+        <li className="nav-item">
           <a
-            class="nav-link dropdown-toggle"
+            className="nav-link dropdown-toggle"
             href="#"
             id="navbarDropdown"
             role="button"
@@ -47,7 +47,7 @@ const Navbar = (props) => {
           </a>
 
           <div
-            class="dropdown-menu dropdown-menu-end"
+            className="dropdown-menu dropdown-menu-end"
             aria-labelledby="navbarDropdown"
           >
             <a
@@ -58,7 +58,7 @@ const Navbar = (props) => {
               <i className="fas fa-user-ninja pe-2"></i>
               {user !== null && user.name}{" "}
             </a>
-            <a class="dropdown-item" href="#">
+            <a className="dropdown-item" href="#">
               <LogoutGoogle></LogoutGoogle>
             </a>
           </div>

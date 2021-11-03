@@ -10,6 +10,7 @@ const Footer = () => {
             className="btn btn-outline-light m-1"
             href="https://www.facebook.com/sandeep.bisht.9212301/"
             target="_blank"
+            rel="noreferrer noopener"
             role="button"
           >
             <i className="fab fa-facebook-f"></i>
@@ -20,6 +21,7 @@ const Footer = () => {
             href="https://twitter.com/Engg_hu_mai"
             role="button"
             target="_blank"
+            rel="noreferrer noopener"
           >
             <i className="fab fa-twitter"></i>
           </a>
@@ -29,6 +31,7 @@ const Footer = () => {
             href="https://www.instagram.com/sandeep0_obisht/"
             role="button"
             target="_blank"
+            rel="noreferrer noopener"
           >
             <i className="fab fa-instagram"></i>
           </a>
@@ -38,6 +41,7 @@ const Footer = () => {
             href="https://www.linkedin.com/in/sandeep-bisht-114429141/"
             role="button"
             target="_blank"
+            rel="noreferrer noopener"
           >
             <i className="fab fa-linkedin-in"></i>
           </a>
@@ -47,6 +51,7 @@ const Footer = () => {
             href="https://github.com/sandeepbisht22"
             role="button"
             target="_blank"
+            rel="noreferrer noopener"
           >
             <i className="fab fa-github"></i>
           </a>

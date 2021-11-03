@@ -49,6 +49,7 @@ const About = () => {
             href="https://www.facebook.com/sandeep.bisht.9212301/"
             target="_blank"
             role="button"
+            rel="noreferrer noopener"
           >
             <i className="fab fa-facebook-f"></i>
           </a>
@@ -58,6 +59,7 @@ const About = () => {
             href="https://twitter.com/Engg_hu_mai"
             role="button"
             target="_blank"
+            rel="noreferrer noopener"
           >
             <i className="fab fa-twitter"></i>
           </a>
@@ -67,6 +69,7 @@ const About = () => {
             href="https://www.instagram.com/sandeep0_obisht/"
             role="button"
             target="_blank"
+            rel="noreferrer noopener"
           >
             <i className="fab fa-instagram"></i>
           </a>
@@ -76,6 +79,7 @@ const About = () => {
             href="https://www.linkedin.com/in/sandeep-bisht-114429141/"
             role="button"
             target="_blank"
+            rel="noreferrer noopener"
           >
             <i className="fab fa-linkedin-in"></i>
           </a>
@@ -85,6 +89,7 @@ const About = () => {
             href="https://github.com/sandeepbisht22"
             role="button"
             target="_blank"
+            rel="noreferrer noopener"
           >
             <i className="fab fa-github"></i>
           </a>

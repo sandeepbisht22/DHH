@@ -28,6 +28,7 @@ const SocialMedia = ({ socialaccount, i }) => {
           href={clickLink}
           className="col-md-1 p-2 text-center"
           target="_blank"
+          rel="noreferrer noopener"
         >
           <i className={className} style={{ color: "#FFFFFF" }}></i>
         </a>

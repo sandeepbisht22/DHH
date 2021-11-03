@@ -4,7 +4,7 @@ const YoutubeVideo = ({ channelId, youtubeKey }) => {
   const [channelVideoInfos, setChannelVideoInfos] = useState([]);
   const [channelInfos, setChannelInfos] = useState([]);
 
-  async function getChannelYoutubeInfo() {
+  useEffect(async () => {
     if (channelVideoInfos.length === 0) {
       const res = await fetch(
         `https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelId=${channelId}&maxResults=5&order=viewCount&key=${youtubeKey}`
@@ -35,11 +35,10 @@ const YoutubeVideo = ({ channelId, youtubeKey }) => {
         console.log(channelVideoInfos);
       })
     );
-  }
-  useEffect(() => {
-    getChannelYoutubeInfo(channelId, youtubeKey);
   }, []);
+
   return (
+    channelInfos !== null &&
     channelInfos.length > 0 && (
       <Fragment>
         {/* <div className="container ps-0">
@@ -51,6 +50,7 @@ const YoutubeVideo = ({ channelId, youtubeKey }) => {
               <a
                 href={`https://www.youtube.com/watch?v=${channelInfo.id.videoId}`}
                 target="_blank"
+                rel="noreferrer noopener"
               >
                 <img
                   src={channelInfo.snippet.thumbnails.medium.url}

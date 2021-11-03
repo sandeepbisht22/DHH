@@ -44,10 +44,10 @@ const Rapper = ({ match }) => {
           <h3 style={{ color: "#61892F" }}>Famous Bars</h3>
           <div className="scroll">
             <div className="row flex-row flex-nowrap">
-              <YoutubeVideo
+              {/* <YoutubeVideo
                 youtubeKey="AIzaSyB47-Z2ZklkZUzSVKohYBoazrKVqM3ddxc"
                 channelId="UCMXMp3Lc6v6v8dJH5ZGwtqA"
-              ></YoutubeVideo>
+              ></YoutubeVideo> */}
             </div>
           </div>
         </div>

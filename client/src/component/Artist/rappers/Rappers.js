@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import axios from "axios";
 import HorizontalScroll from "./../../common/HorizontalScroll";
 import { artistActions } from "../../../state/actions";
 const Rappers = () => {
