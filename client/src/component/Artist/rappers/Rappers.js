@@ -4,8 +4,9 @@ import HorizontalScroll from "./../../common/HorizontalScroll";
 import { artistActions } from "../../../state/actions";
 const Rappers = () => {
   const artistType = "rappers";
-  dispatch(artistActions.currentArtistType(artistType));
   const dispatch = useDispatch();
+  dispatch(artistActions.currentArtistType(artistType));
+
   const titles = ["OG", "Upcoming"];
   const artists = useSelector((state) => state.artist.artists);
 
