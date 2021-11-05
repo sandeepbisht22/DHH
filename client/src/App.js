@@ -9,14 +9,14 @@ import { Provider } from "react-redux";
 import BeatProducers from "./component/Artist/beat Producer/BeatProducers";
 import ReactionChannels from "./component/reaction Channel/ReactionChannels";
 import BeatProducer from "./component/Artist/beat Producer/BeatProducer";
-import { persistor, store } from "./store";
-import { PersistGate } from "redux-persist/integration/react";
 import Login from "./component/auth/Login";
 import SignUp from "./component/auth/SignUp";
 import PrivateRoute from "./component/routing/PrivateRoute";
 import Alerts from "./component/layout/Alerts";
 import Test from "./component/Test";
 import User from "./component/pages/User";
+import { persistor, store } from "./store";
+import { PersistGate } from "redux-persist/integration/react";
 
 function App() {
   return (

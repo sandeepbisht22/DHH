@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { userActions, alertActions } from "../../state/actions";
 import loginArtist from "../../resources/images/LoginArtist.jpg";
 import LoginGoogle from "./LoginGoogle";
-import LogoutGoogle from "./LogoutGoogle";
 
 const Login = () => {
   const dispatch = useDispatch();

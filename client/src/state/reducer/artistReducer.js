@@ -27,8 +27,7 @@ export default (state = initialState, action) => {
         currArtist: action.payload,
       };
     }
-    default: {
+    default:
       return state;
-    }
   }
 };

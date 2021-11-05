@@ -4,7 +4,10 @@ import { useSelector, useDispatch } from "react-redux";
 import { userActions } from "../../state/actions";
 
 const User = () => {
+  const globalUser = useSelector((state) => state.user.user);
+
   const [isEditable, setIsEditable] = useState(false);
+  const [user, setUser] = useState(globalUser);
 
   const onChange = (e) => {
     setUser({
@@ -19,8 +22,9 @@ const User = () => {
       //TODO update user data here
     }
   };
-  const [user, setUser] = useState(useSelector((state) => state.user.user));
-
+  if (user === null && globalUser !== null) {
+    setUser(globalUser);
+  }
   return (
     user !== null && (
       <div className="container-fluid">

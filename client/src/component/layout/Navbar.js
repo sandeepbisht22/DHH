@@ -9,13 +9,14 @@ const Navbar = (props) => {
   const history = useHistory();
   const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
 
-  useEffect(() => {
-    try {
-      dispatch(userActions.loadUser());
-    } catch (error) {
-      console.log("Error while loading user call");
-    }
-  }, []);
+  // Commenting as i am using  redux-persist for future so need to invoke everytime there is refresh
+  // useEffect(() => {
+  //   try {
+  //     dispatch(userActions.loadUser());
+  //   } catch (error) {
+  //     console.log("Error while loading user call");
+  //   }
+  // }, []);
 
   const user = useSelector((state) => state.user.user);
   console.log(
