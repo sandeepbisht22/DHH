@@ -24,6 +24,12 @@ const beatProducerSchema = mongoose.Schema({
     type: String,
     required: true,
   },
+  like: {
+    type: Number,
+  },
+  unLike: {
+    type: Number,
+  },
   date: {
     type: Date,
     default: Date.now,

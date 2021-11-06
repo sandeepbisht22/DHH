@@ -1,5 +1,7 @@
 import express from "express";
 import { beatProducerModel } from "../models/BeatProducer.mjs";
+import { body, validationResult } from "express-validator";
+
 const beatProducerRouter = express.Router();
 /**
  * @route /artist/beatProdcuer
@@ -48,4 +50,44 @@ beatProducerRouter.get("/name/:name", async (req, res) => {
   }
 });
 
+beatProducerRouter.post(
+  "/rate/:likeUnlike",
+  [body("id", "Its not alphaNumeric").isAlphanumeric()],
+  async (req, res) => {
+    try {
+      console.log("reached likeUnlike");
+      const errors = validationResult(req);
+      if (!errors.isEmpty()) {
+        return res.status(400).json({
+          errors: errors.array(),
+          msg: "error while checking body values",
+        });
+      }
+      const likeUnlike = req.params.likeUnlike;
+      let likeUnlikeVal = null;
+      const { id, action } = req.body;
+      if (action === "inc") {
+        likeUnlikeVal = 1;
+      } else {
+        likeUnlikeVal = -1;
+      }
+      console.log("id is" + id);
+      if (likeUnlike === "like") {
+        await beatProducerModel.update(
+          { _id: id },
+          { $inc: { like: likeUnlikeVal } }
+        );
+      } else {
+        await beatProducerModel.update(
+          { _id: id },
+          { $inc: { unLike: likeUnlikeVal } }
+        );
+      }
+
+      // console.log("updating like of the artist" + JSON.stringify(likeInfo));
+
+      res.json("");
+    } catch (error) {}
+  }
+);
 export { beatProducerRouter };

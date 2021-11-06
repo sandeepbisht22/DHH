@@ -83,6 +83,8 @@ export const loginUser = (formData) => async (dispatch) => {
     });
   }
 };
+
+//Loging in user via google
 export const loginViaGoogle = (email) => async (dispatch) => {
   const res = await axios.get(`/user/${email}`);
   console.log("User res from google info");

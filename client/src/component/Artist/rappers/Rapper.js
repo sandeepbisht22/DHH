@@ -5,22 +5,34 @@ import { artistActions } from "../../../state/actions";
 import { useSelector, useDispatch } from "react-redux";
 const Rapper = ({ match }) => {
   const dispatch = useDispatch();
-  const [artistLikeIconClass, setArtistLikeIconClass] =
+  const artistType = useSelector((state) => state.artist.artistType);
+  const [artistFavouriteIconClass, setArtistFavouriteIconClass] =
     useState("far fa-heart fa-3x");
-
+  const currArtist = useSelector((state) => state.artist.currArtist);
   const artistUpVoteIconClass = "fas fa-microphone fa-3x";
   const artistDownVoteIconClass = "fas fa-microphone-slash fa-3x";
-  const artistLiked = (e) => {
-    setArtistLikeIconClass(
-      artistLikeIconClass === "far fa-heart fa-3x"
+  const artistFavourite = (e) => {
+    setArtistFavouriteIconClass(
+      artistFavouriteIconClass === "far fa-heart fa-3x"
         ? "fas fa-heart fa-3x"
         : "far fa-heart fa-3x"
     );
 
     //TODO other things also like informing backend
   };
-  const artistType = useSelector((state) => state.artist.artistType);
-  const currArtist = useSelector((state) => state.artist.currArtist);
+
+  // const [likeAction,setLikeAction] = {}
+
+  function artistLikedUnliked(currentAction) {
+    const likeUnlikeInfo = {
+      id: currArtist._id,
+      action: "inc",
+    };
+    dispatch(
+      artistActions.likeUnLikeArtist("rappers", likeUnlikeInfo, currentAction)
+    );
+  }
+
   useEffect(() => {
     try {
       dispatch(
@@ -58,20 +70,23 @@ const Rapper = ({ match }) => {
               >
                 <div>
                   <i
-                    onClick={artistLiked}
+                    onClick={() => artistLikedUnliked("like")}
                     className={artistUpVoteIconClass}
                   ></i>
-                  <span className="ps-3">count</span>
-                </div>
-                <div>
-                  <i onClick={artistLiked} className={artistLikeIconClass}></i>
+                  <span className="ps-3">{currArtist.like}</span>
                 </div>
                 <div>
                   <i
-                    onClick={artistLiked}
+                    onClick={artistFavourite}
+                    className={artistFavouriteIconClass}
+                  ></i>
+                </div>
+                <div>
+                  <i
+                    onClick={() => artistLikedUnliked("unLike")}
                     className={artistDownVoteIconClass}
                   ></i>
-                  <span className="ps-3">count</span>
+                  <span className="ps-3">{currArtist.unLike}</span>
                 </div>
               </div>
             </div>

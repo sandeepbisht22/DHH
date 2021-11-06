@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import SocialMedia from "./../../common/SocialMedia";
 import YoutubeVideo from "../../common/YoutubeVideo";
 import { useSelector, useDispatch } from "react-redux";
@@ -6,10 +6,21 @@ import { artistActions } from "../../../state/actions";
 
 const BeatProducer = ({ match }) => {
   const dispatch = useDispatch();
-
+  const [artistFavouriteIconClass, setArtistFavouriteIconClass] =
+    useState("far fa-heart fa-3x");
   const artistType = useSelector((state) => state.artist.artistType);
   const currArtist = useSelector((state) => state.artist.currArtist);
+  const artistUpVoteIconClass = "fas fa-microphone fa-3x";
+  const artistDownVoteIconClass = "fas fa-microphone-slash fa-3x";
+  const artistFavourite = (e) => {
+    setArtistFavouriteIconClass(
+      artistFavouriteIconClass === "far fa-heart fa-3x"
+        ? "fas fa-heart fa-3x"
+        : "far fa-heart fa-3x"
+    );
 
+    //TODO other things also like informing backend
+  };
   useEffect(() => {
     try {
       dispatch(
@@ -18,6 +29,19 @@ const BeatProducer = ({ match }) => {
     } catch (error) {}
   }, []);
 
+  function artistLikedUnliked(currentAction) {
+    const likeUnlikeInfo = {
+      id: currArtist._id,
+      action: "inc",
+    };
+    dispatch(
+      artistActions.likeUnLikeArtist(
+        "beatProducers",
+        likeUnlikeInfo,
+        currentAction
+      )
+    );
+  }
   return (
     currArtist !== null && (
       <div style={{ backgroundColor: "#272727" }}>
@@ -35,11 +59,38 @@ const BeatProducer = ({ match }) => {
               }
             />
           </div>
-          <div>
+          <div className="position-relative">
             <h1 style={{ color: "#61892F" }}>
               {currArtist.name} - The [{currArtist.title} ]of DHH
             </h1>
             <div style={{ color: "#FFFFFF" }}>{currArtist.about}</div>
+            <div className="position-absolute bottom-0 container">
+              <div
+                style={{ color: "#FFFFFF" }}
+                className="d-flex justify-content-evenly"
+              >
+                <div>
+                  <i
+                    onClick={() => artistLikedUnliked("like")}
+                    className={artistUpVoteIconClass}
+                  ></i>
+                  <span className="ps-3">{currArtist.like}</span>
+                </div>
+                <div>
+                  <i
+                    onClick={artistFavourite}
+                    className={artistFavouriteIconClass}
+                  ></i>
+                </div>
+                <div>
+                  <i
+                    onClick={() => artistLikedUnliked("unLike")}
+                    className={artistDownVoteIconClass}
+                  ></i>
+                  <span className="ps-3">{currArtist.unLike}</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <div className="container-fluid" style={{ margin: "0px" }}>

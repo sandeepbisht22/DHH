@@ -1,5 +1,11 @@
-import { ARTIST_TYPE, ARTISTS_INFO, CURRENT_ARTIST } from "../types";
+import {
+  ARTIST_TYPE,
+  ARTISTS_INFO,
+  CURRENT_ARTIST,
+  ARTIST_UNLIKED,
+} from "../types";
 import axios from "axios";
+import { ARTIST_LIKED } from "./../types";
 export const currentArtistType = (artist) => async (dispatch) => {
   try {
     dispatch({
@@ -33,6 +39,30 @@ export const artistsInfo = (artistType, titles) => async (dispatch) => {
   }
 };
 
+////Like artist
+
+export const likeUnLikeArtist =
+  (artistType, likeUnlikeInfo, likeUnLike) => async (dispatch) => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    await axios.post(
+      `/artist/${artistType}/rate/${likeUnLike}`,
+      likeUnlikeInfo,
+      config
+    );
+    const action = likeUnLike === "like" ? ARTIST_LIKED : ARTIST_UNLIKED;
+    dispatch({
+      type: action,
+      payload: likeUnlikeInfo,
+    });
+    //Nothing needed from backend just dispatch to reducer and tell it to update state.
+  };
+
+//Fetch current artist Info
 export const currentArtistInfo =
   (artistType, artistName) => async (dispatch) => {
     try {
