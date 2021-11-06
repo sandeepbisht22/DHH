@@ -22,9 +22,7 @@ const User = () => {
       //TODO update user data here
     }
   };
-  if (user === null && globalUser !== null) {
-    setUser(globalUser);
-  }
+
   return (
     user !== null && (
       <div className="container-fluid">
@@ -83,8 +81,11 @@ const User = () => {
                   />
                 </div>
 
-                <button type="submit">{isEditable ? "Update" : "Edit"}</button>
+                {/* <button type="submit">{isEditable ? "Update" : "Edit"}</button> */}
               </form>
+              <button onClick={onSubmit}>
+                {isEditable ? "Update" : "Edit"}
+              </button>
             </div>
           </div>
         </div>
