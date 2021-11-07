@@ -3,6 +3,7 @@ import SocialMedia from "./../../common/SocialMedia";
 import YoutubeVideo from "../../common/YoutubeVideo";
 import { artistActions } from "../../../state/actions";
 import { useSelector, useDispatch } from "react-redux";
+import Songs from "../../common/Songs";
 const Rapper = ({ match }) => {
   const dispatch = useDispatch();
   const artistType = useSelector((state) => state.artist.artistType);
@@ -96,6 +97,7 @@ const Rapper = ({ match }) => {
           <h3 style={{ color: "#61892F" }}>Famous Bars</h3>
           <div className="scroll">
             <div className="row flex-row flex-nowrap">
+              <Songs></Songs>
               {/* <YoutubeVideo
                 youtubeKey="AIzaSyB47-Z2ZklkZUzSVKohYBoazrKVqM3ddxc"
                 channelId="UCMXMp3Lc6v6v8dJH5ZGwtqA"

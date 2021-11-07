@@ -3,9 +3,9 @@ import {
   ARTISTS_INFO,
   CURRENT_ARTIST,
   ARTIST_UNLIKED,
+  ARTIST_LIKED,
 } from "../types";
 import axios from "axios";
-import { ARTIST_LIKED } from "./../types";
 export const currentArtistType = (artist) => async (dispatch) => {
   try {
     dispatch({
@@ -67,6 +67,11 @@ export const currentArtistInfo =
   (artistType, artistName) => async (dispatch) => {
     try {
       const res = await axios.get(`/artist/${artistType}/name/${artistName}`);
+      const id = res.data[0]._id;
+      const songs = await axios.get(`/song/${artistType}/${id}`);
+      res.data[0].songs = songs.data;
+      console.log(JSON.stringify(res.data[0].songs));
+
       dispatch({
         type: CURRENT_ARTIST,
         payload: res.data[0],

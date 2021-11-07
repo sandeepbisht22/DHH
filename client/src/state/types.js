@@ -14,3 +14,5 @@ export const CLEAR_ERROR = "CLEAR_ERROR";
 export const LOGIN_VIA_GOOGLE = "LOGIN_VIA_GOOGLE";
 export const ARTIST_LIKED = "ARTIST_LIKED";
 export const ARTIST_UNLIKED = "ARTIST_UNLIKED";
+export const FAV_RAPPER = "FAV_RAPPER";
+export const FAV_BEATPRODUCER = "FAV_BEATPRODUCER";

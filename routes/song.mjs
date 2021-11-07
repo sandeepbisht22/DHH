@@ -8,10 +8,10 @@ songRouter.get("/:artistType/:id", [], async (req, res) => {
   try {
     //check for all the songs with artist id provided.
     let songs = null;
-    if (req.params.artistType === "rapper") {
-      songs = await songModal.findOne({ rapper: req.params.id });
+    if (req.params.artistType === "rappers") {
+      songs = await songModal.find({ rapper: req.params.id });
     } else {
-      songs = await songModal.findOne({ beatproducer: req.params.id });
+      songs = await songModal.find({ beatproducer: req.params.id });
     }
 
     res.json(songs);
