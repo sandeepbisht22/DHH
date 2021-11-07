@@ -5,7 +5,7 @@ const songSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  singer: {
+  rapper: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "rappers",
   },
