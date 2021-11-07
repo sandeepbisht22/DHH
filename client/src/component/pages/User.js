@@ -27,7 +27,18 @@ const User = () => {
     user !== null && (
       <div className="container-fluid">
         <div className="row">
-          <div className="col-md-9 border border-primary">user preference</div>
+          <div className="col-md-9 border border-primary">
+            <div>
+              <div>
+                <h3>Favourite Rapper</h3>
+                <div>RAPPER SCROLL</div>
+              </div>
+              <div>
+                <h3>Favourite Beat Producer</h3>
+                <div>RAPPER SCROLL</div>
+              </div>
+            </div>
+          </div>
           <div className="col-md-3 border border-primary">
             <div className="row-cols-md-3 text-center">
               <img

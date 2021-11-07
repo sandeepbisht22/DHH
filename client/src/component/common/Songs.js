@@ -1,9 +1,7 @@
 import React, { Fragment, useEffect } from "react";
 import { useSelector } from "react-redux";
 
-const Songs = () => {
-  const currArtist = useSelector((state) => state.artist.currArtist);
-  const songsList = currArtist.songs;
+const Songs = ({ songsList }) => {
   return (
     songsList !== null && (
       <div className="d-flex pb-3" style={{ color: "white" }}>
