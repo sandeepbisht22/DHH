@@ -1,10 +1,18 @@
 import React, { useState, useEffect } from "react";
 import profileImage from "../../resources/images/defaultProfile.png";
 import { useSelector, useDispatch } from "react-redux";
-import { userActions } from "../../state/actions";
+import Songs from "../common/Songs";
 
 const User = () => {
   const globalUser = useSelector((state) => state.user.user);
+  const favRapper = useSelector((state) => state.userChoice.favRapper);
+  const favSong = useSelector((state) => state.userChoice.favSong);
+
+  const favBeatProducer = useSelector(
+    (state) => state.userChoice.favBeatProducer
+  );
+
+  const dispatch = useDispatch();
 
   const [isEditable, setIsEditable] = useState(false);
   const [user, setUser] = useState(globalUser);
@@ -31,11 +39,82 @@ const User = () => {
             <div>
               <div>
                 <h3>Favourite Rapper</h3>
-                <div>RAPPER SCROLL</div>
+                <div className="scroll">
+                  <div
+                    className="row flex-row flex-nowrap col-md-6"
+                    style={{ height: "25vh" }}
+                  >
+                    {favRapper !== null &&
+                      favRapper.data.map((rapper) => {
+                        return (
+                          <div className="d-flex row">
+                            <div
+                              className="col-sm-6"
+                              style={{ height: "100%" }}
+                            >
+                              <img
+                                className="img-fluid"
+                                style={{ height: "100%" }}
+                                src={
+                                  require(`../../resources/artist/images/profile/${rapper.profileImage}`)
+                                    .default
+                                }
+                              />
+                            </div>
+                            <div className="col-sm-6">
+                              <div>Name: {rapper.name}</div>
+                              <div>Title: {rapper.title}</div>
+                            </div>
+                          </div>
+                        );
+                      })}
+                  </div>
+                </div>
               </div>
               <div>
                 <h3>Favourite Beat Producer</h3>
-                <div>RAPPER SCROLL</div>
+                <div className="scroll">
+                  <div
+                    className="row flex-row flex-nowrap col-md-6"
+                    style={{ height: "25vh" }}
+                  >
+                    {favBeatProducer !== null &&
+                      favBeatProducer.data.map((beatProducer) => {
+                        return (
+                          <div className="d-flex row">
+                            <div
+                              className="col-sm-6"
+                              style={{ height: "100%" }}
+                            >
+                              <img
+                                className="img-fluid"
+                                style={{ height: "100%" }}
+                                src={
+                                  require(`../../resources/artist/images/profile/${beatProducer.profileImage}`)
+                                    .default
+                                }
+                              />
+                            </div>
+                            <div className="col-sm-6">
+                              <div>Name: {beatProducer.name}</div>
+                              <div>Title: {beatProducer.title}</div>
+                            </div>
+                          </div>
+                        );
+                      })}
+                  </div>
+                </div>
+              </div>
+              <div>
+                <h3>Favourite Songs</h3>
+                <div className="scroll">
+                  <div
+                    className="row flex-row flex-nowrap col-md-6"
+                    style={{ height: "25vh" }}
+                  >
+                    <Songs songsList={favSong}></Songs>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

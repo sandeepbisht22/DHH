@@ -16,3 +16,4 @@ export const ARTIST_LIKED = "ARTIST_LIKED";
 export const ARTIST_UNLIKED = "ARTIST_UNLIKED";
 export const FAV_RAPPER = "FAV_RAPPER";
 export const FAV_BEATPRODUCER = "FAV_BEATPRODUCER";
+export const FAV_SONG = "FAV_SONG";

@@ -17,7 +17,7 @@ userChoiceRouter.get("/:id/:choice", [], async (req, res) => {
       .find({ user: req.params.id }, query)
       .lean();
     const actionList = choiceRes[0][action];
-    let actionDataList = {};
+    let actionDataList = [];
     for (var i = 0; i < actionList.length; i++) {
       console.log(i + actionList[i]);
       const actionInfo = await rapperModel.find({
