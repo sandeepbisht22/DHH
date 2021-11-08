@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { songModal } from "../models/Songs.mjs";
+import { songModel } from "../models/Songs.mjs";
 
 const songRouter = Router();
 
@@ -9,9 +9,9 @@ songRouter.get("/:artistType/:id", [], async (req, res) => {
     //check for all the songs with artist id provided.
     let songs = null;
     if (req.params.artistType === "rappers") {
-      songs = await songModal.find({ rapper: req.params.id });
+      songs = await songModel.find({ rapper: req.params.id });
     } else {
-      songs = await songModal.find({ beatproducer: req.params.id });
+      songs = await songModel.find({ beatproducer: req.params.id });
     }
 
     res.json(songs);

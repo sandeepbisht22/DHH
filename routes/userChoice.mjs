@@ -1,14 +1,23 @@
 import { Router } from "express";
 import { userChoiceModel } from "../models/UserChoices.mjs";
 import { rapperModel } from "../models/Rappers.mjs";
+import { songModel } from "../models/Songs.mjs";
+import { beatProducerModel } from "../models/BeatProducer.mjs";
+
 const userChoiceRouter = Router();
 
+const modals = new Map([
+  ["favrapper", rapperModel],
+  ["favbeatproducer", beatProducerModel],
+  ["favsong", songModel],
+]);
 // fav rapper for the provided id user
 userChoiceRouter.get("/:id/:choice", [], async (req, res) => {
   console.log(
     "[ userChoice ] Entering to fetch user choice info favourite rapper"
   );
   try {
+    const currModal = modals.get(req.params.choice);
     const action = req.params.choice;
     var value = 1;
     var query = {};
@@ -20,7 +29,7 @@ userChoiceRouter.get("/:id/:choice", [], async (req, res) => {
     let actionDataList = [];
     for (var i = 0; i < actionList.length; i++) {
       console.log(i + actionList[i]);
-      const actionInfo = await rapperModel.find({
+      const actionInfo = await currModal.find({
         _id: actionList[i].toString(),
       });
       actionDataList[i] = actionInfo[0]._doc;

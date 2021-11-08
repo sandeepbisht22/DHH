@@ -33,23 +33,30 @@ const User = () => {
 
   return (
     user !== null && (
-      <div className="container-fluid">
+      <div className="container-fluid page">
         <div className="row">
-          <div className="col-md-9 border border-primary">
+          <div className="col-md-9 ">
             <div>
               <div>
                 <h3>Favourite Rapper</h3>
                 <div className="scroll">
                   <div
-                    className="row flex-row flex-nowrap col-md-6"
+                    className="row flex-row flex-nowrap col-md-5"
                     style={{ height: "25vh" }}
                   >
                     {favRapper !== null &&
                       favRapper.data.map((rapper) => {
                         return (
-                          <div className="d-flex row">
+                          <div
+                            className="d-flex row border rounded"
+                            style={{
+                              backgroundColor: "#0B0B0B",
+                              color: "#494949",
+                              margin: "0 2em 0 2em",
+                            }}
+                          >
                             <div
-                              className="col-sm-6"
+                              className="col-sm-6 p-2"
                               style={{ height: "100%" }}
                             >
                               <img
@@ -75,15 +82,22 @@ const User = () => {
                 <h3>Favourite Beat Producer</h3>
                 <div className="scroll">
                   <div
-                    className="row flex-row flex-nowrap col-md-6"
+                    className="row flex-row flex-nowrap col-md-5"
                     style={{ height: "25vh" }}
                   >
                     {favBeatProducer !== null &&
                       favBeatProducer.data.map((beatProducer) => {
                         return (
-                          <div className="d-flex row">
+                          <div
+                            className="d-flex row border rounded"
+                            style={{
+                              backgroundColor: "#0B0B0B",
+                              color: "#494949",
+                              margin: "0 2em 0 2em",
+                            }}
+                          >
                             <div
-                              className="col-sm-6"
+                              className="col-sm-6  p-2"
                               style={{ height: "100%" }}
                             >
                               <img
@@ -105,20 +119,9 @@ const User = () => {
                   </div>
                 </div>
               </div>
-              <div>
-                <h3>Favourite Songs</h3>
-                <div className="scroll">
-                  <div
-                    className="row flex-row flex-nowrap col-md-6"
-                    style={{ height: "25vh" }}
-                  >
-                    <Songs songsList={favSong}></Songs>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
-          <div className="col-md-3 border border-primary">
+          <div className="col-md-3 ">
             <div className="row-cols-md-3 text-center">
               <img
                 src={profileImage}
@@ -176,6 +179,17 @@ const User = () => {
               <button onClick={onSubmit}>
                 {isEditable ? "Update" : "Edit"}
               </button>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h3>Favourite Songs</h3>
+          <div className="scroll">
+            <div
+              className="row flex-row flex-nowrap "
+              style={{ height: "25vh" }}
+            >
+              <Songs songsList={favSong.data}></Songs>
             </div>
           </div>
         </div>

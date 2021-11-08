@@ -9,7 +9,9 @@ export const favRappers = (userId) => async (dispatch) => {
 };
 
 export const favBeatProducers = (userId) => async (dispatch) => {
-  const beatProducerInfo = await axios.get(`/userchoice/${userId}/favrapper`);
+  const beatProducerInfo = await axios.get(
+    `/userchoice/${userId}/favbeatproducer`
+  );
   dispatch({
     type: FAV_BEATPRODUCER,
     payload: beatProducerInfo,
