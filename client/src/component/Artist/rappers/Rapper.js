@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import SocialMedia from "./../../common/SocialMedia";
 import YoutubeVideo from "../../common/YoutubeVideo";
-import { artistActions } from "../../../state/actions";
+import { artistActions, userChoiceAction } from "../../../state/actions";
 import { useSelector, useDispatch } from "react-redux";
 import Songs from "../../common/Songs";
 const Rapper = ({ match }) => {
@@ -13,6 +13,7 @@ const Rapper = ({ match }) => {
   const artistUpVoteIconClass = "fas fa-microphone fa-3x";
   const artistDownVoteIconClass = "fas fa-microphone-slash fa-3x";
   const artistFavourite = (e) => {
+    dispatch(userChoiceAction.addFav("favrapper", currArtist._id));
     setArtistFavouriteIconClass(
       artistFavouriteIconClass === "far fa-heart fa-3x"
         ? "fas fa-heart fa-3x"

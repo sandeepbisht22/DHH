@@ -6,11 +6,11 @@ import FavArtist from "../common/FavArtist";
 
 const User = () => {
   const globalUser = useSelector((state) => state.user.user);
-  const favRapper = useSelector((state) => state.userChoice.favRapper);
-  const favSong = useSelector((state) => state.userChoice.favSong);
+  const favRapper = useSelector((state) => state.userChoice.favrapper);
+  const favSong = useSelector((state) => state.userChoice.favsong);
 
   const favBeatProducer = useSelector(
-    (state) => state.userChoice.favBeatProducer
+    (state) => state.userChoice.favbeatproducer
   );
 
   const dispatch = useDispatch();

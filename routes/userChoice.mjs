@@ -48,6 +48,8 @@ userChoiceRouter.get("/:id/:choice", [], async (req, res) => {
 
 userChoiceRouter.post("/add/:choice/:id/", authMiddleware, async (req, res) => {
   const query = {};
+  const currModal = modals.get(req.params.choice);
+
   const field = req.params.choice;
   const value = req.params.id;
   query[field] = value;
@@ -57,7 +59,10 @@ userChoiceRouter.post("/add/:choice/:id/", authMiddleware, async (req, res) => {
       .updateOne({ user: req.user.id }, { $push: query })
       .lean();
   }
-  res.json("");
+  const actionInfo = await currModal.find({
+    _id: req.params.id,
+  });
+  res.json(actionInfo);
 });
 
 export { userChoiceRouter };
