@@ -39,26 +39,16 @@ const User = () => {
           <div className="col-md-9 ">
             <div>
               <div>
-                <h3>Favourite Rapper</h3>
-                <div className="scroll">
-                  <div
-                    className="row flex-row flex-nowrap col-md-5"
-                    style={{ height: "25vh" }}
-                  >
-                    <FavArtist favArtist={favRapper.data}></FavArtist>
-                  </div>
-                </div>
+                <FavArtist
+                  favArtist={favRapper.data}
+                  title="Favourite Rapper"
+                ></FavArtist>
               </div>
               <div>
-                <h3>Favourite Beat Producer</h3>
-                <div className="scroll">
-                  <div
-                    className="row flex-row flex-nowrap col-md-5"
-                    style={{ height: "25vh" }}
-                  >
-                    <FavArtist favArtist={favBeatProducer.data}></FavArtist>
-                  </div>
-                </div>
+                <FavArtist
+                  favArtist={favBeatProducer.data}
+                  title="Favourite Beat Producer"
+                ></FavArtist>
               </div>
             </div>
           </div>

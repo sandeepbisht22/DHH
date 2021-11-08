@@ -3,6 +3,7 @@ import { userChoiceModel } from "../models/UserChoices.mjs";
 import { rapperModel } from "../models/Rappers.mjs";
 import { songModel } from "../models/Songs.mjs";
 import { beatProducerModel } from "../models/BeatProducer.mjs";
+import { authMiddleware } from "../middleware/auth.mjs";
 
 const userChoiceRouter = Router();
 
@@ -45,47 +46,18 @@ userChoiceRouter.get("/:id/:choice", [], async (req, res) => {
   }
 });
 
-// going to use single function instad of function for each
-
-// // fav beatProducer for the provided id user
-// userChoiceRouter.get("/:id/favbeatproducer", [], async (req, res) => {
-//   console.log(
-//     "[ userChoice ] Entering to fetch user choice info favourite Beat producer"
-//   );
-//   try {
-//     const favbeatproducerRes = await userChoiceModel
-//       .find({ user: req.params.id }, { favbeatproducer: 1, _id: 0 })
-//       .lean();
-//     const beatProducerList = favbeatproducerRes[0].favbeatproducer;
-//     let beatProducerDataList = {};
-//     for (var i = 0; i < beatProducerList.length; i++) {
-//       console.log(i + beatProducerList[i]);
-//       const beatProducerInfo = await rapperModel.find({
-//         _id: beatProducerList[i].toString(),
-//       });
-//       beatProducerDataList[i] = beatProducerInfo[0]._doc;
-//     }
-//     // console.log("length is " + beatProducerDataList);
-//     res.json(beatProducerDataList);
-//     console.log("[userChoice] response send for fav beat producer");
-//   } catch (error) {
-//     console.log(
-//       "[ userChoice ] Error while fetching data from database for user choice of favourite rapper"
-//     );
-//     res.status(500).json({ msg: "Server error" });
-//   }
-// });
-
-// // liked rapper for the provided id user
-// userChoiceRouter.get("/:id/likedrapper", [], async (req, res) => {});
-
-// // disliked rapper for the provided id user
-// userChoiceRouter.get("/:id/dislikedrapper", [], async (req, res) => {});
-
-// // liked beatProducer for the provided id user
-// userChoiceRouter.get("/:id/likedbeatproducer", [], async (req, res) => {});
-
-// // disliked beatProducer for the provided id user
-// userChoiceRouter.get("/:id/dislikedbeatproducer", [], async (req, res) => {});
+userChoiceRouter.post("/add/:choice/:id/", authMiddleware, async (req, res) => {
+  const query = {};
+  const field = req.params.choice;
+  const value = req.params.id;
+  query[field] = value;
+  const isChoicePresent = await userChoiceModel.find(query).lean();
+  if (isChoicePresent.length === 0) {
+    await userChoiceModel
+      .updateOne({ user: req.user.id }, { $push: query })
+      .lean();
+  }
+  res.json("");
+});
 
 export { userChoiceRouter };
