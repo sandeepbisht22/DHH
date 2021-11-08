@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import profileImage from "../../resources/images/defaultProfile.png";
 import { useSelector, useDispatch } from "react-redux";
 import Songs from "../common/Songs";
+import FavArtist from "../common/FavArtist";
 
 const User = () => {
   const globalUser = useSelector((state) => state.user.user);
@@ -44,37 +45,7 @@ const User = () => {
                     className="row flex-row flex-nowrap col-md-5"
                     style={{ height: "25vh" }}
                   >
-                    {favRapper !== null &&
-                      favRapper.data.map((rapper) => {
-                        return (
-                          <div
-                            className="d-flex row border rounded"
-                            style={{
-                              backgroundColor: "#0B0B0B",
-                              color: "#494949",
-                              margin: "0 2em 0 2em",
-                            }}
-                          >
-                            <div
-                              className="col-sm-6 p-2"
-                              style={{ height: "100%" }}
-                            >
-                              <img
-                                className="img-fluid"
-                                style={{ height: "100%" }}
-                                src={
-                                  require(`../../resources/artist/images/profile/${rapper.profileImage}`)
-                                    .default
-                                }
-                              />
-                            </div>
-                            <div className="col-sm-6">
-                              <div>Name: {rapper.name}</div>
-                              <div>Title: {rapper.title}</div>
-                            </div>
-                          </div>
-                        );
-                      })}
+                    <FavArtist favArtist={favRapper.data}></FavArtist>
                   </div>
                 </div>
               </div>
@@ -85,37 +56,7 @@ const User = () => {
                     className="row flex-row flex-nowrap col-md-5"
                     style={{ height: "25vh" }}
                   >
-                    {favBeatProducer !== null &&
-                      favBeatProducer.data.map((beatProducer) => {
-                        return (
-                          <div
-                            className="d-flex row border rounded"
-                            style={{
-                              backgroundColor: "#0B0B0B",
-                              color: "#494949",
-                              margin: "0 2em 0 2em",
-                            }}
-                          >
-                            <div
-                              className="col-sm-6  p-2"
-                              style={{ height: "100%" }}
-                            >
-                              <img
-                                className="img-fluid"
-                                style={{ height: "100%" }}
-                                src={
-                                  require(`../../resources/artist/images/profile/${beatProducer.profileImage}`)
-                                    .default
-                                }
-                              />
-                            </div>
-                            <div className="col-sm-6">
-                              <div>Name: {beatProducer.name}</div>
-                              <div>Title: {beatProducer.title}</div>
-                            </div>
-                          </div>
-                        );
-                      })}
+                    <FavArtist favArtist={favBeatProducer.data}></FavArtist>
                   </div>
                 </div>
               </div>
