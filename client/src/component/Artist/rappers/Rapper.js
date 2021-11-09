@@ -4,14 +4,17 @@ import YoutubeVideo from "../../common/YoutubeVideo";
 import { artistActions, userChoiceAction } from "../../../state/actions";
 import { useSelector, useDispatch } from "react-redux";
 import Songs from "../../common/Songs";
+import axios from "axios";
+import { isLiked } from "./../../../state/actions/artistAction";
+
 const Rapper = ({ match }) => {
   const dispatch = useDispatch();
   const artistType = useSelector((state) => state.artist.artistType);
+
   const [artistFavouriteIconClass, setArtistFavouriteIconClass] =
     useState("far fa-heart fa-3x");
   const currArtist = useSelector((state) => state.artist.currArtist);
-  const artistUpVoteIconClass = "fas fa-microphone fa-3x";
-  const artistDownVoteIconClass = "fas fa-microphone-slash fa-3x";
+
   const artistFavourite = (e) => {
     dispatch(userChoiceAction.addFav("favrapper", currArtist._id));
     setArtistFavouriteIconClass(
@@ -19,13 +22,54 @@ const Rapper = ({ match }) => {
         ? "fas fa-heart fa-3x"
         : "far fa-heart fa-3x"
     );
-
-    //TODO other things also like informing backend
   };
 
-  // const [likeAction,setLikeAction] = {}
+  const [liked, setLiked] = useState(false);
+  const [disliked, setDisliked] = useState(false);
 
   function artistLikedUnliked(currentAction) {
+    if (
+      (currentAction === "like" && liked) ||
+      (currentAction === "unLike" && disliked)
+    ) {
+      return;
+    } else if (currentAction === "like" && disliked) {
+      const config = {
+        header: {
+          "content-type": "application/json",
+        },
+      };
+      setDisliked(false);
+      axios.post(
+        `/userchoice/dislikedartist/remove/${currArtist._id}`,
+        null,
+        config
+      );
+      setLiked(true);
+      axios.post(`/userchoice/likedartist/add/${currArtist._id}`, null, config);
+
+      //remove from disliked list and add to liked list backend
+    } else if (currentAction === "unLike" && liked) {
+      const config = {
+        header: {
+          "content-type": "application/json",
+        },
+      };
+      setLiked(false);
+      axios.post(
+        `/userchoice/likedartist/remove/${currArtist._id}`,
+        null,
+        config
+      );
+      setDisliked(true);
+      axios.post(
+        `/userchoice/dislikedartist/add/${currArtist._id}`,
+        null,
+        config
+      );
+
+      //remove from liked list and add to disliked list backend
+    }
     const likeUnlikeInfo = {
       id: currArtist._id,
       action: "inc",
@@ -35,8 +79,18 @@ const Rapper = ({ match }) => {
     );
   }
 
-  useEffect(() => {
+  useEffect(async () => {
     try {
+      const disLikedCheck = await axios.get(
+        `/userchoice/isdisliked/${currArtist._id}`
+      );
+      setDisliked(disLikedCheck);
+
+      const likedCheck = await axios.get(
+        `/userchoice/isliked/${currArtist._id}`
+      );
+      setLiked(likedCheck);
+
       dispatch(
         artistActions.currentArtistInfo(artistType, match.params.rapper)
       );
@@ -73,7 +127,7 @@ const Rapper = ({ match }) => {
                 <div>
                   <i
                     onClick={() => artistLikedUnliked("like")}
-                    className={artistUpVoteIconClass}
+                    className="fas fa-microphone fa-3x"
                   ></i>
                   <span className="ps-3">{currArtist.like}</span>
                 </div>
@@ -86,7 +140,7 @@ const Rapper = ({ match }) => {
                 <div>
                   <i
                     onClick={() => artistLikedUnliked("unLike")}
-                    className={artistDownVoteIconClass}
+                    className="fas fa-microphone-slash fa-3x"
                   ></i>
                   <span className="ps-3">{currArtist.unLike}</span>
                 </div>

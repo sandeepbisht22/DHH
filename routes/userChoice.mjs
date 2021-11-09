@@ -65,4 +65,40 @@ userChoiceRouter.post("/add/:choice/:id/", authMiddleware, async (req, res) => {
   res.json(actionInfo);
 });
 
+userChoiceRouter.post(
+  "/likedartist/:action/:id",
+  authMiddleware,
+  async (req, res) => {
+    if (req.params.action === "add") {
+      await userChoiceModel.update(
+        { user: req.user.id },
+        { $push: { likedrapper: req.params.id } }
+      );
+    } else {
+      await userChoiceModel.update(
+        { user: req.user.id },
+        {
+          $pull: { dislikedrapper: req.params.id },
+        }
+      );
+    }
+  }
+);
+
+userChoiceRouter.post("/dislikedartist/:action/:id", [], async (req, res) => {
+  if (req.params.action === "add") {
+    await userChoiceModel.update(
+      { user: req.user.id },
+      { $push: { dislikedrapper: req.params.id } }
+    );
+  } else {
+    await userChoiceModel.update(
+      { user: req.user.id },
+      {
+        $pull: { likedrapper: req.params.id },
+      }
+    );
+  }
+});
+
 export { userChoiceRouter };

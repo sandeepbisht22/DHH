@@ -1,6 +1,13 @@
 import axios from "axios";
 import setAuthToken from "../../utils/setAuthnToken";
-import { FAV_RAPPER, FAV_BEATPRODUCER, FAV_SONG, FAV_ADDED } from "../types";
+import {
+  FAV_RAPPER,
+  FAV_BEATPRODUCER,
+  FAV_SONG,
+  FAV_ADDED,
+  DISLIKE_CHECK,
+  LIKE_CHECK,
+} from "../types";
 export const favRappers = (userId) => async (dispatch) => {
   const favRapperInfo = await axios.get(`/userchoice/${userId}/favrapper`);
   dispatch({
