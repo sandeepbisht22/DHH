@@ -20,11 +20,17 @@ const Songs = ({ songsList }) => {
 
             <div className="d-flex justify-content-evenly">
               <div className="pe-2">
-                <i class="fas fa-thumbs-up" style={{ color: "#FFFFFF" }}></i>
+                <i
+                  className="fas fa-thumbs-up"
+                  style={{ color: "#FFFFFF" }}
+                ></i>
                 <span className="ps-2">{song.like}</span>
               </div>
               <div>
-                <i class="fas fa-thumbs-down" style={{ color: "#FFFFFF" }}></i>
+                <i
+                  className="fas fa-thumbs-down"
+                  style={{ color: "#FFFFFF" }}
+                ></i>
                 <span className="ps-2" style={{ color: "#FFFFFF" }}>
                   {song.dislike}
                 </span>

@@ -9,9 +9,11 @@ const Home = () => {
 
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(userChoiceAction.favRappers(user._id));
-    dispatch(userChoiceAction.favBeatProducers(user._id));
-    dispatch(userChoiceAction.favSongs(user._id));
+    if (user !== null) {
+      dispatch(userChoiceAction.favRappers(user._id));
+      dispatch(userChoiceAction.favBeatProducers(user._id));
+      dispatch(userChoiceAction.favSongs(user._id));
+    }
   });
 
   return (

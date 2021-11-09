@@ -5,7 +5,7 @@ import { artistActions, userChoiceAction } from "../../../state/actions";
 import { useSelector, useDispatch } from "react-redux";
 import Songs from "../../common/Songs";
 import axios from "axios";
-import { isLiked } from "./../../../state/actions/artistAction";
+import setAuthToken from "../../../utils/setAuthnToken";
 
 const Rapper = ({ match }) => {
   const dispatch = useDispatch();
@@ -27,75 +27,92 @@ const Rapper = ({ match }) => {
   const [liked, setLiked] = useState(false);
   const [disliked, setDisliked] = useState(false);
 
+  async function likeArtist(config, addRemove) {
+    setAuthToken(localStorage.token);
+    await axios.post(
+      `/userchoice/likedartist/${addRemove}/${currArtist._id}`,
+      null,
+      config
+    );
+  }
+
+  async function disLikedArtist(config, addRemove) {
+    setAuthToken(localStorage.token);
+    await axios.post(
+      `/userchoice/dislikedartist/${addRemove}/${currArtist._id}`,
+      null,
+      config
+    );
+  }
+  function setLocalState(like, dislike) {
+    setDisliked(dislike);
+    setLiked(like);
+  }
+  function dbUpdate(currentAction, action) {
+    const likeUnlikeInfo = {
+      id: currArtist._id,
+      action: action,
+    };
+
+    dispatch(
+      artistActions.likeUnLikeArtist("rappers", likeUnlikeInfo, currentAction)
+    );
+  }
   function artistLikedUnliked(currentAction) {
+    const config = {
+      header: {
+        "content-type": "application/json",
+      },
+    };
     if (
       (currentAction === "like" && liked) ||
       (currentAction === "unLike" && disliked)
     ) {
       return;
     } else if (currentAction === "like" && disliked) {
-      const config = {
-        header: {
-          "content-type": "application/json",
-        },
-      };
-      setDisliked(false);
-      axios.post(
-        `/userchoice/dislikedartist/remove/${currArtist._id}`,
-        null,
-        config
-      );
-      setLiked(true);
-      axios.post(`/userchoice/likedartist/add/${currArtist._id}`, null, config);
-
+      setLocalState(true, false);
+      disLikedArtist(config, "remove");
+      likeArtist(config, "add");
+      dbUpdate("like", "inc");
+      dbUpdate("unLike", "dec");
       //remove from disliked list and add to liked list backend
     } else if (currentAction === "unLike" && liked) {
-      const config = {
-        header: {
-          "content-type": "application/json",
-        },
-      };
-      setLiked(false);
-      axios.post(
-        `/userchoice/likedartist/remove/${currArtist._id}`,
-        null,
-        config
-      );
-      setDisliked(true);
-      axios.post(
-        `/userchoice/dislikedartist/add/${currArtist._id}`,
-        null,
-        config
-      );
-
+      setLocalState(false, true);
+      disLikedArtist(config, "add");
+      likeArtist(config, "remove");
+      dbUpdate("like", "dec");
+      dbUpdate("unLike", "inc");
       //remove from liked list and add to disliked list backend
+    } else if (currentAction === "like") {
+      setLocalState(true, false);
+      likeArtist(config, "add");
+      dbUpdate("like", "inc");
+    } else if (currentAction === "unLike") {
+      setLocalState(false, true);
+      disLikedArtist(config, "add");
+      dbUpdate("unLike", "inc");
     }
-    const likeUnlikeInfo = {
-      id: currArtist._id,
-      action: "inc",
-    };
-    dispatch(
-      artistActions.likeUnLikeArtist("rappers", likeUnlikeInfo, currentAction)
-    );
   }
 
   useEffect(async () => {
     try {
+      setAuthToken(localStorage.token);
       const disLikedCheck = await axios.get(
-        `/userchoice/isdisliked/${currArtist._id}`
+        `/userchoice/likecheck/dislikedrapper/${currArtist._id}`
       );
-      setDisliked(disLikedCheck);
+      setDisliked(disLikedCheck.data.res === "true");
 
       const likedCheck = await axios.get(
-        `/userchoice/isliked/${currArtist._id}`
+        `/userchoice/likecheck/likedrapper/${currArtist._id}`
       );
-      setLiked(likedCheck);
+
+      setLiked(likedCheck.data.res === "true");
 
       dispatch(
         artistActions.currentArtistInfo(artistType, match.params.rapper)
       );
     } catch (error) {}
-  }, [match.params.rapper]);
+  }, []);
 
   return (
     currArtist !== null && (

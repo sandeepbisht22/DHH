@@ -78,27 +78,47 @@ userChoiceRouter.post(
       await userChoiceModel.update(
         { user: req.user.id },
         {
-          $pull: { dislikedrapper: req.params.id },
+          $pull: { likedrapper: req.params.id },
         }
       );
     }
   }
 );
 
-userChoiceRouter.post("/dislikedartist/:action/:id", [], async (req, res) => {
-  if (req.params.action === "add") {
-    await userChoiceModel.update(
-      { user: req.user.id },
-      { $push: { dislikedrapper: req.params.id } }
-    );
-  } else {
-    await userChoiceModel.update(
-      { user: req.user.id },
-      {
-        $pull: { likedrapper: req.params.id },
-      }
-    );
+userChoiceRouter.post(
+  "/dislikedartist/:action/:id",
+  authMiddleware,
+  async (req, res) => {
+    if (req.params.action === "add") {
+      await userChoiceModel.update(
+        { user: req.user.id },
+        { $push: { dislikedrapper: req.params.id } }
+      );
+    } else {
+      await userChoiceModel.update(
+        { user: req.user.id },
+        {
+          $pull: { dislikedrapper: req.params.id },
+        }
+      );
+    }
+    res.json("");
   }
-});
+);
+
+userChoiceRouter.get(
+  "/likecheck/:likeaction/:artistid",
+  authMiddleware,
+  async (req, res) => {
+    const isLikedInfo = await userChoiceModel
+      .findOne({ [req.params.likeaction]: req.params.artistid })
+      .lean();
+    if (isLikedInfo !== null) {
+      res.json({ res: "true" });
+    } else {
+      res.json({ res: "false" });
+    }
+  }
+);
 
 export { userChoiceRouter };

@@ -69,7 +69,9 @@ export const loginUser = (formData) => async (dispatch) => {
     };
     //Will make a rest call to check if we can login and the set token returned
     const res = await axios.post("/auth", formData, config);
-    console.log("dispatching for LOGIN_USER_SUCCESS");
+    console.log(
+      "dispatching for LOGIN_USER_SUCCESS with res" + JSON.stringify(res.data)
+    );
     dispatch({
       type: LOGIN_USER_SUCCESS,
       payload: res.data,
