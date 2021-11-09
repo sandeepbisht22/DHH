@@ -66,19 +66,19 @@ userChoiceRouter.post("/add/:choice/:id/", authMiddleware, async (req, res) => {
 });
 
 userChoiceRouter.post(
-  "/likedartist/:action/:id",
+  "/likedartist/:artistValue/:action/:id",
   authMiddleware,
   async (req, res) => {
     if (req.params.action === "add") {
       await userChoiceModel.update(
         { user: req.user.id },
-        { $push: { likedrapper: req.params.id } }
+        { $push: { [req.params.artistValue]: req.params.id } }
       );
     } else {
       await userChoiceModel.update(
         { user: req.user.id },
         {
-          $pull: { likedrapper: req.params.id },
+          $pull: { [req.params.artistValue]: req.params.id },
         }
       );
     }

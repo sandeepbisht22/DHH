@@ -11,6 +11,12 @@ const userChoiceSchema = mongoose.Schema({
   favbeatproducer: [
     { type: mongoose.Schema.Types.ObjectId, ref: "beatproducers" },
   ],
+  likedbeatproducer: [
+    { type: mongoose.Schema.Types.ObjectId, ref: "beatproducers" },
+  ],
+  dislikedbeatproducer: [
+    { type: mongoose.Schema.Types.ObjectId, ref: "beatproducers" },
+  ],
   favsong: [{ type: mongoose.Schema.Types.ObjectId, ref: "songs" }],
   likedSong: [{ type: mongoose.Schema.Types.ObjectId, ref: "songs" }],
   dislikedSong: [{ type: mongoose.Schema.Types.ObjectId, ref: "songs" }],
