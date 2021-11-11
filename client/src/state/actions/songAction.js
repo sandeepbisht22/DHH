@@ -9,7 +9,21 @@ export const userFavSong = () => async (dispatch) => {
       "content-type": "application/json",
     },
   };
+
+  //Check if Post is actually required because we are just getting the user fav info
   const allSongs = await axios.post("/userchoice/allFavSongs", null, config);
+
+  dispatch({
+    type: ALL_SONG,
+    payload: allSongs.data,
+  });
+};
+
+export const allArtistSongs = (artistType, id) => async (dispatch) => {
+  const allSongs = await axios.get(`/song/${artistType}/${id}`);
+  if (allSongs === null) {
+    allSongs.data = null;
+  }
   dispatch({
     type: ALL_SONG,
     payload: allSongs.data,

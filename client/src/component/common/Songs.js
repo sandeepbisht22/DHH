@@ -3,9 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { songAction, userChoiceAction } from "../../state/actions";
 
 const Songs = () => {
-  const currArtist = useSelector((state) => state.artist.currArtist);
-  const didMountRef = useRef(false);
   const songsList = useSelector((state) => state.song.songList);
+  const artistType = useSelector((state) => state.artist.artistType);
+  const currArtist = useSelector((state) => state.artist.currArtist);
+
   const dispatch = useDispatch();
   const [songFavouriteIconClass, setSongFavouriteIconClass] =
     useState("far fa-heart");
@@ -18,7 +19,6 @@ const Songs = () => {
         : "far fa-heart"
     );
   }
-
   function artistLikedUnliked(currentAction, id) {
     if (currentAction === "unLike") {
       dispatch(userChoiceAction.addFav("dislikedSong", id));
@@ -28,6 +28,9 @@ const Songs = () => {
       dispatch(userChoiceAction.addFav("likedSong", id));
     }
   }
+  useEffect(() => {
+    dispatch(songAction.allArtistSongs(artistType, currArtist._id));
+  });
 
   return (
     songsList !== null && (

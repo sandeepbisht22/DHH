@@ -109,12 +109,10 @@ const Rapper = ({ match }) => {
       const likedCheck = await axios.get(
         `/userchoice/likecheck/likedrapper/${currArtist._id}`
       );
-
       setLiked(likedCheck.data.res === "true");
 
       dispatch(
-        artistActions.currentArtistInfo(artistType, match.params.rapper),
-        songAction.allSong()
+        artistActions.currentArtistInfo(artistType, match.params.rapper)
       );
     } catch (error) {}
   }, []);
