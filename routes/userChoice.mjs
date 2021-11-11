@@ -11,6 +11,8 @@ const modals = new Map([
   ["favrapper", rapperModel],
   ["favbeatproducer", beatProducerModel],
   ["favsong", songModel],
+  ["likedSong", songModel],
+  ["dislikedSong", songModel],
 ]);
 // fav rapper for the provided id user
 userChoiceRouter.get("/:id/:choice", [], async (req, res) => {
@@ -40,7 +42,8 @@ userChoiceRouter.get("/:id/:choice", [], async (req, res) => {
     console.log("[userChoice] response send for fav rapper");
   } catch (error) {
     console.log(
-      "[ userChoice ] Error while fetching data from database for user choice of favourite rapper"
+      "[ userChoice ] Error while fetching data from database for user choice of favourite rapper" +
+        error
     );
     res.status(500).json({ msg: "Server error" });
   }
@@ -59,7 +62,7 @@ userChoiceRouter.post("/add/:choice/:id/", authMiddleware, async (req, res) => {
       .updateOne({ user: req.user.id }, { $push: query })
       .lean();
   }
-  const actionInfo = await currModal.find({
+  const actionInfo = await currModal.findOne({
     _id: req.params.id,
   });
   res.json(actionInfo);
@@ -121,4 +124,21 @@ userChoiceRouter.get(
   }
 );
 
+userChoiceRouter.post("/allFavSongs", authMiddleware, async (req, res) => {
+  let favSongs = await userChoiceModel.find(
+    { user: req.user.id },
+    { favsong: 1 }
+  );
+  favSongs = favSongs[0]._doc["favsong"];
+  let favSongList = [];
+  for (var i = 0; i < favSongs.length; i++) {
+    console.log(i + favSongs[i]);
+    const actionInfo = await songModel.find({
+      _id: favSongs[i].toString(),
+    });
+    favSongList[i] = actionInfo[0]._doc;
+  }
+
+  res.json(favSongList);
+});
 export { userChoiceRouter };

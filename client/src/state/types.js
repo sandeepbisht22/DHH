@@ -20,3 +20,5 @@ export const FAV_SONG = "FAV_SONG";
 export const FAV_ADDED = "FAV_ADDED";
 export const DISLIKE_CHECK = "DISLIKE_CHECK";
 export const LIKE_CHECK = "LIKE_CHECK";
+export const LIKE_SONG = "LIKE_SONG";
+export const ALL_SONG = "ALL_SONG";

@@ -3,8 +3,10 @@ import profileImage from "../../resources/images/defaultProfile.png";
 import { useSelector, useDispatch } from "react-redux";
 import Songs from "../common/Songs";
 import FavArtist from "../common/FavArtist";
+import { songAction, userChoiceAction } from "../../state/actions";
 
 const User = () => {
+  const dispatch = useDispatch();
   const globalUser = useSelector((state) => state.user.user);
   const favRapper = useSelector((state) => state.userChoice.favrapper);
   const favSong = useSelector((state) => state.userChoice.favsong);
@@ -13,11 +15,11 @@ const User = () => {
     (state) => state.userChoice.favbeatproducer
   );
 
-  const dispatch = useDispatch();
-
   const [isEditable, setIsEditable] = useState(false);
   const [user, setUser] = useState(globalUser);
-
+  useEffect(() => {
+    dispatch(songAction.userFavSong());
+  }, []);
   const onChange = (e) => {
     setUser({
       ...user,
@@ -40,13 +42,13 @@ const User = () => {
             <div>
               <div>
                 <FavArtist
-                  favArtist={favRapper.data}
+                  favArtist={favRapper}
                   title="Favourite Rapper"
                 ></FavArtist>
               </div>
               <div>
                 <FavArtist
-                  favArtist={favBeatProducer.data}
+                  favArtist={favBeatProducer}
                   title="Favourite Beat Producer"
                 ></FavArtist>
               </div>
@@ -120,7 +122,7 @@ const User = () => {
               className="row flex-row flex-nowrap "
               style={{ height: "25vh" }}
             >
-              <Songs songsList={favSong.data}></Songs>
+              <Songs songsList={favSong}></Songs>
             </div>
           </div>
         </div>

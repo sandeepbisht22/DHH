@@ -1,12 +1,39 @@
-import React, { Fragment, useEffect } from "react";
-import { useSelector } from "react-redux";
+import React, { Fragment, useEffect, useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { songAction, userChoiceAction } from "../../state/actions";
 
-const Songs = ({ songsList }) => {
+const Songs = () => {
+  const currArtist = useSelector((state) => state.artist.currArtist);
+  const didMountRef = useRef(false);
+  const songsList = useSelector((state) => state.song.songList);
+  const dispatch = useDispatch();
+  const [songFavouriteIconClass, setSongFavouriteIconClass] =
+    useState("far fa-heart");
+
+  function songFavourite(id) {
+    dispatch(userChoiceAction.addFav("favsong", id));
+    setSongFavouriteIconClass(
+      songFavouriteIconClass === "far fa-heart"
+        ? "fas fa-heart"
+        : "far fa-heart"
+    );
+  }
+
+  function artistLikedUnliked(currentAction, id) {
+    if (currentAction === "unLike") {
+      dispatch(userChoiceAction.addFav("dislikedSong", id));
+    }
+    dispatch(songAction.likeDislikeSong(id, currentAction));
+    if (currentAction === "like") {
+      dispatch(userChoiceAction.addFav("likedSong", id));
+    }
+  }
+
   return (
     songsList !== null && (
       <div className="d-flex pb-3" style={{ color: "white" }}>
         {songsList.map((song) => (
-          <div className="col-md-3">
+          <div className="col-md-3" id={song._id}>
             <div>
               <a
                 href={song.songlinks[0]["youtube"]}
@@ -18,22 +45,29 @@ const Songs = ({ songsList }) => {
             </div>
             <div>{song.name}</div>
 
-            <div className="d-flex justify-content-evenly">
-              <div className="pe-2">
+            <div
+              style={{ color: "#FFFFFF" }}
+              className="d-flex justify-content-evenly"
+            >
+              <div>
                 <i
-                  className="fas fa-thumbs-up"
-                  style={{ color: "#FFFFFF" }}
+                  onClick={() => artistLikedUnliked("like", song._id)}
+                  className="fas fa-microphone"
                 ></i>
-                <span className="ps-2">{song.like}</span>
+                <span className="ps-3">{song.like}</span>
               </div>
               <div>
                 <i
-                  className="fas fa-thumbs-down"
-                  style={{ color: "#FFFFFF" }}
+                  onClick={() => songFavourite(song._id)}
+                  className={songFavouriteIconClass}
                 ></i>
-                <span className="ps-2" style={{ color: "#FFFFFF" }}>
-                  {song.dislike}
-                </span>
+              </div>
+              <div>
+                <i
+                  onClick={() => artistLikedUnliked("unLike", song._id)}
+                  className="fas fa-microphone-slash"
+                ></i>
+                <span className="ps-3">{song.dislike}</span>
               </div>
             </div>
           </div>

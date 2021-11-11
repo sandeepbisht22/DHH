@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
 import SocialMedia from "./../../common/SocialMedia";
 import YoutubeVideo from "../../common/YoutubeVideo";
-import { artistActions, userChoiceAction } from "../../../state/actions";
+import {
+  artistActions,
+  songAction,
+  userChoiceAction,
+} from "../../../state/actions";
 import { useSelector, useDispatch } from "react-redux";
 import Songs from "../../common/Songs";
 import axios from "axios";
@@ -109,7 +113,8 @@ const Rapper = ({ match }) => {
       setLiked(likedCheck.data.res === "true");
 
       dispatch(
-        artistActions.currentArtistInfo(artistType, match.params.rapper)
+        artistActions.currentArtistInfo(artistType, match.params.rapper),
+        songAction.allSong()
       );
     } catch (error) {}
   }, []);
@@ -169,7 +174,7 @@ const Rapper = ({ match }) => {
           <h3 style={{ color: "#61892F" }}>Famous Bars</h3>
           <div className="scroll">
             <div className="row flex-row flex-nowrap">
-              <Songs songsList={currArtist.songs}></Songs>
+              <Songs></Songs>
               {/* <YoutubeVideo
                 youtubeKey="AIzaSyB47-Z2ZklkZUzSVKohYBoazrKVqM3ddxc"
                 channelId="UCMXMp3Lc6v6v8dJH5ZGwtqA"
