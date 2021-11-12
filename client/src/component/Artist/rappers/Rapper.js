@@ -10,22 +10,31 @@ import { useSelector, useDispatch } from "react-redux";
 import Songs from "../../common/Songs";
 import axios from "axios";
 import setAuthToken from "../../../utils/setAuthnToken";
+import { favRappers } from "./../../../state/actions/userChoiceAction";
 
 const Rapper = ({ match }) => {
   const dispatch = useDispatch();
   const artistType = useSelector((state) => state.artist.artistType);
-
-  const [artistFavouriteIconClass, setArtistFavouriteIconClass] =
-    useState("far fa-heart fa-3x");
   const currArtist = useSelector((state) => state.artist.currArtist);
+  const favRappers = useSelector((state) => state.userChoice.favrapper);
+  let isFav = {};
+  isFav.length = 0;
+  if (favRappers !== null) {
+    isFav = favRappers.filter((rapper) => rapper.name === currArtist.name);
+  }
+
+  const [artistFavouriteIconClass, setArtistFavouriteIconClass] = useState(
+    isFav.length > 0 ? "fas fa-heart fa-3x" : "far fa-heart fa-3x"
+  );
 
   const artistFavourite = (e) => {
-    dispatch(userChoiceAction.addFav("favrapper", currArtist._id));
-    setArtistFavouriteIconClass(
-      artistFavouriteIconClass === "far fa-heart fa-3x"
-        ? "fas fa-heart fa-3x"
-        : "far fa-heart fa-3x"
-    );
+    if (artistFavouriteIconClass === "far fa-heart fa-3x") {
+      dispatch(userChoiceAction.addFav("favrapper", currArtist._id));
+      setArtistFavouriteIconClass("fas fa-heart fa-3x");
+    } else {
+      dispatch(userChoiceAction.removeFav("favrapper", currArtist._id));
+      setArtistFavouriteIconClass("far fa-heart fa-3x");
+    }
   };
 
   const [liked, setLiked] = useState(false);

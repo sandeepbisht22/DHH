@@ -69,6 +69,29 @@ userChoiceRouter.post("/add/:choice/:id/", authMiddleware, async (req, res) => {
 });
 
 userChoiceRouter.post(
+  "/remove/:choice/:id/",
+  authMiddleware,
+  async (req, res) => {
+    const query = {};
+    const currModal = modals.get(req.params.choice);
+
+    const field = req.params.choice;
+    const value = req.params.id;
+    query[field] = value;
+    const isChoicePresent = await userChoiceModel.find(query).lean();
+    if (isChoicePresent.length === 0) {
+      await userChoiceModel
+        .updateOne({ user: req.user.id }, { $pull: query })
+        .lean();
+    }
+    const actionInfo = await currModal.findOne({
+      _id: req.params.id,
+    });
+    res.json(actionInfo);
+  }
+);
+
+userChoiceRouter.post(
   "/likedartist/:artistValue/:action/:id",
   authMiddleware,
   async (req, res) => {

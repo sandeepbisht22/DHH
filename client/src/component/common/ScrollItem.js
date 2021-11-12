@@ -11,19 +11,17 @@ const ScrollItem = ({ itemId, profileImage, name, onClick, selected }) => {
   return (
     <Fragment>
       <div
+        className="mx-2"
         onClick={() => history.push(`/artist/${artistType}/${name}`, name)}
         style={{
           width: "350px",
         }}
         tabIndex={0}
       >
-        <div
-          className="card "
-          style={{ height: "300px", backgroundColor: "#272727" }}
-        >
+        <div className="card " style={{ backgroundColor: "#272727" }}>
           <img
-            className="card-img-top"
-            style={{ object_fit: "cover" }}
+            className="card-img-top rounded "
+            style={{ object_fit: "cover", height: "55vh" }}
             src={
               require(`../../resources/artist/images/profile/${profileImage}`)
                 .default
@@ -37,7 +35,7 @@ const ScrollItem = ({ itemId, profileImage, name, onClick, selected }) => {
         </div>
         <div
           style={{
-            height: "200px",
+            height: "50px",
           }}
         />
       </div>

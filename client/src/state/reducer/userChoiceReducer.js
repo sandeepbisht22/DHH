@@ -1,4 +1,10 @@
-import { FAV_BEATPRODUCER, FAV_RAPPER, FAV_SONG, FAV_ADDED } from "../types";
+import {
+  FAV_BEATPRODUCER,
+  FAV_RAPPER,
+  FAV_SONG,
+  FAV_ADDED,
+  FAV_REMOVED,
+} from "../types";
 
 const initialState = {
   favrapper: null,
@@ -28,10 +34,19 @@ export default (state = initialState, action) => {
     case FAV_ADDED:
       return {
         ...state,
-        [action.payload.choice]: {
+        [action.payload.choice]: [
           ...state[action.payload.choice],
-          ...action.payload.value,
-        },
+          action.payload.value,
+        ],
+      };
+    case FAV_REMOVED:
+      return {
+        ...state,
+        favrapper: state.favrapper.map((rapper) => {
+          if (rapper._id !== action.payload.id) {
+            return rapper;
+          }
+        }),
       };
     default:
       return state;

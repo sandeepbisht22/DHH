@@ -7,6 +7,7 @@ import {
   FAV_ADDED,
   DISLIKE_CHECK,
   LIKE_CHECK,
+  FAV_REMOVED,
 } from "../types";
 export const favRappers = (userId) => async (dispatch) => {
   const favRapperInfo = await axios.get(`/userchoice/${userId}/favrapper`);
@@ -51,6 +52,30 @@ export const addFav = (choice, id) => async (dispatch) => {
     const payload = { choice: choice, value: favResponse.data };
     dispatch({
       type: FAV_ADDED,
+      payload: payload,
+    });
+  } catch (error) {
+    console.log("[error ]message is " + error.message);
+  }
+};
+
+export const removeFav = (choice, id) => async (dispatch) => {
+  try {
+    setAuthToken(localStorage.token);
+    const config = {
+      header: {
+        "content-type": "application/json",
+      },
+    };
+    const favResponse = await axios.post(
+      `/userchoice/remove/${choice}/${id}`,
+      null,
+      config
+    );
+    //pass name and value separately
+    const payload = { choice: choice, value: favResponse.data };
+    dispatch({
+      type: FAV_REMOVED,
       payload: payload,
     });
   } catch (error) {
