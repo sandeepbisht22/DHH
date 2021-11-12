@@ -17,9 +17,7 @@ const User = () => {
 
   const [isEditable, setIsEditable] = useState(false);
   const [user, setUser] = useState(globalUser);
-  useEffect(() => {
-    dispatch(songAction.userFavSong());
-  }, []);
+  useEffect(() => {}, []);
   const onChange = (e) => {
     setUser({
       ...user,
@@ -122,7 +120,7 @@ const User = () => {
               className="row flex-row flex-nowrap "
               style={{ height: "25vh" }}
             >
-              <Songs songsList={favSong}></Songs>
+              <Songs page="user"></Songs>
             </div>
           </div>
         </div>
