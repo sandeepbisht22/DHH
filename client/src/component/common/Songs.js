@@ -2,8 +2,7 @@ import React, { Fragment, useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { songAction, userChoiceAction } from "../../state/actions";
 
-const Songs = ({ page }) => {
-  const songsList = useSelector((state) => state.song.songList);
+const Songs = ({ songsList }) => {
   const artistType = useSelector((state) => state.artist.artistType);
   const currArtist = useSelector((state) => state.artist.currArtist);
 
@@ -28,13 +27,11 @@ const Songs = ({ page }) => {
       dispatch(userChoiceAction.addFav("likedSong", id));
     }
   }
-  useEffect(() => {
-    if (page === "user") {
-      dispatch(songAction.userFavSong());
-    } else {
-      dispatch(songAction.allArtistSongs(artistType, currArtist._id));
-    }
-  });
+  // useEffect(() => {
+  //   if (page !== "user") {
+  //     songsList =
+  //    }
+  // }, []);
 
   return (
     songsList !== null && (

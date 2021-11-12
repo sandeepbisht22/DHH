@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import SocialMedia from "./../../common/SocialMedia";
 import YoutubeVideo from "../../common/YoutubeVideo";
 import {
@@ -97,7 +97,11 @@ const Rapper = ({ match }) => {
       dbUpdate("unLike", "inc");
     }
   }
-
+  // const songUpdate = useRef(false);
+  // if (!songUpdate.current) {
+  //   dispatch(songAction.allArtistSongs(artistType, currArtist._id));
+  //   songUpdate.current = true;
+  // }
   useEffect(async () => {
     try {
       setAuthToken(localStorage.token);
@@ -172,7 +176,7 @@ const Rapper = ({ match }) => {
           <h3 style={{ color: "#61892F" }}>Famous Bars</h3>
           <div className="scroll">
             <div className="row flex-row flex-nowrap">
-              <Songs page="artist"></Songs>
+              <Songs songsList={currArtist.songs}></Songs>
               {/* <YoutubeVideo
                 youtubeKey="AIzaSyB47-Z2ZklkZUzSVKohYBoazrKVqM3ddxc"
                 channelId="UCMXMp3Lc6v6v8dJH5ZGwtqA"

@@ -7,6 +7,7 @@ import { songAction, userChoiceAction } from "../../state/actions";
 
 const User = () => {
   const dispatch = useDispatch();
+  const songsList = useSelector((state) => state.song.songList);
   const globalUser = useSelector((state) => state.user.user);
   const favRapper = useSelector((state) => state.userChoice.favrapper);
   const favSong = useSelector((state) => state.userChoice.favsong);
@@ -17,7 +18,9 @@ const User = () => {
 
   const [isEditable, setIsEditable] = useState(false);
   const [user, setUser] = useState(globalUser);
-  useEffect(() => {}, []);
+  useEffect(() => {
+    dispatch(songAction.userFavSong());
+  }, []);
   const onChange = (e) => {
     setUser({
       ...user,
@@ -118,9 +121,9 @@ const User = () => {
           <div className="scroll">
             <div
               className="row flex-row flex-nowrap "
-              style={{ height: "25vh" }}
+              style={{ height: "35vh" }}
             >
-              <Songs page="user"></Songs>
+              <Songs songsList={songsList}></Songs>
             </div>
           </div>
         </div>
