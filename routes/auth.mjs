@@ -8,6 +8,12 @@ import { authMiddleware } from "../middleware/auth.mjs";
 
 const authRouter = Router();
 
+/**
+ * @route    POST /auth
+ * @param
+ * @desc     will check if its a valid credentials to login and return token
+ * @access   Public
+ */
 authRouter.post(
   "/",
   [
@@ -57,6 +63,13 @@ authRouter.post(
     }
   }
 );
+
+/**
+ * @route    POST /auth
+ * @param
+ * @desc     will get user info based on token input
+ * @access   Private
+ */
 
 authRouter.get("/", authMiddleware, async (req, res) => {
   try {

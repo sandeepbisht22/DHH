@@ -45,6 +45,10 @@ rapperRouter.get("/name/:name", async (req, res) => {
   }
 });
 
+/**
+ * @route /artist/rappers/:name
+ * @description Will like and unlike rappers based on input  of id in body
+ */
 rapperRouter.post(
   "/rate/:likeUnlike",
   [body("id", "Its not alphaNumeric").isAlphanumeric()],

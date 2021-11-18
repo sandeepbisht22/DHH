@@ -50,6 +50,10 @@ beatProducerRouter.get("/name/:name", async (req, res) => {
   }
 });
 
+/**
+ * @route /artist/beatProdcuer/:name
+ * @description Will like and unlike beatproducer based on input  of id in body
+ */
 beatProducerRouter.post(
   "/rate/:likeUnlike",
   [body("id", "Its not alphaNumeric").isAlphanumeric()],
