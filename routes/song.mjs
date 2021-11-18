@@ -5,7 +5,13 @@ import { userChoiceModel } from "../models/UserChoices.mjs";
 
 const songRouter = Router();
 
-// get all songs by the following artist id
+/**
+ * @route    GET /song/:artistType/:id
+ * @param    artistType as in rapper or beatproducer, id of the artist
+ * @desc     get all songs by the following artist id
+ * @access   Public
+ */
+
 songRouter.get("/:artistType/:id", [], async (req, res) => {
   try {
     //check for all the songs with artist id provided.
@@ -26,6 +32,13 @@ songRouter.get("/:artistType/:id", [], async (req, res) => {
     });
   }
 });
+
+/**
+ * @route    GET /song/likeSong/:songId
+ * @param    songId, id of the songs
+ * @desc     will add provided song id as the liked song of the logged in user
+ * @access   Private
+ */
 songRouter.post("/likeSong/:songId", authMiddleware, async (req, res) => {
   //like only if not present in like
 
@@ -64,6 +77,13 @@ songRouter.post("/likeSong/:songId", authMiddleware, async (req, res) => {
   const songInfo = await songModel.findOne({ _id: req.params.songId });
   res.json(songInfo._doc);
 });
+
+/**
+ * @route    GET /song/dislikeSong/:songId
+ * @param    songId, id of the songs
+ * @desc     will add provided song id as the disliked song of the logged in user
+ * @access   Public
+ */
 
 songRouter.post("/dislikeSong/:songId", authMiddleware, async (req, res) => {
   //dislike only if not present in like

@@ -14,7 +14,12 @@ const modals = new Map([
   ["likedSong", songModel],
   ["dislikedSong", songModel],
 ]);
-// fav rapper for the provided id user
+/**
+ * @route    GET api/userchoice/:id/:choice
+ * @param    id is id of song, rapper or beatproducer and choice will be key of model modals
+ * @desc     Get information about info of various info like fav rapper, likesong, dislikesong..etc based on id and choice made
+ * @access   Public
+ */
 userChoiceRouter.get("/:id/:choice", [], async (req, res) => {
   console.log(
     "[ userChoice ] Entering to fetch user choice info favourite rapper"
@@ -49,6 +54,12 @@ userChoiceRouter.get("/:id/:choice", [], async (req, res) => {
   }
 });
 
+/**
+ * @route    POST api/userchoice/add/:choice/:id/
+ * @param    id is id of song, rapper or beatproducer and choice will be key of model modals
+ * @desc     Will add document to database with new fav rapper, likesong, dislikesong..etc based on id and choice made
+ * @access   Private
+ */
 userChoiceRouter.post("/add/:choice/:id/", authMiddleware, async (req, res) => {
   const query = {};
   const currModal = modals.get(req.params.choice);
@@ -67,6 +78,13 @@ userChoiceRouter.post("/add/:choice/:id/", authMiddleware, async (req, res) => {
   });
   res.json(actionInfo);
 });
+
+/**
+ * @route    POST api/userchoice/remove/:choice/:id/
+ * @param    id is id of song, rapper or beatproducer and choice will be key of model modals
+ * @desc     Will remove id document from database with new fav rapper, likesong, dislikesong..etc based on id and choice made
+ * @access   Private
+ */
 
 userChoiceRouter.post(
   "/remove/:choice/:id/",
@@ -91,6 +109,13 @@ userChoiceRouter.post(
   }
 );
 
+/**
+ * @route    POST api/userchoice/likedartist/:artistValue/:action/:id
+ * @param    id is id of rapper or beatproducer and action will tell about the inc or dec of like and artist value decide weather rapper or beatproducer
+ * @desc     Will update the artist as liked for user on database
+ * @access   Private
+ */
+
 userChoiceRouter.post(
   "/likedartist/:artistValue/:action/:id",
   authMiddleware,
@@ -110,6 +135,13 @@ userChoiceRouter.post(
     }
   }
 );
+
+/**
+ * @route    POST api/userchoice/dislikedartist/:action/:id
+ * @param    id is id of rapper or beatproducer and action will tell about the inc or dec of like and artist value decide weather rapper or beatproducer
+ * @desc     Will update database as disliked artist for the current user
+ * @access   Private
+ */
 
 userChoiceRouter.post(
   "/dislikedartist/:action/:id",
@@ -132,6 +164,13 @@ userChoiceRouter.post(
   }
 );
 
+/**
+ * @route    POST api/userchoice/likecheck/:likeaction/:artistid
+ * @param    artistid is id rapper or beatproducer and likeaction whether its already liked or disliked
+ * @desc     Will check if current artist is liked by the user or not
+ * @access   Public
+ */
+
 userChoiceRouter.get(
   "/likecheck/:likeaction/:artistid",
   authMiddleware,
@@ -146,6 +185,13 @@ userChoiceRouter.get(
     }
   }
 );
+
+/**
+ * @route    POST api/userchoice/allFavSongs
+ * @param
+ * @desc     Will all fav rappers for the current users
+ * @access   Private
+ */
 
 userChoiceRouter.post("/allFavSongs", authMiddleware, async (req, res) => {
   let favSongs = await userChoiceModel.find(

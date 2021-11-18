@@ -6,6 +6,12 @@ import jwt from "jsonwebtoken";
 import config from "config";
 const userRouter = Router();
 
+/**
+ * @route    POST /user
+ * @param
+ * @desc      Regiter a user
+ * @access   Public
+ */
 userRouter.post(
   "/",
   [
@@ -58,6 +64,12 @@ userRouter.post(
   }
 );
 
+/**
+ * @route    GET /user/:email
+ * @param    email of the user
+ * @desc     Will check if already exist
+ * @access   Public
+ */
 userRouter.get("/:email", [], async (req, res) => {
   let user = await userModel.findOne({ email: req.params.email });
   if (user) {
