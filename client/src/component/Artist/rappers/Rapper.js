@@ -3,7 +3,6 @@ import SocialMedia from "./../../common/SocialMedia";
 import YoutubeVideo from "../../common/YoutubeVideo";
 import {
   artistActions,
-  songAction,
   userChoiceAction,
 } from "../../../state/actions";
 import { useSelector, useDispatch } from "react-redux";
@@ -19,7 +18,7 @@ const Rapper = ({ match }) => {
   const favRappers = useSelector((state) => state.userChoice.favrapper);
   let isFav = {};
   isFav.length = 0;
-  if (favRappers !== null) {
+  if (favRappers !== null && currArtist !== null) {
     isFav = favRappers.filter((rapper) => rapper.name === currArtist.name);
   }
 
@@ -124,9 +123,6 @@ const Rapper = ({ match }) => {
       );
       setLiked(likedCheck.data.res === "true");
 
-      dispatch(
-        artistActions.currentArtistInfo(artistType, match.params.rapper)
-      );
     } catch (error) {}
   }, []);
 

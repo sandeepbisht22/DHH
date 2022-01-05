@@ -98,7 +98,7 @@ const Navbar = (props) => {
                   href="#"
                   onClick={() => history.push("/")}
                 >
-                  !Home
+                  Home
                 </a>
               </li>
               <li className="nav-item dropdown">

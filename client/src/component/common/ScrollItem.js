@@ -1,18 +1,25 @@
 import React, { Fragment } from "react";
 import { useHistory } from "react-router";
 import { VisibilityContext } from "react-horizontal-scrolling-menu";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { artistActions } from "../../state/actions";
 
 const ScrollItem = ({ itemId, profileImage, name, onClick, selected }) => {
   const visibility = React.useContext(VisibilityContext);
   const history = useHistory();
+  const dispatch = useDispatch();
+
   const artistType = useSelector((state) => state.artist.artistType);
   console.log("artist type is " + artistType);
   return (
     <Fragment>
       <div
         className="mx-2"
-        onClick={() => history.push(`/artist/${artistType}/${name}`, name)}
+        onClick={() =>{ 
+          dispatch(
+            artistActions.currentArtistInfo(artistType, name)
+          );
+          history.push(`/artist/${artistType}/${name}`, name)}}
         style={{
           width: "350px",
         }}
