@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router";
+import { useNavigate } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { userActions, alertActions } from "../../state/actions";
 import loginArtist from "../../resources/images/LoginArtist.jpg";
@@ -14,7 +14,7 @@ const Login = () => {
 
   const { email, password } = user;
 
-  const history = useHistory();
+  const navigate = useNavigate();
   const submit = (e) => {
     e.preventDefault();
     console.log("Login called");
@@ -44,7 +44,7 @@ const Login = () => {
   };
 
   const userSignUp = () => {
-    history.push("/signup");
+    navigate("/signup");
   };
 
   const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
@@ -52,13 +52,13 @@ const Login = () => {
 
   useEffect(() => {
     if (isAuthenticated) {
-      history.push("/");
+      navigate("/");
     }
     if (error !== null) {
       dispatch(alertActions.setAlert(error, "danger"));
       dispatch(userActions.clearErrors());
     }
-  }, [error, isAuthenticated, history]);
+  }, [error, isAuthenticated, navigate]);
   return (
     <div style={{ backgroundColor: "grey" }}>
       <div className="container py-5">

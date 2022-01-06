@@ -1,12 +1,11 @@
 import React, { useEffect, Fragment } from "react";
-import { useHistory } from "react-router";
+import { useNavigate } from "react-router";
 import logo from "../../resources/images/desi-hip-hop.png";
 import { useDispatch, useSelector } from "react-redux";
 import { userActions } from "../../state/actions";
 import LogoutGoogle from "../auth/LogoutGoogle";
 const Navbar = (props) => {
-  const dispatch = useDispatch();
-  const history = useHistory();
+  const navigate = useNavigate();
   const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
 
   // Commenting as i am using  redux-persist for future so need to invoke everytime there is refresh
@@ -47,7 +46,7 @@ const Navbar = (props) => {
             <a
               className="dropdown-item"
               href="#"
-              onClick={() => history.push("/user")}
+              onClick={() => navigate("/user")}
             >
               <i className="fas fa-user-ninja pe-2"></i>
               {user !== null && user.name}{" "}
@@ -62,20 +61,22 @@ const Navbar = (props) => {
   );
   const GuestLinks = (
     <Fragment>
-      <a href="#" className="nav-link" onClick={() => history.push("/login")}>
+      <a href="#" className="nav-link" onClick={() => navigate("/login")}>
         Login
       </a>
     </Fragment>
   );
   return (
     <Fragment>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark bg-gradient">
+      <nav
+        className="navbar navbar-expand-lg navbar-dark bg-dark "
+        style={{
+          background:
+            "linear-gradient(90deg, rgba(255,0,0,1) 0%, rgba(25,164,208,1) 47%, rgba(255,255,255,1) 73%",
+        }}
+      >
         <div className="container-fluid">
-          <a
-            className="navbar-brand "
-            href="#"
-            onClick={() => history.push("/")}
-          >
+          <a className="navbar-brand " href="#" onClick={() => navigate("/")}>
             <img src={logo} className="logo-image" />
           </a>
           <button
@@ -96,56 +97,26 @@ const Navbar = (props) => {
                   className="nav-link active"
                   aria-current="page"
                   href="#"
-                  onClick={() => history.push("/")}
+                  onClick={() => navigate("/creators")}
                 >
-                  Home
+                  Creators
                 </a>
               </li>
-              <li className="nav-item dropdown">
+              <li className="nav-item">
                 <a
-                  className="nav-link dropdown-toggle"
+                  className="nav-link active"
+                  aria-current="page"
                   href="#"
-                  id="navbarDropdown"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
+                  onClick={() => navigate("/promoters")}
                 >
-                  Artist
+                  Promotors
                 </a>
-                <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li>
-                    <a
-                      className="dropdown-item"
-                      href="#"
-                      onClick={() => history.push("/artist/rappers")}
-                    >
-                      Rappers
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      className="dropdown-item"
-                      href="#"
-                      onClick={() => history.push("/artist/beatproducers")}
-                    >
-                      Beat Producers
-                    </a>
-                  </li>
-                  <li>
-                    <hr className="dropdown-divider" />
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Something else here
-                    </a>
-                  </li>
-                </ul>
               </li>
               <li className="nav-item">
                 <a
                   className="nav-link"
                   href="#"
-                  onClick={() => history.push("/reactionChannels")}
+                  onClick={() => navigate("/reactionChannels")}
                 >
                   Reaction Channels
                 </a>
@@ -156,7 +127,7 @@ const Navbar = (props) => {
                 <a
                   href="#"
                   className="nav-link"
-                  onClick={() => history.push("/about")}
+                  onClick={() => navigate("/about")}
                 >
                   Contact
                 </a>
@@ -165,7 +136,7 @@ const Navbar = (props) => {
                 <a
                   href="#"
                   className="nav-link"
-                  onClick={() => history.push("/test")}
+                  onClick={() => navigate("/test")}
                 >
                   Test
                 </a>
@@ -174,7 +145,7 @@ const Navbar = (props) => {
                 <a
                   href="#"
                   className="nav-link"
-                  onClick={() => history.push("/about")}
+                  onClick={() => navigate("/about")}
                 >
                   About
                 </a>

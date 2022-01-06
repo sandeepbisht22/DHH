@@ -1,12 +1,13 @@
 import React, { Fragment } from "react";
-import { useHistory } from "react-router";
+import { useNavigate } from "react-router";
 import { VisibilityContext } from "react-horizontal-scrolling-menu";
 import { useDispatch, useSelector } from "react-redux";
 import { artistActions } from "../../state/actions";
 
 const ScrollItem = ({ itemId, profileImage, name, onClick, selected }) => {
   const visibility = React.useContext(VisibilityContext);
-  const history = useHistory();
+  const navigate = useNavigate();
+
   const dispatch = useDispatch();
 
   const artistType = useSelector((state) => state.artist.artistType);
@@ -15,11 +16,10 @@ const ScrollItem = ({ itemId, profileImage, name, onClick, selected }) => {
     <Fragment>
       <div
         className="mx-2"
-        onClick={() =>{ 
-          dispatch(
-            artistActions.currentArtistInfo(artistType, name)
-          );
-          history.push(`/artist/${artistType}/${name}`, name)}}
+        onClick={() => {
+          dispatch(artistActions.currentArtistInfo(artistType, name));
+          navigate(`/artist/${artistType}/${name}`, name);
+        }}
         style={{
           width: "350px",
         }}

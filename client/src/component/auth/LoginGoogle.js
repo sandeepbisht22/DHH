@@ -2,12 +2,12 @@ import React, { useEffect } from "react";
 import { GoogleLogin } from "react-google-login";
 import { alertActions, userActions } from "../../state/actions";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router";
+import { useNavigate } from "react-router";
 var generator = require("generate-password");
 
 const LoginGoogle = () => {
   const dispatch = useDispatch();
-  const history = useHistory();
+  const navigate = useNavigate();
   const onSuccess = (res) => {
     try {
       dispatch(userActions.loginViaGoogle(res.profileObj.email));
@@ -39,12 +39,12 @@ const LoginGoogle = () => {
   const value = process.env.REACT_APP_GOOGLE_O_AUTH_CLIENT_ID;
   useEffect(() => {
     if (isAuthenticated) {
-      history.push("/");
+      navigate("/");
     } else if (error === "invalid Email" || error === "invalid Password") {
       dispatch(alertActions.setAlert(error, "danger"));
       dispatch(userActions.clearErrors());
     }
-  }, [error, isAuthenticated, history]);
+  }, [error, isAuthenticated, navigate]);
   return (
     <div className="pb-3">
       <GoogleLogin

@@ -43,3 +43,29 @@ code {
 ::-webkit-scrollbar {
   display: none;
 }
+.ripple {
+  background-position: center;
+  transition: background 1.2s;
+  height: 250px;
+  width: 250px;
+  border-radius: 125px;
+}
+.ripple:hover {
+  background: #ffff radial-gradient(circle, transparent 1%, #ffff 1%)
+    center/15000%;
+  text-shadow: 1px 1px 7px #030303;
+}
+.ripple:active {
+  background-color: #000;
+  background-size: 100%;
+  transition: background 0s;
+}
+
+@media screen and (min-width: 678px) {
+  .creatorgrid {
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
