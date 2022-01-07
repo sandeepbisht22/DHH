@@ -190,7 +190,11 @@ const BeatProducer = ({ match }) => {
           <div className="container-fluid">
             <div className="row justify-content-md-center">
               {currArtist.sociallinks.map((socialaccount, i) => (
-                <SocialMedia socialaccount={socialaccount} i={i}></SocialMedia>
+                <SocialMedia
+                  socialaccount={socialaccount}
+                  i={i}
+                  size={5}
+                ></SocialMedia>
               ))}
             </div>
           </div>

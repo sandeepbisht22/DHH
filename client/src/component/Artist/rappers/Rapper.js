@@ -1,10 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import SocialMedia from "./../../common/SocialMedia";
 import YoutubeVideo from "../../common/YoutubeVideo";
-import {
-  artistActions,
-  userChoiceAction,
-} from "../../../state/actions";
+import { artistActions, userChoiceAction } from "../../../state/actions";
 import { useSelector, useDispatch } from "react-redux";
 import Songs from "../../common/Songs";
 import axios from "axios";
@@ -122,7 +119,6 @@ const Rapper = ({ match }) => {
         `/userchoice/likecheck/likedrapper/${currArtist._id}`
       );
       setLiked(likedCheck.data.res === "true");
-
     } catch (error) {}
   }, []);
 
@@ -196,7 +192,11 @@ const Rapper = ({ match }) => {
           <div className="container-fluid">
             <div className="row justify-content-md-center">
               {currArtist.sociallinks.map((socialaccount, i) => (
-                <SocialMedia socialaccount={socialaccount} i={i}></SocialMedia>
+                <SocialMedia
+                  socialaccount={socialaccount}
+                  i={i}
+                  size={5}
+                ></SocialMedia>
               ))}
             </div>
           </div>

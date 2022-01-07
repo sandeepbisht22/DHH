@@ -2,20 +2,6 @@ import { Avatar, Box } from "@mui/material";
 import React, { Fragment } from "react";
 
 const SocialLinks = ({ linksData }) => {
-  let socailLinks = [];
-  for (let i = 0; i < linksData.length; i++) {
-    console.log("link data" + linksData[i]);
-    socailLinks.push(
-      <Box>
-        <Avatar
-          className="ripple"
-          alt="Remy Sharp"
-          //   src={linksData[i]}
-          // onClick={() => setTimeout(() => navigate("newschannels"), 1000)}
-        />
-      </Box>
-    );
-  }
   return (
     <Box
       sx={{
@@ -24,7 +10,17 @@ const SocialLinks = ({ linksData }) => {
         justifyContent: "space-evenly",
       }}
     >
-      {socailLinks}
+      {linksData.map((links) => (
+        <Box>
+          <Avatar
+            className="ripple"
+            alt="Remy Sharp"
+            src={"//"}
+            href={links}
+            // onClick={() => setTimeout(() => navigate("newschannels"), 1000)}
+          />
+        </Box>
+      ))}
     </Box>
   );
 };
