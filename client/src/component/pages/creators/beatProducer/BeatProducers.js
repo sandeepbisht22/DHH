@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import HorizontalScroll from "./../../common/HorizontalScroll";
-import { artistActions } from "../../../state/actions";
+import { artistActions } from "../../../../state/actions";
+import HorizontalScroll from "../../../common/HorizontalScroll";
 const BeatProducers = () => {
   const artistType = "beatProducers";
   const titles = ["OG"];

@@ -7,9 +7,7 @@ import mixMasteringLogo from "../../../resources/creators/mixMaster2 (1).png";
 import { useNavigate } from "react-router-dom";
 import { Item } from "../../common/Items";
 import { Route } from "react-router-dom";
-import Director from "./director/Director";
-import Rappers from "../../Artist/rappers/Rappers";
-import BeatProducers from "../../Artist/beat Producer/BeatProducers";
+import Rappers from "./rapper/all/Rappers";
 
 export const CreatorRoutes = (
   <Route exact path="/creators/rappers" component={Rappers}></Route>

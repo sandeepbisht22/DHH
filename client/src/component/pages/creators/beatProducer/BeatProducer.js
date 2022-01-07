@@ -1,36 +1,28 @@
-import React, { useEffect, useState, useRef } from "react";
-import SocialMedia from "./../../common/SocialMedia";
-import YoutubeVideo from "../../common/YoutubeVideo";
-import { artistActions, userChoiceAction } from "../../../state/actions";
+import React, { useEffect, useState } from "react";
+import SocialMedia from "../../../common/SocialMedia";
+import YoutubeVideo from "../../../common/YoutubeVideo";
+import { artistActions, userChoiceAction } from "../../../../state/actions";
 import { useSelector, useDispatch } from "react-redux";
-import Songs from "../../common/Songs";
+import Songs from "../../../common/Songs";
 import axios from "axios";
-import setAuthToken from "../../../utils/setAuthnToken";
-import { favRappers } from "./../../../state/actions/userChoiceAction";
-
-const Rapper = ({ match }) => {
+import setAuthToken from "../../../../utils/setAuthnToken";
+const BeatProducer = ({ match }) => {
   const dispatch = useDispatch();
   const artistType = useSelector((state) => state.artist.artistType);
-  const currArtist = useSelector((state) => state.artist.currArtist);
-  const favRappers = useSelector((state) => state.userChoice.favrapper);
-  let isFav = {};
-  isFav.length = 0;
-  if (favRappers !== null && currArtist !== null) {
-    isFav = favRappers.filter((rapper) => rapper.name === currArtist.name);
-  }
 
-  const [artistFavouriteIconClass, setArtistFavouriteIconClass] = useState(
-    isFav.length > 0 ? "fas fa-heart fa-3x" : "far fa-heart fa-3x"
-  );
+  const [artistFavouriteIconClass, setArtistFavouriteIconClass] =
+    useState("far fa-heart fa-3x");
+  const currArtist = useSelector((state) => state.artist.currArtist);
 
   const artistFavourite = (e) => {
-    if (artistFavouriteIconClass === "far fa-heart fa-3x") {
-      dispatch(userChoiceAction.addFav("favrapper", currArtist._id));
-      setArtistFavouriteIconClass("fas fa-heart fa-3x");
-    } else {
-      dispatch(userChoiceAction.removeFav("favrapper", currArtist._id));
-      setArtistFavouriteIconClass("far fa-heart fa-3x");
-    }
+    dispatch(userChoiceAction.addFav("favbeatproducer", currArtist._id));
+    setArtistFavouriteIconClass(
+      artistFavouriteIconClass === "far fa-heart fa-3x"
+        ? "fas fa-heart fa-3x"
+        : "far fa-heart fa-3x"
+    );
+
+    //TODO other things also like informing backend
   };
 
   const [liked, setLiked] = useState(false);
@@ -39,7 +31,7 @@ const Rapper = ({ match }) => {
   async function likeArtist(config, addRemove) {
     setAuthToken(localStorage.token);
     await axios.post(
-      `/userchoice/likedartist/likedrapper/${addRemove}/${currArtist._id}`,
+      `/userchoice/likedartist/likedbeatproducer/${addRemove}/${currArtist._id}`,
       null,
       config
     );
@@ -48,7 +40,7 @@ const Rapper = ({ match }) => {
   async function disLikedArtist(config, addRemove) {
     setAuthToken(localStorage.token);
     await axios.post(
-      `/userchoice/dislikedartist/dislikedrapper/${addRemove}/${currArtist._id}`,
+      `/userchoice/dislikedartist/dislikedbeatproducer/${addRemove}/${currArtist._id}`,
       null,
       config
     );
@@ -64,9 +56,14 @@ const Rapper = ({ match }) => {
     };
 
     dispatch(
-      artistActions.likeUnLikeArtist("rappers", likeUnlikeInfo, currentAction)
+      artistActions.likeUnLikeArtist(
+        "beatProducers",
+        likeUnlikeInfo,
+        currentAction
+      )
     );
   }
+
   function artistLikedUnliked(currentAction) {
     const config = {
       header: {
@@ -102,23 +99,23 @@ const Rapper = ({ match }) => {
       dbUpdate("unLike", "inc");
     }
   }
-  // const songUpdate = useRef(false);
-  // if (!songUpdate.current) {
-  //   dispatch(songAction.allArtistSongs(artistType, currArtist._id));
-  //   songUpdate.current = true;
-  // }
   useEffect(async () => {
     try {
       setAuthToken(localStorage.token);
       const disLikedCheck = await axios.get(
-        `/userchoice/likecheck/dislikedrapper/${currArtist._id}`
+        `/userchoice/likecheck/dislikedbeatproducer/${currArtist._id}`
       );
       setDisliked(disLikedCheck.data.res === "true");
 
       const likedCheck = await axios.get(
-        `/userchoice/likecheck/likedrapper/${currArtist._id}`
+        `/userchoice/likecheck/likedbeatproducer/${currArtist._id}`
       );
+
       setLiked(likedCheck.data.res === "true");
+
+      dispatch(
+        artistActions.currentArtistInfo(artistType, match.params.beatProducer)
+      );
     } catch (error) {}
   }, []);
 
@@ -134,7 +131,7 @@ const Rapper = ({ match }) => {
               }}
               className="border border-5 border-white"
               src={
-                require(`../../../resources/artist/images/page/${currArtist.profileImage}`)
+                require(`../../../../resources/artist/images/page/${currArtist.profileImage}`)
                   .default
               }
             />
@@ -205,4 +202,4 @@ const Rapper = ({ match }) => {
     )
   );
 };
-export default Rapper;
+export default BeatProducer;

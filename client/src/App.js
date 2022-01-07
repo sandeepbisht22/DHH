@@ -3,11 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Navbar from "./component/layout/Navbar";
 import Home from "./component/pages/Home";
 import About from "./component/pages/About";
-import Rappers from "./component/Artist/rappers/Rappers";
-import Rapper from "./component/Artist/rappers/Rapper";
 import { Provider } from "react-redux";
-import BeatProducers from "./component/Artist/beat Producer/BeatProducers";
-import BeatProducer from "./component/Artist/beat Producer/BeatProducer";
 import Login from "./component/auth/Login";
 import SignUp from "./component/auth/SignUp";
 import PrivateRoute from "./component/routing/PrivateRoute";
@@ -26,6 +22,10 @@ import Blogs from "./component/pages/promoters/Blogs/Blogs";
 import InstagramPages from "./component/pages/promoters/instagramPages/InstagramPages";
 import NewsChannels from "./component/pages/promoters/newsChannels/NewsChannels";
 import ReactionChannels from "./component/pages/promoters/reactionChannels/ReactionChannels";
+import Rapper from "./component/pages/creators/rapper/Rapper";
+import BeatProducer from "./component/pages/creators/beatProducer/BeatProducer";
+import BeatProducers from "./component/pages/creators/beatProducer/BeatProducers";
+import Rappers from "./component/pages/creators/rapper/all/Rappers";
 function App() {
   return (
     <Provider store={store}>
