@@ -3,9 +3,7 @@ import {
   CardActions,
   CardContent,
   CardMedia,
-  Button,
   Typography,
-  Avatar,
   Grid,
 } from "@mui/material";
 import { Box } from "@mui/system";
