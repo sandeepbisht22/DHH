@@ -5,6 +5,7 @@ import { artistActions } from "../../../../../state/actions";
 import { Box } from "@mui/system";
 import AvatarOptionList from "./AvatarOptionList";
 import AllCategory from "./everyCategory/AllCategory";
+import SingleCategory from "./single/SingleCategory";
 
 const Rappers = () => {
   const artistType = "rappers";
@@ -24,16 +25,21 @@ const Rappers = () => {
   return (
     // <div style={{ backgroundColor: "#272727" }}>
     <div>
-      <Box sx={{ display: "flex" }}>
+      <Box className="test">
         <Box>
           <AvatarOptionList
             currenttype={currenttype}
             setCurrenttype={setCurrenttype}
             titles={titles}
+            artistType={artistType}
           />
         </Box>
         <Box>
-          <AllCategory titles={titles} />
+          {currenttype === "All" ? (
+            <AllCategory titles={titles} />
+          ) : (
+            <SingleCategory artistType={artistType} title={currenttype} />
+          )}
         </Box>
       </Box>
       {/* {artists !== null &&

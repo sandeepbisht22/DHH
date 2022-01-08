@@ -30,7 +30,9 @@ const Creators = () => {
               className="ripple"
               alt="Remy Sharp"
               src={rapperLogo}
-              onClick={() => setTimeout(() => navigate("rappers"), 1000)}
+              onClick={() =>
+                setTimeout(() => navigate("/creators/rappers"), 1000)
+              }
               sx={{ m: "auto", width: 200, height: 200 }}
             />
             <Typography variant="subtitle1">Rappers</Typography>

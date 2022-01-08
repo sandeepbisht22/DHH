@@ -61,6 +61,11 @@ code {
   transition: background 0s;
 }
 
+.test {
+  display: flex;
+  flex-direction: row;
+}
+
 @media screen and (min-width: 678px) {
   .creatorgrid {
     height: 90vh;
@@ -72,5 +77,11 @@ code {
     min-width: 150px;
     height: 400px;
     margin: "auto";
+  }
+}
+@media screen and (max-width: 900px) {
+  .test {
+    display: flex;
+    flex-direction: column;
   }
 }

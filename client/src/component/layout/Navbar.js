@@ -96,7 +96,6 @@ const Navbar = (props) => {
                 <a
                   className="nav-link active"
                   aria-current="page"
-                  href="#"
                   onClick={() => navigate("/creators")}
                 >
                   Creators

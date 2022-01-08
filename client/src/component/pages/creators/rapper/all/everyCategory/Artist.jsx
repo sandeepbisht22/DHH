@@ -8,9 +8,17 @@ import {
   Typography,
 } from "@mui/material";
 import React from "react";
+import { useNavigate } from "react-router";
+import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight";
+import { useDispatch, useSelector } from "react-redux";
+import { artistActions } from "../../../../../../state/actions";
 const Artist = ({ artist }) => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const artistType = useSelector((state) => state.artist.artistType);
+
   return (
-    <Grid item xs={6} sm={3}>
+    <Grid item xs={12} sm={4} md={3}>
       <Card className="multipleArtistDisplay" sx={{ m: 1 }}>
         <Typography gutterBottom variant="h5" component="div">
           {artist.name}
@@ -26,9 +34,19 @@ const Artist = ({ artist }) => {
           alt="green iguana"
         />
         <CardContent>
-          <Typography variant="body2" color="text.secondary">
-            {artist.orignalName}
-          </Typography>
+          <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+            <Typography variant="body2" color="text.secondary">
+              {artist.orignalName}
+            </Typography>
+            <ArrowCircleRightIcon
+              onClick={() => {
+                dispatch(
+                  artistActions.currentArtistInfo(artistType, artist.name)
+                );
+                navigate(`/creators/rappers/${artist.name}`);
+              }}
+            />
+          </Box>
         </CardContent>
         <CardActions style={{ background: "black" }}>
           <Box

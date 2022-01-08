@@ -4,11 +4,13 @@ import {
   CURRENT_ARTIST,
   ARTIST_UNLIKED,
   ARTIST_LIKED,
+  CURR_CATEGORY_ARTIST_INFO,
 } from "../types";
 
 const initialState = {
   artists: null,
   currArtist: null,
+  currCategoryArtistInfo: null,
   artistType: null,
   loading: false,
   error: null,
@@ -67,6 +69,11 @@ export default (state = initialState, action) => {
               }
             : artist
         ),
+      };
+    case CURR_CATEGORY_ARTIST_INFO:
+      return {
+        ...state,
+        currCategoryArtistInfo: action.payload,
       };
     default:
       return state;

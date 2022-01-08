@@ -4,6 +4,7 @@ import {
   CURRENT_ARTIST,
   ARTIST_UNLIKED,
   ARTIST_LIKED,
+  CURR_CATEGORY_ARTIST_INFO,
 } from "../types";
 import axios from "axios";
 export const currentArtistType = (artist) => async (dispatch) => {
@@ -38,7 +39,21 @@ export const artistsInfo = (artistType, titles) => async (dispatch) => {
     console.log("Error is " + error);
   }
 };
+export const currCategoryArtistInfo =
+  (artistType, title) => async (dispatch) => {
+    try {
+      console.log("Start executing calls inside for");
 
+      const res = await axios.get(`/artist/${artistType}/title/${title}`);
+
+      dispatch({
+        type: CURR_CATEGORY_ARTIST_INFO,
+        payload: res.data,
+      });
+    } catch (error) {
+      console.log("Error is " + error);
+    }
+  };
 ////Like artist
 
 export const likeUnLikeArtist =

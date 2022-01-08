@@ -42,44 +42,36 @@ function App() {
                   path="/about"
                   element={<PrivateRoute component={About} />}
                 />
-                <Route exact path="/creators/rappers" element={<Rappers />} />
-                <Route
-                  exact
-                  path="/creators/mixmasters"
-                  element={<MixMasters />}
-                />
+                <Route path="/creators" element={<Creators />}></Route>
+                <Route path="/promoters" element={<Promoters />}></Route>
+                <Route path="/creators/rappers" element={<Rappers />} />
+                <Route path="/creators/mixmasters" element={<MixMasters />} />
 
                 <Route
-                  exact
                   path="/promoters/reactionchannels"
                   element={<ReactionChannels />}
                 />
-                <Route exact path="/promoters/blogs" element={<Blogs />} />
+                <Route path="/promoters/blogs" element={<Blogs />} />
                 <Route
-                  exact
                   path="/promoters/instagrampages"
                   element={<InstagramPages />}
                 />
                 <Route
-                  exact
                   path="/promoters/newschannels"
                   element={<NewsChannels />}
                 />
 
                 <Route
-                  exact
                   path="/creators/beatproducers"
                   element={<PrivateRoute component={BeatProducers} />}
                 />
 
                 <Route
-                  exact
-                  path="/artist/rappers/:rapper"
+                  path="/creators/rappers/:rapper"
                   element={<PrivateRoute component={Rapper} />}
                 />
 
                 <Route
-                  exact
                   path="/artist/beatproducers/:beatProducer"
                   element={<PrivateRoute component={BeatProducer} />}
                 />
@@ -87,13 +79,8 @@ function App() {
                 <Route path="/signup" element={<SignUp />} />
                 <Route path="/test" element={<Test />} />
                 <Route path="/user" element={<User />} />
-                <Route path="/creators" element={<Creators />}></Route>
-                <Route path="/promoters" element={<Promoters />}></Route>
-                <Route
-                  exact
-                  path="/creators/director"
-                  element={<Director />}
-                ></Route>
+
+                <Route path="/creators/director" element={<Director />}></Route>
 
                 {/* {CreatorRoutes} */}
 

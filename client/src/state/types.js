@@ -22,5 +22,6 @@ export const DISLIKE_CHECK = "DISLIKE_CHECK";
 export const LIKE_CHECK = "LIKE_CHECK";
 export const LIKE_SONG = "LIKE_SONG";
 export const ALL_SONG = "ALL_SONG";
+export const CURR_CATEGORY_ARTIST_INFO = "CURR_CATEGORY_ARTIST_INFO";
 
 export const FAV_REMOVED = "FAV_REMOVED";
