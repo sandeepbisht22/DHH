@@ -22,10 +22,8 @@ import Blogs from "./component/pages/promoters/Blogs/Blogs";
 import InstagramPages from "./component/pages/promoters/instagramPages/InstagramPages";
 import NewsChannels from "./component/pages/promoters/newsChannels/NewsChannels";
 import ReactionChannels from "./component/pages/promoters/reactionChannels/ReactionChannels";
-import Rapper from "./component/pages/creators/rapper/Rapper";
-import BeatProducer from "./component/pages/creators/beatProducer/BeatProducer";
-import BeatProducers from "./component/pages/creators/beatProducer/BeatProducers";
-import Rappers from "./component/pages/creators/rapper/all/Rappers";
+import Rapper from "./component/pages/creators/artist/Rapper";
+import Artists from "./component/pages/creators/artist/all/Artists";
 function App() {
   return (
     <Provider store={store}>
@@ -44,7 +42,7 @@ function App() {
                 />
                 <Route path="/creators" element={<Creators />}></Route>
                 <Route path="/promoters" element={<Promoters />}></Route>
-                <Route path="/creators/rappers" element={<Rappers />} />
+                <Route path="/creators/:artisttype" element={<Artists />} />
                 <Route path="/creators/mixmasters" element={<MixMasters />} />
 
                 <Route
@@ -62,19 +60,10 @@ function App() {
                 />
 
                 <Route
-                  path="/creators/beatproducers"
-                  element={<PrivateRoute component={BeatProducers} />}
-                />
-
-                <Route
                   path="/creators/rappers/:rapper"
                   element={<PrivateRoute component={Rapper} />}
                 />
 
-                <Route
-                  path="/artist/beatproducers/:beatProducer"
-                  element={<PrivateRoute component={BeatProducer} />}
-                />
                 <Route path="/login" element={<Login />} />
                 <Route path="/signup" element={<SignUp />} />
                 <Route path="/test" element={<Test />} />

@@ -6,9 +6,12 @@ import { Box } from "@mui/system";
 import AvatarOptionList from "./AvatarOptionList";
 import AllCategory from "./everyCategory/AllCategory";
 import SingleCategory from "./single/SingleCategory";
+import { useParams } from "react-router-dom";
 
 const Rappers = () => {
-  const artistType = "rappers";
+  const params = useParams();
+
+  const artistType = params.artisttype;
   const dispatch = useDispatch();
   dispatch(artistActions.currentArtistType(artistType));
 
@@ -42,14 +45,6 @@ const Rappers = () => {
           )}
         </Box>
       </Box>
-      {/* {artists !== null &&
-        artists.map((horizontalScroll, i) => (
-          <HorizontalScroll
-            key={i}
-            horizontalScroll={horizontalScroll}
-            title={titles[i]}
-          ></HorizontalScroll>
-        ))} */}
     </div>
   );
 };

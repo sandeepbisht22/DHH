@@ -7,10 +7,10 @@ import mixMasteringLogo from "../../../resources/creators/mixMaster2 (1).png";
 import { useNavigate } from "react-router-dom";
 import { Item } from "../../common/Items";
 import { Route } from "react-router-dom";
-import Rappers from "./rapper/all/Rappers";
+import Artists from "./artist/all/Artists";
 
 export const CreatorRoutes = (
-  <Route exact path="/creators/rappers" component={Rappers}></Route>
+  <Route exact path="/creators/rappers" component={Artists}></Route>
   // <Route
   //   exact
   //   path="/creator/beatProducers"
@@ -60,7 +60,9 @@ const Creators = () => {
               className="ripple"
               alt="Remy Sharp"
               src={beatProducerLogo}
-              onClick={() => setTimeout(() => navigate("beatproducers"), 1000)}
+              onClick={() =>
+                setTimeout(() => navigate("/creators/beatProducers"), 1000)
+              }
               sx={{ m: "auto", width: 200, height: 200 }}
             />
             <Typography variant="subtitle1">Beat Producers</Typography>
