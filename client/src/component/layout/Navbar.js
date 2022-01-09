@@ -29,7 +29,7 @@ const Navbar = (props) => {
       <ul className="navbar-nav ml-auto">
         <li className="nav-item">
           <a
-            className="nav-link dropdown-toggle"
+            className="nav-link dropdown-toggle text-dark"
             href="#"
             id="navbarDropdown"
             role="button"
@@ -44,14 +44,14 @@ const Navbar = (props) => {
             aria-labelledby="navbarDropdown"
           >
             <a
-              className="dropdown-item"
+              className="dropdown-item text-dark"
               href="#"
               onClick={() => navigate("/user")}
             >
-              <i className="fas fa-user-ninja pe-2"></i>
-              {user !== null && user.name}{" "}
+              <i className="fas fa-user-ninja pe-2" color="black"></i>
+              {user !== null && user.name}
             </a>
-            <a className="dropdown-item" href="#">
+            <a className="dropdown-item " href="#">
               <LogoutGoogle></LogoutGoogle>
             </a>
           </div>
@@ -61,7 +61,11 @@ const Navbar = (props) => {
   );
   const GuestLinks = (
     <Fragment>
-      <a href="#" className="nav-link" onClick={() => navigate("/login")}>
+      <a
+        href="#"
+        className="nav-link text-dark"
+        onClick={() => navigate("/login")}
+      >
         Login
       </a>
     </Fragment>
@@ -94,7 +98,7 @@ const Navbar = (props) => {
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
                 <a
-                  className="nav-link active"
+                  className="nav-link active text-dark"
                   aria-current="page"
                   onClick={() => navigate("/creators")}
                 >
@@ -103,7 +107,7 @@ const Navbar = (props) => {
               </li>
               <li className="nav-item">
                 <a
-                  className="nav-link active"
+                  className="nav-link active text-dark"
                   aria-current="page"
                   href="#"
                   onClick={() => navigate("/promoters")}
@@ -113,11 +117,11 @@ const Navbar = (props) => {
               </li>
               <li className="nav-item">
                 <a
-                  className="nav-link"
+                  className="nav-link text-dark"
                   href="#"
-                  onClick={() => navigate("/reactionChannels")}
+                  onClick={() => navigate("/labels")}
                 >
-                  Reaction Channels
+                  Labels
                 </a>
               </li>
             </ul>
@@ -125,7 +129,7 @@ const Navbar = (props) => {
               <li className="nav-item">
                 <a
                   href="#"
-                  className="nav-link"
+                  className="nav-link text-dark"
                   onClick={() => navigate("/about")}
                 >
                   Contact
@@ -134,7 +138,7 @@ const Navbar = (props) => {
               <li className="nav-item">
                 <a
                   href="#"
-                  className="nav-link"
+                  className="nav-link text-dark"
                   onClick={() => navigate("/test")}
                 >
                   Test
@@ -143,7 +147,7 @@ const Navbar = (props) => {
               <li className="nav-item">
                 <a
                   href="#"
-                  className="nav-link"
+                  className="nav-link text-dark"
                   onClick={() => navigate("/about")}
                 >
                   About

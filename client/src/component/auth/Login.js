@@ -60,7 +60,7 @@ const Login = () => {
     }
   }, [error, isAuthenticated, navigate]);
   return (
-    <div style={{ backgroundColor: "grey" }}>
+    <div style={{}}>
       <div className="container py-5">
         <div
           className="row justify-content-center p-3"

@@ -63,7 +63,7 @@ const SignUp = () => {
     }
   }, [error, isAuthenticated, navigate]);
   return (
-    <div style={{ backgroundColor: "grey" }} className="container py-4">
+    <div style={{}} className="container py-4">
       <div
         className="row justify-content-center p-3"
         style={{

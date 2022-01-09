@@ -7,6 +7,7 @@ import { authRouter } from "./routes/auth.mjs";
 import { songRouter } from "./routes/song.mjs";
 import { userChoiceRouter } from "./routes/userChoice.mjs";
 import promoterRouter from "./routes/promoterRoutes.mjs";
+import labelRouter from "./routes/labelRouter.mjs";
 
 const app = express();
 
@@ -29,5 +30,6 @@ app.use("/auth", authRouter);
 app.use("/song", songRouter);
 app.use("/userchoice", userChoiceRouter);
 app.use("/promoter", promoterRouter);
+app.use("/label", labelRouter);
 
 app.listen(PORT, () => console.log(`Server started on ${PORT}`));

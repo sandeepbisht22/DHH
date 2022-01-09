@@ -24,6 +24,7 @@ import NewsChannels from "./component/pages/promoters/newsChannels/NewsChannels"
 import ReactionChannels from "./component/pages/promoters/reactionChannels/ReactionChannels";
 import Rapper from "./component/pages/creators/artist/Rapper";
 import Artists from "./component/pages/creators/artist/all/Artists";
+import Labels from "./component/pages/labels/Labels";
 function App() {
   return (
     <Provider store={store}>
@@ -44,6 +45,7 @@ function App() {
                 <Route path="/promoters" element={<Promoters />}></Route>
                 <Route path="/creators/:artisttype" element={<Artists />} />
                 <Route path="/creators/mixmasters" element={<MixMasters />} />
+                <Route path="/labels" element={<Labels />} />
 
                 <Route
                   path="/promoters/reactionchannels"
