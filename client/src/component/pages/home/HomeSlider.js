@@ -1,10 +1,10 @@
 import React from "react";
 import Slider from "react-slick";
-import rapperImage from "../../resources/HomeSlider/Rapper-bohemia.jpg";
-import djImage from "../../resources/HomeSlider/nucleya-in-action.jpg";
-import bboyImage from "../../resources/HomeSlider/bboying girl.jpg";
-import beatBoxerImage from "../../resources/HomeSlider/Beatboxer-1.jpg";
-import GrafImage from "../../resources/HomeSlider/Grafeti.jpg";
+import rapperImage from "../../../resources/HomeSlider/Rapper-bohemia.jpg";
+import djImage from "../../../resources/HomeSlider/nucleya-in-action.jpg";
+import bboyImage from "../../../resources/HomeSlider/bboying girl.jpg";
+import beatBoxerImage from "../../../resources/HomeSlider/Beatboxer-1.jpg";
+import GrafImage from "../../../resources/HomeSlider/Grafeti.jpg";
 
 const HomeSlider = () => {
   const settings = {

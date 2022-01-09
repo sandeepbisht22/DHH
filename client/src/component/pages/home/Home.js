@@ -1,9 +1,10 @@
 import React, { Fragment, useEffect } from "react";
 
-import HomeSlider from "../layout/HomeSlider";
-import Footer from "../layout/Footer";
-import { userChoiceAction } from "../../state/actions";
+import HomeSlider from "./HomeSlider";
+import Footer from "../../layout/Footer";
+import { userChoiceAction } from "../../../state/actions";
 import { useDispatch, useSelector } from "react-redux";
+import HomeShortCutIcons from "./HomeShortCutIcons";
 const Home = () => {
   const user = useSelector((state) => state.user.user);
 
@@ -18,8 +19,8 @@ const Home = () => {
 
   return (
     <Fragment>
-      <HomeSlider></HomeSlider>
-      <Footer></Footer>
+      <HomeSlider />
+      <HomeShortCutIcons />
     </Fragment>
   );
 };

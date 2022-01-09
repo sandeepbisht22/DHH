@@ -1,7 +1,6 @@
 import { Fragment } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Navbar from "./component/layout/Navbar";
-import Home from "./component/pages/Home";
 import About from "./component/pages/About";
 import { Provider } from "react-redux";
 import Login from "./component/auth/Login";
@@ -25,6 +24,8 @@ import ReactionChannels from "./component/pages/promoters/reactionChannels/React
 import Rapper from "./component/pages/creators/artist/Rapper";
 import Artists from "./component/pages/creators/artist/all/Artists";
 import Labels from "./component/pages/labels/Labels";
+import Home from "./component/pages/home/Home";
+import Footer from "./component/layout/Footer";
 function App() {
   return (
     <Provider store={store}>
@@ -77,6 +78,7 @@ function App() {
 
                 {PromoteRoutes}
               </Routes>
+              <Footer />
             </Fragment>
           </Router>
         </div>
