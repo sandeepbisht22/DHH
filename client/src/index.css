@@ -30,12 +30,10 @@ code {
   -ms-overflow-style: -ms-autohiding-scrollbar;
 }
 .card-signup {
-  background-color: #272727 !important;
   color: #61892f;
 }
 .page {
-  background-color: #272727 !important;
-  color: #61892f;
+  color: #e91014;
 }
 * {
   -ms-overflow-style: none;

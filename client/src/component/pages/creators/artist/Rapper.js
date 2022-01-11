@@ -124,7 +124,7 @@ const Rapper = ({ match }) => {
 
   return (
     currArtist !== null && (
-      <div style={{ backgroundColor: "#272727" }}>
+      <div style={{ backgroundColor: "#" }}>
         <div className="d-inline-flex flex-row">
           <div className="pe-3 pb-3 ps-3">
             <img
@@ -140,13 +140,13 @@ const Rapper = ({ match }) => {
             />
           </div>
           <div className="position-relative">
-            <h1 style={{ color: "#61892F" }}>
+            <h1 style={{ color: "#56799a" }}>
               {currArtist.name} - The [{currArtist.title} ]of DHH
             </h1>
-            <div style={{ color: "#FFFFFF" }}>{currArtist.about}</div>
+            <div style={{ color: "#" }}>{currArtist.about}</div>
             <div className="position-absolute bottom-0 container">
               <div
-                style={{ color: "#FFFFFF" }}
+                style={{ color: "#" }}
                 className="d-flex justify-content-evenly"
               >
                 <div>
@@ -174,7 +174,7 @@ const Rapper = ({ match }) => {
           </div>
         </div>
         <div className="container-fluid" style={{ margin: "0px" }}>
-          <h3 style={{ color: "#61892F" }}>Famous Bars</h3>
+          <h3 style={{ color: "#56799a" }}>Famous Bars</h3>
           <div className="scroll">
             <div className="row flex-row flex-nowrap">
               <Songs songsList={currArtist.songs}></Songs>
@@ -186,11 +186,14 @@ const Rapper = ({ match }) => {
           </div>
         </div>
         <div className="col-md-12">
-          <h3 style={{ color: "#61892F" }} className="text-center">
+          <h3 style={{ color: "#56799a" }} className="text-center">
             Social Links
           </h3>
           <div className="container-fluid">
-            <div className="row justify-content-md-center">
+            <div
+              className="row justify-content-md-center"
+              style={{ backgroundColor: "black" }}
+            >
               {currArtist.sociallinks.map((socialaccount, i) => (
                 <SocialMedia
                   socialaccount={socialaccount}

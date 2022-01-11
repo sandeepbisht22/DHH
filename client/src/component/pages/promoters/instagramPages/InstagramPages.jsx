@@ -35,18 +35,18 @@ const InstagramPages = () => {
                     component="img"
                     height="340"
                     image={
-                      require(`../../../../resources/promoters/youtube/${currChannel.profileImage}`)
+                      require(`../../../../resources/promoters/all/${currChannel.profileImage}`)
                         .default
                     }
                     alt="green iguana"
                   />
                   <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
-                      {currChannel.orginalName}
+                      {currChannel.originalName}
                     </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      {currChannel.orginalName}
-                    </Typography>
+                    {/* <Typography variant="body2" color="text.secondary">
+                      Work Queries : @{currChannel.workemail}
+                    </Typography> */}
                   </CardContent>
                   <CardActions style={{ background: "black" }}>
                     <Box
@@ -56,13 +56,16 @@ const InstagramPages = () => {
                         width: "100%",
                       }}
                     >
-                      {currChannel.sociallinks.map((socialaccount, i) => (
-                        <SocialMedia
-                          socialaccount={socialaccount}
-                          i={i}
-                          size={2}
-                        ></SocialMedia>
-                      ))}
+                      {currChannel.sociallinks.map(
+                        (socialaccount, i) =>
+                          (socialaccount !== null || socialaccount !== "") && (
+                            <SocialMedia
+                              socialaccount={socialaccount}
+                              i={i}
+                              size={2}
+                            ></SocialMedia>
+                          )
+                      )}
                     </Box>
                     {/* <SocialLinks linksData={currChannel.sociallinks} /> */}
                   </CardActions>

@@ -8,6 +8,7 @@ import {
   AUTH_FAIL,
   CLEAR_ERROR,
   LOGIN_VIA_GOOGLE,
+  UPDATE_USER_INFO,
 } from "../types";
 import axios from "axios";
 import setAuthToken from "../../utils/setAuthnToken";
@@ -93,6 +94,19 @@ export const loginViaGoogle = (email) => async (dispatch) => {
   console.log(JSON.stringify(res));
   dispatch({
     type: LOGIN_VIA_GOOGLE,
+    payload: res.data,
+  });
+};
+
+export const updateUserInfo = (formData) => async (dispatch) => {
+  const config = {
+    headers: {
+      "content-type": "application/json",
+    },
+  };
+  const res = await axios.post("/user/update", formData, config);
+  dispatch({
+    type: UPDATE_USER_INFO,
     payload: res.data,
   });
 };

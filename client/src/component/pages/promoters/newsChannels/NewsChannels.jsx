@@ -35,18 +35,18 @@ const NewsChannels = () => {
                     component="img"
                     height="340"
                     image={
-                      require(`../../../../resources/promoters/youtube/${currChannel.profileImage}`)
+                      require(`../../../../resources/promoters/all/${currChannel.profileImage}`)
                         .default
                     }
                     alt="green iguana"
                   />
                   <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
-                      {currChannel.orginalName}
+                      {currChannel.originalName}
                     </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      {currChannel.orginalName}
-                    </Typography>
+                    {/* <Typography variant="body2" color="text.secondary">
+                      Work Queries : @{currChannel.workemail}
+                    </Typography> */}
                   </CardContent>
                   <CardActions style={{ background: "black" }}>
                     <Box

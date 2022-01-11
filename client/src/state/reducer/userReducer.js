@@ -8,6 +8,7 @@ import {
   AUTH_FAIL,
   CLEAR_ERROR,
   LOGIN_VIA_GOOGLE,
+  UPDATE_USER_INFO,
 } from "../types";
 
 const initialState = {
@@ -30,6 +31,7 @@ export default (state = initialState, action) => {
         loading: false,
       };
     case LOAD_USER:
+    case UPDATE_USER_INFO:
       return {
         ...state,
         isAuthenticated: true,

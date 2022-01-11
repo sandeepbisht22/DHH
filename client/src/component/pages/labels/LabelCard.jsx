@@ -42,7 +42,7 @@ const LabelCard = ({ label }) => {
         <Avatar
           sx={{ m: "auto", width: 100, height: 100 }}
           src={
-            require(`../../../resources/promoters/youtube/${label.profileImage}`)
+            require(`../../../resources/promoters/all/${label.profileImage}`)
               .default
           }
         >
@@ -56,6 +56,9 @@ const LabelCard = ({ label }) => {
         <Typography variant="body2" color="text.secondary">
           Founded Year : {label.foundedYear.split("T")[0]}
         </Typography>
+        {/* <Typography variant="body2" color="text.secondary">
+          Work Queries : @{label.workemail}
+        </Typography> */}
       </CardContent>
       <CardActions sx={{ background: "black" }}>
         <Box

@@ -7,7 +7,7 @@ const FavArtist = ({ favArtist, title }) => {
         <h3>{title}</h3>
         <div className="scroll">
           <div
-            className="row flex-row flex-nowrap col-md-5"
+            className="row flex-row flex-nowrap col-md-4"
             style={{ height: "25vh" }}
           >
             {favArtist.map((rapper) => (

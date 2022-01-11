@@ -4,6 +4,7 @@ import { userModel } from "../models/User.mjs";
 import bycrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import config from "config";
+import { authMiddleware } from "../middleware/auth.mjs";
 const userRouter = Router();
 
 /**
@@ -91,5 +92,15 @@ userRouter.get("/:email", [], async (req, res) => {
   } else {
     return res.status(400).json({ msg: "user already exist" });
   }
+});
+
+userRouter.post("/update", authMiddleware, async (req, res) => {
+  const { name, email, phoneno } = req.body;
+  const currName = name[0];
+  const updatedData = await userModel.updateOne(
+    { _id: req.user.id },
+    { name: currName, email: email, phoneno: phoneno }
+  );
+  res.json(updatedData);
 });
 export { userRouter };

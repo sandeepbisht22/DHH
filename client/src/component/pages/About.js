@@ -2,7 +2,7 @@ import React from "react";
 import devProfile from "../../resources/images/me and the mountain call.JPG";
 const About = () => {
   return (
-    <div className="container-fluid" style={{ backgroundColor: "#272727" }}>
+    <div className="container-fluid" style={{ backgroundColor: "#" }}>
       <div className="row">
         <div
           className="col-6  pb-5 my-5 d-flex justify-content-center align-items-center"
@@ -17,12 +17,12 @@ const About = () => {
         </div>
         <div className="col-6 my-5 pe-5">
           <h2
-            style={{ backgroundColor: "#272727", color: "#61892F" }}
+            style={{ backgroundColor: "#", color: "#61892F" }}
             className="p-2 border border-3 rounded ps-4"
           >
             About Me
           </h2>
-          <p style={{ color: "#FFFFFF" }} className="my-2 px-2">
+          <p style={{ color: "#black" }} className="my-2 px-2">
             My name is Sandeep Bisht, Software Engineer by profession and very
             enthusiastic about Desi HIP HOP. Specially about the Desi Rap. Hip
             Hop is medium where one can freely express ourselve and that's the
@@ -30,11 +30,11 @@ const About = () => {
           </p>
           <h4
             className="p-2 border border-3 rounded ps-4 mt-5"
-            style={{ backgroundColor: "#272727", color: "#61892F" }}
+            style={{ backgroundColor: "#", color: "#61892F" }}
           >
             My Aim
           </h4>
-          <p style={{ color: "#FFFFFF" }} className="my-2 px-2">
+          <p style={{ color: "black" }} className="my-2 px-2">
             I strongly believe that we can take DHH to the next level and it
             deserves to be taken to the next level. Our India has much more
             talent that can take over world they just need a platform, so its my

@@ -8,7 +8,6 @@ import SignUp from "./component/auth/SignUp";
 import PrivateRoute from "./component/routing/PrivateRoute";
 import Alerts from "./component/layout/Alerts";
 import Test from "./component/Test";
-import User from "./component/pages/User";
 import { persistor, store } from "./store";
 import { PersistGate } from "redux-persist/integration/react";
 import Creators, { CreatorRoutes } from "./component/pages/creators/Creators";
@@ -26,6 +25,8 @@ import Artists from "./component/pages/creators/artist/all/Artists";
 import Labels from "./component/pages/labels/Labels";
 import Home from "./component/pages/home/Home";
 import Footer from "./component/layout/Footer";
+import User from "./component/pages/user/User";
+import UserDetails from "./component/pages/user/UserDetails";
 function App() {
   return (
     <Provider store={store}>
@@ -71,6 +72,7 @@ function App() {
                 <Route path="/signup" element={<SignUp />} />
                 <Route path="/test" element={<Test />} />
                 <Route path="/user" element={<User />} />
+                <Route path="/user/edit" element={<UserDetails />} />
 
                 <Route path="/creators/director" element={<Director />}></Route>
 
