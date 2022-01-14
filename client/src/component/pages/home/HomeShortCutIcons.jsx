@@ -14,7 +14,7 @@ const HomeShortCutIcons = () => {
   return (
     <div className="m-4">
       <Grid container spacing={2}>
-        <Grid item xs={12} sm={3} onClick={() => navigate("/creators/rapper")}>
+        <Grid item xs={12} sm={3} onClick={() => navigate("/creators/rappers")}>
           <Avatar
             sx={{ width: 100, height: 100, m: "auto" }}
             src={rapperLogo}

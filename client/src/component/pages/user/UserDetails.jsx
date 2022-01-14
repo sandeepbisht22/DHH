@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import profileImage from "../../../resources/images/defaultProfile.png";
 import { userActions } from "../../../state/actions";
 
 const UserDetails = () => {
   const globalUser = useSelector((state) => state.user.user);
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [user, setUser] = useState({
     name: globalUser.name,

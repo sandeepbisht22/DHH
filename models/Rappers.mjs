@@ -9,6 +9,14 @@ const rapperSchema = mongoose.Schema({
     type: String,
     required: true,
   },
+  city: {
+    type: String,
+    required: true,
+  },
+  gender: {
+    type: String,
+    required: true,
+  },
   about: {
     type: String,
     required: true,

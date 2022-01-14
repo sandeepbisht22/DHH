@@ -92,7 +92,7 @@ const Promoters = () => {
           >
             <Avatar
               className="ripple"
-              onClick={() => setTimeout(() => navigate("blogs"), 1000)}
+              onClick={() => setTimeout(() => navigate("app"), 1000)}
               alt="Remy Sharp"
               src={blogLogo}
               sx={{ m: "auto", width: 200, height: 200 }}

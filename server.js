@@ -8,10 +8,11 @@ import { songRouter } from "./routes/song.mjs";
 import { userChoiceRouter } from "./routes/userChoice.mjs";
 import promoterRouter from "./routes/promoterRoutes.mjs";
 import labelRouter from "./routes/labelRouter.mjs";
-
+import dotenv from "dotenv";
 const app = express();
-
 // Making DB connection
+
+dotenv.config();
 connectMongoDB();
 
 app.use(express.json({ extended: false }));

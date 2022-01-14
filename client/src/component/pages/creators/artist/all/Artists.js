@@ -15,7 +15,15 @@ const Rappers = () => {
   const dispatch = useDispatch();
   dispatch(artistActions.currentArtistType(artistType));
 
-  const titles = ["All", "OG", "Legend", "UnderDog", "Upcoming"];
+  const titles = [
+    "All",
+    "GOAT",
+    "OG",
+    "Kings",
+    "Napoleon",
+    "UnderDog",
+    "Upcoming",
+  ];
   const [currenttype, setCurrenttype] = useState(titles[0]);
   useEffect(() => {
     try {
