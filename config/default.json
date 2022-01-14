@@ -1,4 +1,4 @@
 {
-    "mongoDBUri" :"mongodb://localhost:27017/DHH",
+    "mongoDBUri" :"mongodb+srv://Bishtsandy22:MongodbDHH@cluster0.u06xa.mongodb.net/DHH?retryWrites=true&w=majority",
     "jwtSecret":"secret"
 }
