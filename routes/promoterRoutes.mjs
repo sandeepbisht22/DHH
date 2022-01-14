@@ -1,5 +1,5 @@
 import express from "express";
-import { promoterModel } from "../models/promoterModel.mjs";
+import { promoterModel } from "../models/PromoterModel.mjs";
 import { body, validationResult } from "express-validator";
 
 const promoterRouter = express.Router();
