@@ -12,7 +12,6 @@ import { useNavigate } from "react-router";
 import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight";
 import { useDispatch, useSelector } from "react-redux";
 import { artistActions } from "../../../../../../state/actions";
-import a from "../../../../../../resources";
 const Artist = ({ artist }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
