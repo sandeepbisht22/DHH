@@ -37,12 +37,15 @@ function App() {
               <Navbar></Navbar>
               <Alerts></Alerts>
               <Routes>
-                <Route path="/" element={<PrivateRoute component={Home} />} />
+                <Route path="/" element={<Home />} />
+                {/* <Route path="/" element={<PrivateRoute component={Home} />} /> */}
+
                 {/* <PrivateRoute path="/" element={<Home />} /> */}
-                <Route
+                {/* <Route
                   path="/about"
                   element={<PrivateRoute component={About} />}
-                />
+                /> */}
+                <Route path="/about" element={<About />} />
                 <Route path="/creators" element={<Creators />}></Route>
                 <Route path="/promoters" element={<Promoters />}></Route>
                 <Route path="/creators/:artisttype" element={<Artists />} />

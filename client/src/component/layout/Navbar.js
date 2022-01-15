@@ -4,6 +4,7 @@ import logo from "../../resources/images/desi-hip-hop.png";
 import { useDispatch, useSelector } from "react-redux";
 import { userActions } from "../../state/actions";
 import LogoutGoogle from "../auth/LogoutGoogle";
+import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 const Navbar = (props) => {
   const navigate = useNavigate();
   const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
@@ -84,7 +85,7 @@ const Navbar = (props) => {
             <img src={logo} className="logo-image" />
           </a>
           <button
-            className="navbar-toggler"
+            className="navbar-toggler navbar-dark"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarSupportedContent"
@@ -92,7 +93,7 @@ const Navbar = (props) => {
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <span className="navbar-toggler-icon"></span>
+            <MoreHorizIcon sx={{ color: "black" }} />
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
