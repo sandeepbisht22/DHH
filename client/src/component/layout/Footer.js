@@ -1,6 +1,21 @@
-import React from "react";
+import React, { Fragment } from "react";
+import { Formik, Form } from "formik";
+import * as Yup from "yup";
+import TextField from "../common/TextField";
+import SuggeestionSentEmail from "./SuggeestionSentEmail";
 
 const Footer = () => {
+  const emailSchema = Yup.object({
+    email: Yup.string().email().required("Email is required"),
+    suggestion: Yup.string().required("Suggestion is required"),
+  });
+  const sendEmail = () => {
+    console.log("send Email");
+  };
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
   return (
     <footer className="bg-dark text-center text-white my-4">
       <div className="container p-4">
@@ -56,36 +71,52 @@ const Footer = () => {
           </a>
         </section>
         <section className="">
-          <form action="">
-            <div className="row d-flex justify-content-center">
-              <div className="col-auto">
-                <p className="pt-2">
-                  <strong>Sign up for our newsletter</strong>
-                </p>
-              </div>
+          <Formik
+            initialValues={{ email: "", suggestion: "" }}
+            onSubmit={(values) => {
+              handleOpen();
+              sendEmail();
+            }}
+            validationSchema={emailSchema}
+          >
+            {(formik) => (
+              <div>
+                <Form style={{ width: "100%", margin: "auto" }}>
+                  <div className="row d-flex justify-content-center">
+                    <div className="col-auto">
+                      <p className="pt-2">
+                        <strong>Send me a suggestion</strong>
+                      </p>
+                    </div>
+                    <TextField
+                      label="Email address"
+                      name="email"
+                      type="text"
+                      formik={formik}
+                    />
 
-              <div className="col-md-5 col-12">
-                <div className="form-outline form-white mb-4">
-                  <input
-                    type="email"
-                    id="form5Example21"
-                    className="form-control"
-                  />
-                  <label className="form-label" htmlFor="form5Example21">
-                    Email address
-                  </label>
-                </div>
+                    <TextField
+                      label="Suggestion"
+                      name="suggestion"
+                      type="text"
+                      formik={formik}
+                    />
+                    <div className="col-auto">
+                      <button
+                        type="submit"
+                        // onClick={sendEmail}
+                        className="btn btn-outline-light mb-4"
+                      >
+                        Send
+                      </button>
+                    </div>
+                  </div>
+                </Form>
               </div>
-
-              <div className="col-auto">
-                <button type="submit" className="btn btn-outline-light mb-4">
-                  Subscribe
-                </button>
-              </div>
-            </div>
-          </form>
+            )}
+          </Formik>
         </section>
-
+        <SuggeestionSentEmail open={open} handleClose={handleClose} />
         <section className="mb-4">
           <p>Let's explore DESI HIP HOP together and</p>
         </section>
