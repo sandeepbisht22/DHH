@@ -7,10 +7,15 @@ import Songs from "../../../common/Songs";
 import axios from "axios";
 import setAuthToken from "../../../../utils/setAuthnToken";
 import { favRappers } from "../../../../state/actions/userChoiceAction";
+import LoginSignUpModal from "../../../common/LoginSignUpModal";
 
 const Rapper = ({ match }) => {
   const dispatch = useDispatch();
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
   const artistType = useSelector((state) => state.artist.artistType);
+  const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
   const currArtist = useSelector((state) => state.artist.currArtist);
   const favRappers = useSelector((state) => state.userChoice.favrapper);
   let isFav = {};
@@ -151,20 +156,32 @@ const Rapper = ({ match }) => {
               >
                 <div>
                   <i
-                    onClick={() => artistLikedUnliked("like")}
+                    onClick={() =>
+                      isAuthenticated !== null || isAuthenticated != ""
+                        ? handleOpen()
+                        : artistLikedUnliked("like")
+                    }
                     className="fas fa-microphone fa-3x"
                   ></i>
                   <span className="ps-3">{currArtist.like}</span>
                 </div>
                 <div>
                   <i
-                    onClick={artistFavourite}
+                    onClick={() =>
+                      isAuthenticated !== null || isAuthenticated != ""
+                        ? handleOpen()
+                        : artistFavourite
+                    }
                     className={artistFavouriteIconClass}
                   ></i>
                 </div>
                 <div>
                   <i
-                    onClick={() => artistLikedUnliked("unLike")}
+                    onClick={() =>
+                      isAuthenticated !== null || isAuthenticated != ""
+                        ? handleOpen()
+                        : artistLikedUnliked("unLike")
+                    }
                     className="fas fa-microphone-slash fa-3x"
                   ></i>
                   <span className="ps-3">{currArtist.unLike}</span>
@@ -179,7 +196,7 @@ const Rapper = ({ match }) => {
             <div className="row flex-row flex-nowrap">
               <Songs songsList={currArtist.songs}></Songs>
               {/* <YoutubeVideo
-                youtubeKey="AIzaSyB47-Z2ZklkZUzSVKohYBoazrKVqM3ddxc"
+                youtubeKey=""
                 channelId="UCMXMp3Lc6v6v8dJH5ZGwtqA"
               ></YoutubeVideo> */}
             </div>
@@ -204,6 +221,7 @@ const Rapper = ({ match }) => {
             </div>
           </div>
         </div>
+        <LoginSignUpModal open={open} handleClose={handleClose} />
       </div>
     )
   );

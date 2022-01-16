@@ -66,11 +66,11 @@ function App() {
                   element={<NewsChannels />}
                 />
 
-                <Route
+                {/* <Route
                   path="/creators/rappers/:rapper"
                   element={<PrivateRoute component={Rapper} />}
-                />
-
+                /> */}
+                <Route path="/creators/rappers/:rapper" element={<Rapper />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/signup" element={<SignUp />} />
                 <Route path="/contact" element={<Contact />} />
