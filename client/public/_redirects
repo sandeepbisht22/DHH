@@ -1,21 +1,19 @@
-/auth/* https://desihiphop.herokuapp.com/auth/:splat 200
+/auth/\* https://desihiphop.herokuapp.com/auth/:splat 200
 
-/user/* https://desihiphop.herokuapp.com/user/:splat 200
+/user/\* https://desihiphop.herokuapp.com/user/:splat 200
 
-/artist/* https://desihiphop.herokuapp.com/artist/:splat 200
+/artist/\* https://desihiphop.herokuapp.com/artist/:splat 200
 
+/artist/rappers/\* https://desihiphop.herokuapp.com/artist/rappers/:splat 200
 
-/artist/rappers/* https://desihiphop.herokuapp.com/artist/rappers/:splat 200
+/artist/beatProducers/\* https://desihiphop.herokuapp.com/artist/beatProducers/:splat 200
 
+/song/\* https://desihiphop.herokuapp.com/song/:splat 200
 
-/artist/beatProducers/* https://desihiphop.herokuapp.com/artist/beatProducers/:splat 200
+/userchoice/\* https://desihiphop.herokuapp.com/userchoice/:splat 200
 
-/song/* https://desihiphop.herokuapp.com/song/:splat 200
+/promoter/\* https://desihiphop.herokuapp.com/promoter/:splat 200
 
-/userchoice/* https://desihiphop.herokuapp.com/userchoice/:splat 200
+/label/\* https://desihiphop.herokuapp.com/label/:splat 200
 
-/promoter/* https://desihiphop.herokuapp.com/promoter/:splat 200
-
-/label/* https://desihiphop.herokuapp.com/label/:splat 200
-
-
+/common/\* https://desihiphop.herokuapp.com/common/:splat 200

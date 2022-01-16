@@ -13,3 +13,6 @@
 /promoter/\* https://desihiphop.herokuapp.com/promoter/:splat 200
 
 /label/\* https://desihiphop.herokuapp.com/label/:splat 200
+
+/common/\* https://desihiphop.herokuapp.com/common/:splat 200
+
