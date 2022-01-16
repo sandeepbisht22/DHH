@@ -123,8 +123,6 @@ export const sendEmail = (subject, email, content) => async (dispatch) => {
       "content-type": "application/json",
     },
   };
-  const ac = await axios.get("/");
-
   const res = await axios.post("/common/sendemail", body, config);
   console.log(res.data);
 };
