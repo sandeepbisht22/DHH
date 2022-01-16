@@ -3,13 +3,19 @@ import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import TextField from "../common/TextField";
 import SuggeestionSentEmail from "./SuggeestionSentEmail";
+import { useDispatch } from "react-redux";
+import { userActions } from "../../state/actions";
 
 const Footer = () => {
+  const dispatch = useDispatch();
   const emailSchema = Yup.object({
     email: Yup.string().email().required("Email is required"),
     suggestion: Yup.string().required("Suggestion is required"),
   });
-  const sendEmail = () => {
+  const sendEmail = (values) => {
+    dispatch(
+      userActions.sendEmail("Suggestion Email", values.email, values.suggestion)
+    );
     console.log("send Email");
   };
   const [open, setOpen] = React.useState(false);
@@ -75,7 +81,7 @@ const Footer = () => {
             initialValues={{ email: "", suggestion: "" }}
             onSubmit={(values) => {
               handleOpen();
-              sendEmail();
+              sendEmail(values);
             }}
             validationSchema={emailSchema}
           >

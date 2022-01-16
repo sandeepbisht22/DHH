@@ -111,6 +111,24 @@ export const updateUserInfo = (formData) => async (dispatch) => {
   });
 };
 
+export const sendEmail = (subject, email, content) => async (dispatch) => {
+  const message =
+    "Suggestion by id : " + email + " and the content is : " + content;
+  const body = {
+    subject: subject,
+    suggestedData: message,
+  };
+  const config = {
+    headers: {
+      "content-type": "application/json",
+    },
+  };
+  const ac = await axios.get("/");
+
+  const res = await axios.post("/common/sendemail", body, config);
+  console.log(res.data);
+};
+
 //Logout USer
 export const logoutUser = () => async (dispatch) => {
   dispatch({

@@ -6,7 +6,7 @@ import { userRouter } from "./routes/user.mjs";
 import { authRouter } from "./routes/auth.mjs";
 import { songRouter } from "./routes/song.mjs";
 import { userChoiceRouter } from "./routes/userChoice.mjs";
-import { commonRouter } from "./routes/common.mjs";
+import commonRouter from "./routes/common.mjs";
 
 import promoterRouter from "./routes/promoterRoutes.mjs";
 import labelRouter from "./routes/labelRouter.mjs";

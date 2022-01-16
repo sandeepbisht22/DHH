@@ -5,7 +5,7 @@ const commonRouter = Router();
 commonRouter.post("/sendemail", [], (req, res) => {
   const senderEmailName = process.env.SENDER_EMAIL_NAME;
   const receiverEmail = process.env.RECEIVER_EMAIL_NAME;
-  const emailPassword = process.env.EMAIL_PASSWORD;
+  const emailPassword = process.env.SENDER_EMAIL_PASSWORD;
   const { subject, suggestedData } = req.body;
   var transporter = nodemailer.createTransport({
     service: "gmail",
@@ -23,7 +23,9 @@ commonRouter.post("/sendemail", [], (req, res) => {
   transporter.sendMail(mailOptions, function (error, info) {
     if (error) {
       console.log(error);
-      res.json({ error: "Email not sent due to error : " + error.message });
+      res.json({
+        error: "Email not sent due to error and test data : " + error.message,
+      });
     } else {
       console.log("Email sent: " + info.response);
       res.json({ res: "Email sent: " + info.response });
@@ -31,4 +33,4 @@ commonRouter.post("/sendemail", [], (req, res) => {
   });
 });
 
-export { commonRouter };
+export default commonRouter;
