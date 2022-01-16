@@ -131,20 +131,12 @@ const Navbar = (props) => {
                 <a
                   href="#"
                   className="nav-link text-dark"
-                  onClick={() => navigate("/about")}
+                  onClick={() => navigate("/contact")}
                 >
                   Contact
                 </a>
               </li>
-              <li className="nav-item">
-                <a
-                  href="#"
-                  className="nav-link text-dark"
-                  onClick={() => navigate("/test")}
-                >
-                  Test
-                </a>
-              </li>
+
               <li className="nav-item">
                 <a
                   href="#"
