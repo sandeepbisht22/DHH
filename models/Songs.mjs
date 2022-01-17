@@ -18,9 +18,11 @@ const songSchema = mongoose.Schema({
   },
   like: {
     type: Number,
+    default: 0,
   },
   dislike: {
     type: Number,
+    default: 0,
   },
 });
 

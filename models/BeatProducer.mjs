@@ -26,13 +26,21 @@ const beatProducerSchema = mongoose.Schema({
   },
   like: {
     type: Number,
+    default: 0,
   },
   unLike: {
     type: Number,
+    default: 0,
   },
   date: {
     type: Date,
     default: Date.now,
+  },
+  websites: {
+    type: String,
+  },
+  producertag: {
+    type: String,
   },
 });
 

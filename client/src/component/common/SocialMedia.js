@@ -1,4 +1,6 @@
+import { Grid } from "@mui/material";
 import React, { Fragment } from "react";
+import { Item } from "./Items";
 
 const SocialMedia = ({ socialaccount, i, size }) => {
   const socialMediaMap = {
@@ -21,7 +23,17 @@ const SocialMedia = ({ socialaccount, i, size }) => {
   const clickLink = entries[0][1];
 
   return (
-    <Fragment>
+    <Grid
+      item
+      xs={4}
+      sm={4}
+      md={2}
+      style={{
+        backgroundColor: "black",
+        display: "flex",
+        justifyContent: "center",
+      }}
+    >
       {
         <a
           href={clickLink}
@@ -29,10 +41,10 @@ const SocialMedia = ({ socialaccount, i, size }) => {
           target="_blank"
           rel="noreferrer noopener"
         >
-          <i className={className} style={{ color: "#FFFFFF" }}></i>
+          <i className={className} style={{ color: "white" }}></i>
         </a>
       }
-    </Fragment>
+    </Grid>
   );
 };
 

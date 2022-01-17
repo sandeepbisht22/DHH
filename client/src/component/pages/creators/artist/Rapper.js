@@ -8,6 +8,8 @@ import axios from "axios";
 import setAuthToken from "../../../../utils/setAuthnToken";
 import { favRappers } from "../../../../state/actions/userChoiceAction";
 import LoginSignUpModal from "../../../common/LoginSignUpModal";
+import { Box, Grid, Typography } from "@mui/material";
+import { Item } from "../../../common/Items";
 
 const Rapper = ({ match }) => {
   const dispatch = useDispatch();
@@ -16,8 +18,8 @@ const Rapper = ({ match }) => {
   const handleClose = () => setOpen(false);
   const artistType = useSelector((state) => state.artist.artistType);
   const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
-  const currArtist = useSelector((state) => state.artist.currArtist);
   const favRappers = useSelector((state) => state.userChoice.favrapper);
+  const currArtist = useSelector((state) => state.artist.currArtist);
   let isFav = {};
   isFav.length = 0;
   if (favRappers !== null && currArtist !== null) {
@@ -130,86 +132,107 @@ const Rapper = ({ match }) => {
   return (
     currArtist !== null && (
       <div style={{ backgroundColor: "#" }}>
-        <div className="d-inline-flex flex-row">
-          <div className="pe-3 pb-3 ps-3">
-            <img
-              style={{
-                height: "400px",
-                width: "300px",
-              }}
-              className="border border-5 border-white"
-              src={
-                require(`../../../../resources/artist/images/page/${currArtist.profileImage}`)
-                  .default
-              }
-            />
-          </div>
-          <div className="position-relative">
-            <h1 style={{ color: "#56799a" }}>
-              {currArtist.name} - The [{currArtist.title} ]of DHH
-            </h1>
-            <div style={{ color: "#" }}>{currArtist.about}</div>
-            <div className="position-absolute bottom-0 container">
-              <div
-                style={{ color: "#" }}
-                className="d-flex justify-content-evenly"
-              >
-                <div>
-                  <i
-                    onClick={() =>
-                      isAuthenticated !== null || isAuthenticated != ""
-                        ? handleOpen()
-                        : artistLikedUnliked("like")
-                    }
-                    className="fas fa-microphone fa-3x"
-                  ></i>
-                  <span className="ps-3">{currArtist.like}</span>
-                </div>
-                <div>
-                  <i
-                    onClick={() =>
-                      isAuthenticated !== null || isAuthenticated != ""
-                        ? handleOpen()
-                        : artistFavourite
-                    }
-                    className={artistFavouriteIconClass}
-                  ></i>
-                </div>
-                <div>
-                  <i
-                    onClick={() =>
-                      isAuthenticated !== null || isAuthenticated != ""
-                        ? handleOpen()
-                        : artistLikedUnliked("unLike")
-                    }
-                    className="fas fa-microphone-slash fa-3x"
-                  ></i>
-                  <span className="ps-3">{currArtist.unLike}</span>
+        <Grid container spacing={2} sx={{ my: 2 }}>
+          <Grid item xs={12} sm={3}>
+            <Item>
+              <img
+                style={{
+                  height: "400px",
+                  width: "300px",
+                }}
+                className="border border-5 border-white"
+                src={
+                  require(`../../../../resources/artist/images/page/${currArtist.profileImage}`)
+                    .default
+                }
+              />
+            </Item>
+          </Grid>
+          <Grid item xs={12} sm={9}>
+            <Item style={{ height: "400px" }} sx={{ m: 1 }}>
+              <h1 style={{ color: "#56799a" }}>
+                {currArtist.name} - The [{currArtist.title} ]of DHH
+              </h1>
+              <Typography variant="subtitle1" className="text-start">
+                {currArtist.about}
+              </Typography>
+              <div style={{ color: "#" }}></div>
+            </Item>
+            <Item className="position-relative" style={{ minHeight: "50px" }}>
+              <div className="position-absolute bottom-0 container">
+                <div
+                  style={{ color: "#" }}
+                  className="d-flex justify-content-evenly"
+                >
+                  <div>
+                    <i
+                      onClick={() =>
+                        isAuthenticated !== null || isAuthenticated != ""
+                          ? handleOpen()
+                          : artistLikedUnliked("like")
+                      }
+                      className="fas fa-microphone fa-3x"
+                    ></i>
+                    <span className="ps-3">{currArtist.like}</span>
+                  </div>
+                  <div>
+                    <i
+                      onClick={() =>
+                        isAuthenticated !== null || isAuthenticated != ""
+                          ? handleOpen()
+                          : artistFavourite
+                      }
+                      className={artistFavouriteIconClass}
+                    ></i>
+                  </div>
+                  <div>
+                    <i
+                      onClick={() =>
+                        isAuthenticated !== null || isAuthenticated != ""
+                          ? handleOpen()
+                          : artistLikedUnliked("unLike")
+                      }
+                      className="fas fa-microphone-slash fa-3x"
+                    ></i>
+                    <span className="ps-3">{currArtist.unLike}</span>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-        <div className="container-fluid" style={{ margin: "0px" }}>
-          <h3 style={{ color: "#56799a" }}>Famous Bars</h3>
-          <div className="scroll">
-            <div className="row flex-row flex-nowrap">
-              <Songs songsList={currArtist.songs}></Songs>
-              {/* <YoutubeVideo
+            </Item>
+          </Grid>
+
+          <Grid item xs={12} sm={12}>
+            <div className="container-fluid" style={{ margin: "0px" }}>
+              <Typography
+                variant="h3"
+                className="text-center"
+                sx={{ mb: 1, color: "#56799a" }}
+              >
+                Famous Bars
+              </Typography>
+              <div className="scroll">
+                <div className="row flex-row flex-nowrap">
+                  <Songs songsList={currArtist.songs}></Songs>
+                  {/* <YoutubeVideo
                 youtubeKey=""
                 channelId="UCMXMp3Lc6v6v8dJH5ZGwtqA"
               ></YoutubeVideo> */}
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-        <div className="col-md-12">
-          <h3 style={{ color: "#56799a" }} className="text-center">
-            Social Links
-          </h3>
-          <div className="container-fluid">
-            <div
-              className="row justify-content-md-center"
-              style={{ backgroundColor: "black" }}
+          </Grid>
+          <Box style={{ width: "100%" }}>
+            <Typography
+              variant="h3"
+              className="text-center"
+              sx={{ mb: 1, color: "#56799a" }}
+            >
+              Social Links
+            </Typography>
+            <Grid
+              container
+              spacing={2}
+              style={{ display: "flex", justifyContent: "space-evenly" }}
             >
               {currArtist.sociallinks.map((socialaccount, i) => (
                 <SocialMedia
@@ -218,9 +241,9 @@ const Rapper = ({ match }) => {
                   size={5}
                 ></SocialMedia>
               ))}
-            </div>
-          </div>
-        </div>
+            </Grid>
+          </Box>
+        </Grid>
         <LoginSignUpModal open={open} handleClose={handleClose} />
       </div>
     )

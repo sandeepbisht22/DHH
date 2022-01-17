@@ -34,9 +34,11 @@ const rapperSchema = mongoose.Schema({
   },
   like: {
     type: Number,
+    default: 0,
   },
   unLike: {
     type: Number,
+    default: 0,
   },
   date: {
     type: Date,

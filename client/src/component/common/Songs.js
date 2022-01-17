@@ -35,9 +35,9 @@ const Songs = ({ songsList }) => {
 
   return (
     songsList !== null && (
-      <div className="d-flex pb-3" style={{ color: "white" }}>
+      <div className="d-flex pb-3">
         {songsList.map((song) => (
-          <div className="col-md-3" id={song._id}>
+          <div className="col-md-3" id={song._id} style={{ height: "220px" }}>
             <div>
               <a
                 href={song.songlinks[0]["youtube"]}
@@ -49,10 +49,7 @@ const Songs = ({ songsList }) => {
             </div>
             <div>{song.name}</div>
 
-            <div
-              style={{ color: "#FFFFFF" }}
-              className="d-flex justify-content-evenly"
-            >
+            <div className="d-flex justify-content-evenly">
               <div>
                 <i
                   onClick={() => artistLikedUnliked("like", song._id)}
