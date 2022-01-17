@@ -83,3 +83,9 @@ code {
     flex-direction: column;
   }
 }
+
+@media screen and (min-width: 678px) {
+  .minAboutTextBoxHeight {
+    height: 400px;
+  }
+}

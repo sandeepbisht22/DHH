@@ -149,7 +149,7 @@ const Rapper = ({ match }) => {
             </Item>
           </Grid>
           <Grid item xs={12} sm={9}>
-            <Item style={{ height: "400px" }} sx={{ m: 1 }}>
+            <Item className="minAboutTextBoxHeight" sx={{ m: 1 }}>
               <h1 style={{ color: "#56799a" }}>
                 {currArtist.name} - The [{currArtist.title} ]of DHH
               </h1>
