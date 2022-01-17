@@ -124,7 +124,7 @@ const Footer = () => {
         </section>
         <SuggeestionSentEmail open={open} handleClose={handleClose} />
         <section className="mb-4">
-          <p>Let's explore DESI HIP HOP together and</p>
+          <p>Let's explore DESI HIP HOP together.</p>
         </section>
       </div>
     </footer>
