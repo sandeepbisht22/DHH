@@ -82,6 +82,9 @@ code {
     display: flex;
     flex-direction: column;
   }
+  .avatarSmallScreen {
+    overflow-x: auto;
+  }
 }
 
 @media screen and (min-width: 678px) {
