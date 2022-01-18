@@ -37,7 +37,7 @@ const Rappers = () => {
     // <div style={{ backgroundColor: "#272727" }}>
     <div>
       <Box className="test">
-        <Box>
+        <Box style={{ "overflow-x": "auto" }}>
           <AvatarOptionList
             currenttype={currenttype}
             setCurrenttype={setCurrenttype}
