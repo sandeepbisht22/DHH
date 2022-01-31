@@ -64,7 +64,34 @@ code {
   flex-direction: row;
 }
 
-@media screen and (min-width: 678px) {
+.parentHeader {
+}
+
+.parentHeaderimage1 {
+  position: relative;
+  top: 0;
+  left: 0;
+  border: 1px solid #000000;
+}
+
+.parentHeaderimage2 {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  border: 1px solid #000000;
+}
+.homeheadertop {
+  background-position: bottom;
+  background-size: cover;
+  height: 30vh;
+}
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  .homeheadertop {
+    background-position: bottom;
+    background-size: cover;
+    height: 60vh;
+  }
   .creatorgrid {
     height: 90vh;
     display: flex;
@@ -76,8 +103,22 @@ code {
     height: 400px;
     margin: "auto";
   }
+  .minAboutTextBoxHeight {
+    height: 400px;
+  }
 }
-@media screen and (max-width: 900px) {
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .homeheadertop {
+    background-position: bottom;
+    background-size: cover;
+    width: 100vw;
+    height: 83vh;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+  }
   .test {
     display: flex;
     flex-direction: column;
@@ -87,8 +128,14 @@ code {
   }
 }
 
-@media screen and (min-width: 678px) {
-  .minAboutTextBoxHeight {
-    height: 400px;
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  .homeheadertop {
+    background-position: bottom;
+    background-size: cover;
+    height: 100vh;
+  }
+  .bohImage {
+    height: 87%;
   }
 }

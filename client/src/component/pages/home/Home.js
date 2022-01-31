@@ -5,6 +5,10 @@ import Footer from "../../layout/Footer";
 import { userChoiceAction } from "../../../state/actions";
 import { useDispatch, useSelector } from "react-redux";
 import HomeShortCutIcons from "./HomeShortCutIcons";
+import HomeHeader from "./homeheader/HomeHeader";
+import ArtistType from "./artisttype/ArtistType";
+import ExploreHipHop from "./explorehiphop/ExploreHipHop";
+import LatestPost from "./latestpost/LatestPost";
 const Home = () => {
   const user = useSelector((state) => state.user.user);
 
@@ -19,7 +23,11 @@ const Home = () => {
 
   return (
     <Fragment>
-      <HomeSlider />
+      <HomeHeader />
+      <ArtistType />
+      <ExploreHipHop />
+      {/* <HomeSlider /> */}
+      <LatestPost />
       <HomeShortCutIcons />
     </Fragment>
   );

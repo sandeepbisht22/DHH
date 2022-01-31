@@ -13,7 +13,7 @@ const TextField = ({ label, name, type, formik }) => {
   //   const [field, meta] = useField(props);
 
   return (
-    <div className="col-md-3 col-12">
+    <div className="col-md-3 col-5">
       <div className="form-outline form-white mb-4">
         <input
           type={type}
