@@ -30,7 +30,6 @@ const AvatarOptionList = ({
             setCurrenttype(title);
           }}
           sx={{
-            m: "auto",
             width: 100,
             height: 100,
             bgcolor: backGroundColor(title),

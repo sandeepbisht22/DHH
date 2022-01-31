@@ -12,6 +12,7 @@ const initialState = {
   favsong: null,
   currartistchoiceinfo: null,
   error: null,
+  loading: false,
 };
 
 export default (state = initialState, action) => {

@@ -9,6 +9,7 @@ import {
   CLEAR_ERROR,
   LOGIN_VIA_GOOGLE,
   UPDATE_USER_INFO,
+  SET_LOADING,
 } from "../types";
 import axios from "axios";
 import setAuthToken from "../../utils/setAuthnToken";
@@ -16,6 +17,7 @@ import setAuthToken from "../../utils/setAuthnToken";
 //Will store logged in or Signed up user
 export const loadUser = () => async (dispatch) => {
   console.log("load User is called");
+  setLoading()(dispatch);
   setAuthToken(localStorage.token);
   try {
     const res = await axios.get("/auth");
@@ -37,6 +39,7 @@ export const loadUser = () => async (dispatch) => {
 //Register User on database
 export const signUpUser = (formData) => async (dispatch) => {
   try {
+    setLoading()(dispatch);
     const config = {
       headers: {
         "content-type": "application/json",
@@ -61,6 +64,7 @@ export const signUpUser = (formData) => async (dispatch) => {
 // Login User when check with Database
 export const loginUser = (formData) => async (dispatch) => {
   console.log("login user is called");
+  setLoading()(dispatch);
 
   try {
     const config = {
@@ -89,6 +93,7 @@ export const loginUser = (formData) => async (dispatch) => {
 
 //Loging in user via google
 export const loginViaGoogle = (email) => async (dispatch) => {
+  setLoading()(dispatch);
   const res = await axios.get(`/user/${email}`);
   console.log("User res from google info");
   console.log(JSON.stringify(res));
@@ -99,6 +104,7 @@ export const loginViaGoogle = (email) => async (dispatch) => {
 };
 
 export const updateUserInfo = (formData) => async (dispatch) => {
+  setLoading()(dispatch);
   const config = {
     headers: {
       "content-type": "application/json",
@@ -138,5 +144,11 @@ export const logoutUser = () => async (dispatch) => {
 export const clearErrors = () => async (dispatch) => {
   dispatch({
     type: CLEAR_ERROR,
+  });
+};
+
+const setLoading = () => (dispatch) => {
+  dispatch({
+    type: SET_LOADING,
   });
 };

@@ -1,3 +1,4 @@
+export const SET_LOADING = "SET_LOADING";
 export const ARTIST_TYPE = "ARTIST_TYPE";
 export const ARTISTS_INFO = "ARTISTS_INFO";
 export const LOAD_USER = "LOAD_USER";

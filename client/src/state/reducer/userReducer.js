@@ -9,6 +9,7 @@ import {
   CLEAR_ERROR,
   LOGIN_VIA_GOOGLE,
   UPDATE_USER_INFO,
+  SET_LOADING,
 } from "../types";
 
 const initialState = {
@@ -55,6 +56,11 @@ export default (state = initialState, action) => {
       return {
         ...state,
         error: null,
+      };
+    case SET_LOADING:
+      return {
+        ...state,
+        loading: true,
       };
     default:
       return state;

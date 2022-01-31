@@ -5,6 +5,7 @@ import {
   ARTIST_UNLIKED,
   ARTIST_LIKED,
   CURR_CATEGORY_ARTIST_INFO,
+  SET_LOADING,
 } from "../types";
 import axios from "axios";
 export const currentArtistType = (artist) => async (dispatch) => {
@@ -19,6 +20,7 @@ export const currentArtistType = (artist) => async (dispatch) => {
 };
 
 export const artistsInfo = (artistType, titles) => async (dispatch) => {
+  setLoading()(dispatch);
   try {
     console.log("Start executing calls inside for");
     axios
@@ -42,6 +44,7 @@ export const artistsInfo = (artistType, titles) => async (dispatch) => {
 export const currCategoryArtistInfo =
   (artistType, title) => async (dispatch) => {
     try {
+      setLoading()(dispatch);
       console.log("Start executing calls inside for");
 
       const res = await axios.get(`/artist/${artistType}/title/${title}`);
@@ -58,6 +61,7 @@ export const currCategoryArtistInfo =
 
 export const likeUnLikeArtist =
   (artistType, likeUnlikeInfo, likeUnLike) => async (dispatch) => {
+    setLoading()(dispatch);
     const config = {
       headers: {
         "Content-Type": "application/json",
@@ -80,6 +84,7 @@ export const likeUnLikeArtist =
 //Fetch current artist Info
 export const currentArtistInfo =
   (artistType, artistName) => async (dispatch) => {
+    setLoading()(dispatch);
     try {
       const res = await axios.get(`/artist/${artistType}/name/${artistName}`);
       const id = res.data[0]._id;
@@ -95,3 +100,9 @@ export const currentArtistInfo =
       //TODO
     }
   };
+
+const setLoading = () => (dispatch) => {
+  dispatch({
+    type: SET_LOADING,
+  });
+};

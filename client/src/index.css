@@ -61,7 +61,7 @@ code {
 
 .test {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 
 .parentHeader {
@@ -92,6 +92,10 @@ code {
     background-size: cover;
     height: 60vh;
   }
+  .test {
+    display: flex;
+    flex-direction: column;
+  }
   .creatorgrid {
     height: 90vh;
     display: flex;
@@ -121,10 +125,11 @@ code {
   }
   .test {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
   }
   .avatarSmallScreen {
     overflow-x: auto;
+    min-width: 150px;
   }
 }
 

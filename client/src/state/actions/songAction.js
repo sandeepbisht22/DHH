@@ -1,8 +1,9 @@
 import axios from "axios";
 import setAuthToken from "../../utils/setAuthnToken";
-import { LIKE_SONG, ALL_SONG } from "../types";
+import { LIKE_SONG, ALL_SONG, SET_LOADING } from "../types";
 
 export const userFavSong = () => async (dispatch) => {
+  setLoading()(dispatch);
   setAuthToken(localStorage.token);
   const config = {
     header: {
@@ -20,6 +21,7 @@ export const userFavSong = () => async (dispatch) => {
 };
 
 export const allArtistSongs = (artistType, id) => async (dispatch) => {
+  setLoading()(dispatch);
   const allSongs = await axios.get(`/song/${artistType}/${id}`);
   if (allSongs === null) {
     allSongs.data = null;
@@ -31,6 +33,7 @@ export const allArtistSongs = (artistType, id) => async (dispatch) => {
 };
 
 export const likeDislikeSong = (songID, action) => async (dispatch) => {
+  setLoading()(dispatch);
   setAuthToken(localStorage.token);
   const config = {
     header: {
@@ -47,5 +50,11 @@ export const likeDislikeSong = (songID, action) => async (dispatch) => {
   dispatch({
     type: LIKE_SONG,
     payload: payload,
+  });
+};
+
+const setLoading = () => (dispatch) => {
+  dispatch({
+    type: SET_LOADING,
   });
 };

@@ -5,6 +5,7 @@ import {
   ARTIST_UNLIKED,
   ARTIST_LIKED,
   CURR_CATEGORY_ARTIST_INFO,
+  SET_LOADING,
 } from "../types";
 
 const initialState = {
@@ -26,12 +27,14 @@ export default (state = initialState, action) => {
     case ARTISTS_INFO: {
       return {
         ...state,
+        loading: false,
         artists: action.payload,
       };
     }
     case CURRENT_ARTIST: {
       return {
         ...state,
+        loading: false,
         currArtist: action.payload,
       };
     }
@@ -41,6 +44,7 @@ export default (state = initialState, action) => {
         ...state,
         currArtist: {
           ...state.currArtist,
+          loading: false,
           like: state.currArtist.like + likedVal,
         },
         artists: state.artists.map((artist) =>
@@ -59,6 +63,7 @@ export default (state = initialState, action) => {
         ...state,
         currArtist: {
           ...state.currArtist,
+          loading: false,
           unLike: state.currArtist.unLike + unLikedVal,
         },
         artists: state.artists.map((artist) =>
@@ -73,7 +78,13 @@ export default (state = initialState, action) => {
     case CURR_CATEGORY_ARTIST_INFO:
       return {
         ...state,
+        loading: false,
         currCategoryArtistInfo: action.payload,
+      };
+    case SET_LOADING:
+      return {
+        ...state,
+        loading: true,
       };
     default:
       return state;

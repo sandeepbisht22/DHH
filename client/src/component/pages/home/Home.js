@@ -9,6 +9,7 @@ import HomeHeader from "./homeheader/HomeHeader";
 import ArtistType from "./artisttype/ArtistType";
 import ExploreHipHop from "./explorehiphop/ExploreHipHop";
 import LatestPost from "./latestpost/LatestPost";
+import Spinner from "../../common/Spinner";
 const Home = () => {
   const user = useSelector((state) => state.user.user);
 
@@ -21,16 +22,22 @@ const Home = () => {
     }
   });
 
-  return (
-    <Fragment>
-      <HomeHeader />
-      <ArtistType />
-      <ExploreHipHop />
-      {/* <HomeSlider /> */}
-      <LatestPost />
-      <HomeShortCutIcons />
-    </Fragment>
-  );
+  // const userLoading = useSelector((state) => state.user.loading);
+  const userChoiceLoading = useSelector((state) => state.userChoice.loading);
+
+  if (userChoiceLoading) {
+    return <Spinner></Spinner>;
+  } else
+    return (
+      <Fragment>
+        <HomeHeader />
+        <ArtistType />
+        <ExploreHipHop />
+        {/* <HomeSlider /> */}
+        <LatestPost />
+        <HomeShortCutIcons />
+      </Fragment>
+    );
 };
 
 export default Home;
