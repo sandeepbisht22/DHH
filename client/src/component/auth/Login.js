@@ -4,6 +4,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { userActions, alertActions } from "../../state/actions";
 import loginArtist from "../../resources/images/LoginArtist.jpg";
 import LoginGoogle from "./LoginGoogle";
+import LoginForm from "./login/LoginForm";
+import spinner from "../../resources/common/spinner.gif";
+import LoginBackground1 from "../../resources/common/LoginBackground1.jpg";
+import LoginBackground from "../../resources/common/LoginBackground.jpg";
+import hipHopHand from "../../resources/common/hipHop.png";
+import tupacBack from "../../resources/common/tupac.png";
+
+import { Button, Typography } from "@mui/material";
+import { borderRadius } from "@mui/system";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -60,76 +69,65 @@ const Login = () => {
     }
   }, [error, isAuthenticated, navigate]);
   return (
-    <div style={{}}>
-      <div className="container py-5">
+    <div
+      style={{
+        height: "90vh",
+        objectFit: "contain",
+        backgroundImage: `url(${tupacBack})`,
+        backgroundSize: "cover",
+      }}
+      className="flexCenter"
+    >
+      <div className="row justify-content-center p-3" style={{ width: "100%" }}>
         <div
-          className="row justify-content-center p-3"
+          className="col-md-3 border border-3  backgroundGlassFilter"
+          style={{ borderRadius: "15px 0 0 15px", padding: "15px" }}
+        >
+          <Typography variant="h3" className="centerAlignText">
+            Welcome Back
+          </Typography>
+          <Typography variant="h5" className="centerAlignText">
+            HIP HOP Heads
+          </Typography>
+          <hr className="hrLoginText" />
+          <div className="flexCenter">
+            <div style={{ width: "200px" }}>
+              <img
+                src={hipHopHand}
+                style={{ width: "100%", display: "block", margin: "auto" }}
+              />
+            </div>
+          </div>
+          <div className="mt-4">
+            <h4>New to DHH Hood ?</h4>
+            <Button onClick={userSignUp}>
+              <Typography variant="subtitle1">Sign Up</Typography>
+            </Button>
+          </div>
+        </div>
+        <div
+          className="col-md-3 border border-3"
           style={{
-            backgroundColor: "#272727",
-            color: "#61892F",
+            background: "white",
+            borderRadius: "0 15px 15px 0",
+            padding: "20px",
           }}
         >
-          <div className="col-md-4 d-flex justify-content-center align-items-center-center border border-3 ">
-            <img src={loginArtist} alt="" className="img-fluid" />
-          </div>
-          <div className="col-md-7 border border-3">
-            <h2 className="text-center">Login</h2>
-            <div className="row mt-3">
-              <div className="d-flex justify-content-evenly align-items-center pt-2">
-                <LoginGoogle />
-                {/* <div>
-                  <a href="!#">
-                    <i
-                      className="fab fa-facebook fa-3x"
-                      style={{ color: "grey" }}
-                    ></i>
-                  </a>
-                </div> */}
-              </div>
-            </div>
-            <hr />
+          <h2 className="text-center">Log In</h2>
+          <LoginForm />
+          <div className="flexCenter">
+            <hr className="hrLogin" />
             <h6 className="text-center">OR</h6>
-            <hr />
-
-            <form className="pt-3" onSubmit={submit}>
-              <div className="mb-3">
-                <label htmlFor="inputEmail" className="form-label">
-                  Email address
-                </label>
-                <input
-                  type="email"
-                  name="email"
-                  className="form-control"
-                  value={email}
-                  id="inputEmail"
-                  placeholder="yourEmail@sample.com"
-                  onChange={onChange}
-                />
-              </div>
-              <div className="mb-3">
-                <label htmlFor="inputPassword" className="form-label">
-                  Password
-                </label>
-                <input
-                  type="password"
-                  name="password"
-                  className="form-control"
-                  id="inputPassword"
-                  value={password}
-                  minLength="6"
-                  onChange={onChange}
-                />
-              </div>
-              <div className="pb-2">
-                <button type="submit" className="btn btn-primary ">
-                  Login In
-                </button>
-                <button className="btn btn-primary ms-5 " onClick={userSignUp}>
-                  Sign UP
-                </button>
-              </div>
-            </form>
+            <hr className="hrLogin" />
           </div>
+
+          <div className="row">
+            <div className="flexCenter" style={{ padding: "15px" }}>
+              <LoginGoogle />
+            </div>
+          </div>
+          <hr />
+          <div>Explore the World of DHH with us !!!</div>
         </div>
       </div>
     </div>

@@ -3,6 +3,7 @@ import { GoogleLogin } from "react-google-login";
 import { alertActions, userActions } from "../../state/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
+import googleLogo from "../../resources/common/GoogleLogo.png";
 var generator = require("generate-password");
 
 const LoginGoogle = () => {
@@ -46,29 +47,40 @@ const LoginGoogle = () => {
     }
   }, [error, isAuthenticated, navigate]);
   return (
-    <div className="pb-3">
-      <GoogleLogin
-        clientId={value}
-        buttonText="Login this shit"
-        render={(renderProps) => (
-          <button
-            onClick={renderProps.onClick}
-            disabled={renderProps.disabled}
-            style={{ backgroundColor: "#272727", color: "#61892F" }}
+    <GoogleLogin
+      clientId={value}
+      buttonText="Login this shit"
+      render={(renderProps) => (
+        <button
+          onClick={renderProps.onClick}
+          disabled={renderProps.disabled}
+          style={{ borderRadius: "10px" }}
+        >
+          <div
+            style={{
+              display: "flex",
+              background: "white",
+              borderRadius: "10px",
+            }}
           >
-            <a href="!#">
-              <i className="fab fa-google fa-3x" style={{ color: "grey" }}></i>
+            <a href="!#" style={{ padding: "5px" }}>
+              <img
+                src={googleLogo}
+                style={{ width: "25px", background: "white" }}
+              />
             </a>
-            <div>Login via Google</div>
-          </button>
-        )}
-        onSuccess={onSuccess}
-        onFailure={onFailure}
-        cookiePolicy={"single_host_origin"}
-        className="mt-5"
-        isSignedIn={true}
-      ></GoogleLogin>
-    </div>
+            <div style={{ marginLeft: "5px", padding: "5px" }}>
+              Continue with Google
+            </div>
+          </div>
+        </button>
+      )}
+      onSuccess={onSuccess}
+      onFailure={onFailure}
+      cookiePolicy={"single_host_origin"}
+      className="mt-5"
+      isSignedIn={true}
+    ></GoogleLogin>
   );
 };
 export default LoginGoogle;

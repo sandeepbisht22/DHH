@@ -58,13 +58,42 @@ code {
   background-size: 100%;
   transition: background 0s;
 }
-
+.flexCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.flexSpaceBetween {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.screenCenter {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -30%);
+}
 .test {
   display: flex;
   flex-direction: column;
 }
-
+.centerAlignText {
+  text-align: center;
+}
 .parentHeader {
+}
+.hrLogin {
+  border: 1px solid green;
+  border-radius: 5px;
+  width: 100%;
+}
+.hrLoginText {
+  border: 10px solid black;
+  border-radius: 10px;
+  width: 50%;
+  z-index: 1;
+  backdrop-filter: blur(0px);
 }
 
 .parentHeaderimage1 {
@@ -84,6 +113,11 @@ code {
   background-position: bottom;
   background-size: cover;
   height: 30vh;
+}
+
+.backgroundGlassFilter {
+  backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.5);
 }
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {

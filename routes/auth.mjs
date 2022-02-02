@@ -74,6 +74,8 @@ authRouter.post(
 authRouter.get("/", authMiddleware, async (req, res) => {
   try {
     const user = await userModel.findById(req.user.id).select("-password");
+    res.removeHeader("server");
+    res.removeHeader("x-powered-by");
     res.json(user);
   } catch (error) {
     console.error(error.message);

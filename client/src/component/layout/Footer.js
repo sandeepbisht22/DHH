@@ -23,7 +23,7 @@ const Footer = () => {
   const handleClose = () => setOpen(false);
 
   return (
-    <footer className="bg-dark text-center text-white my-4">
+    <footer className="bg-dark text-center text-white">
       <div className="container p-4">
         <section className="mb-4">
           <a

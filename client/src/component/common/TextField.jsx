@@ -13,7 +13,7 @@ const TextField = ({ label, name, type, formik }) => {
   //   const [field, meta] = useField(props);
 
   return (
-    <div className="col-md-3 col-5">
+    <div className="">
       <div className="form-outline form-white mb-4">
         <input
           type={type}
@@ -23,7 +23,7 @@ const TextField = ({ label, name, type, formik }) => {
           value={formik.values[name]}
         />
         <label className="form-label" htmlFor="form5Example21">
-          {formik.touched[name] && formik.errors[name] ? (
+          {formik.touched[name] || formik.errors[name] ? (
             <Fragment style={{ color: "white" }}>
               {formik.errors[name]}
             </Fragment>
