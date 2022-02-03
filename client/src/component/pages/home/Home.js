@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 
 import HomeSlider from "./HomeSlider";
 import Footer from "../../layout/Footer";
@@ -12,7 +12,6 @@ import LatestPost from "./latestpost/LatestPost";
 import Spinner from "../../common/Spinner";
 const Home = () => {
   const user = useSelector((state) => state.user.user);
-
   const dispatch = useDispatch();
   useEffect(() => {
     if (user !== null) {

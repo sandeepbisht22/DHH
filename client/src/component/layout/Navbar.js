@@ -1,6 +1,7 @@
 import React, { useEffect, Fragment } from "react";
 import { useNavigate } from "react-router";
 import logo from "../../resources/images/desi-hip-hop.png";
+
 import { useDispatch, useSelector } from "react-redux";
 import { userActions } from "../../state/actions";
 import LogoutGoogle from "../auth/LogoutGoogle";
@@ -30,7 +31,7 @@ const Navbar = (props) => {
       <ul className="navbar-nav ml-auto">
         <li className="nav-item">
           <a
-            className="nav-link dropdown-toggle text-dark"
+            className="nav-link dropdown-toggle"
             href="#"
             id="navbarDropdown"
             role="button"
@@ -45,7 +46,7 @@ const Navbar = (props) => {
             aria-labelledby="navbarDropdown"
           >
             <a
-              className="dropdown-item text-dark"
+              className="dropdown-item"
               href="#"
               onClick={() => navigate("/user")}
             >
@@ -62,11 +63,7 @@ const Navbar = (props) => {
   );
   const GuestLinks = (
     <Fragment>
-      <a
-        href="#"
-        className="nav-link text-dark"
-        onClick={() => navigate("/login")}
-      >
+      <a href="#" className="nav-link" onClick={() => navigate("/login")}>
         Login
       </a>
     </Fragment>
@@ -76,8 +73,10 @@ const Navbar = (props) => {
       <nav
         className="navbar navbar-expand-lg navbar-dark bg-dark "
         style={{
-          background:
-            "linear-gradient(90deg, rgba(255,0,0,1) 0%, rgba(25,164,208,1) 47%, rgba(255,255,255,1) 73%",
+          color: "white",
+          background: "black!",
+          // background:
+          //   "linear-gradient(90deg, rgba(255,0,0,1) 0%, rgba(25,164,208,1) 47%, rgba(255,255,255,1) 73%",
         }}
       >
         <div className="container-fluid">
@@ -93,13 +92,13 @@ const Navbar = (props) => {
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <MoreHorizIcon sx={{ color: "black" }} />
+            <MoreHorizIcon sx={{ color: "white" }} />
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
                 <a
-                  className="nav-link active text-dark"
+                  className="nav-link"
                   aria-current="page"
                   onClick={() => navigate("/creators")}
                 >
@@ -108,7 +107,7 @@ const Navbar = (props) => {
               </li>
               <li className="nav-item">
                 <a
-                  className="nav-link active text-dark"
+                  className="nav-link"
                   aria-current="page"
                   href="#"
                   onClick={() => navigate("/promoters")}
@@ -118,7 +117,7 @@ const Navbar = (props) => {
               </li>
               <li className="nav-item">
                 <a
-                  className="nav-link text-dark"
+                  className="nav-link"
                   href="#"
                   onClick={() => navigate("/labels")}
                 >
@@ -130,7 +129,7 @@ const Navbar = (props) => {
               <li className="nav-item">
                 <a
                   href="#"
-                  className="nav-link text-dark"
+                  className="nav-link"
                   onClick={() => navigate("/contact")}
                 >
                   Contact
@@ -140,7 +139,7 @@ const Navbar = (props) => {
               <li className="nav-item">
                 <a
                   href="#"
-                  className="nav-link text-dark"
+                  className="nav-link"
                   onClick={() => navigate("/about")}
                 >
                   About

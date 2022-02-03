@@ -8,12 +8,16 @@ import { makeStyles } from "@mui/styles";
 //     fontSize: ".6rem",
 //   },
 // });
-const TextField = ({ label, name, type, formik }) => {
+const TextField = ({ label, name, type, formik, size = 10 }) => {
   //   const classes = useStyles();
   //   const [field, meta] = useField(props);
-
+  const sizeClassName = `col-md-` + size;
   return (
-    <div className="form-outline form-white mb-2">
+    <div
+      className="form-outline form-white mb-2"
+      className={sizeClassName}
+      style={{ width: size * `10%` }}
+    >
       <input
         type={type}
         id={name}

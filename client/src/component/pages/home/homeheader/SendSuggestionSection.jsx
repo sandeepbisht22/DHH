@@ -41,6 +41,7 @@ const SendSuggestionSection = () => {
                   name="email"
                   type="text"
                   formik={formik}
+                  size={4}
                 />
 
                 <TextField
@@ -48,6 +49,7 @@ const SendSuggestionSection = () => {
                   name="suggestion"
                   type="text"
                   formik={formik}
+                  size={4}
                 />
                 <div className="col-auto">
                   <button

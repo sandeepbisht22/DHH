@@ -99,6 +99,7 @@ const Footer = () => {
                       name="email"
                       type="text"
                       formik={formik}
+                      size={4}
                     />
 
                     <TextField
@@ -106,6 +107,7 @@ const Footer = () => {
                       name="suggestion"
                       type="text"
                       formik={formik}
+                      size={4}
                     />
                     <div className="col-auto">
                       <button
