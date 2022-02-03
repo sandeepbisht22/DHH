@@ -15,42 +15,8 @@ import { Button, Typography } from "@mui/material";
 import { borderRadius } from "@mui/system";
 
 const Login = () => {
-  const dispatch = useDispatch();
-  const [user, setUser] = useState({
-    email: "",
-    password: "",
-  });
-
-  const { email, password } = user;
-
   const navigate = useNavigate();
-  const submit = (e) => {
-    e.preventDefault();
-    console.log("Login called");
-    try {
-      if (email === "" && password === "") {
-        console.log("Please Fill both field");
-      } else {
-        dispatch(
-          userActions.loginUser({
-            email,
-            password,
-          })
-        );
-      }
-    } catch (error) {
-      console.log(
-        "[ LOGIN ] Error while loggin in due to exception" + error.message
-      );
-    }
-  };
-
-  const onChange = (e) => {
-    setUser({
-      ...user,
-      [e.target.name]: e.target.value,
-    });
-  };
+  const dispatch = useDispatch();
 
   const userSignUp = () => {
     navigate("/signup");
@@ -70,17 +36,12 @@ const Login = () => {
   }, [error, isAuthenticated, navigate]);
   return (
     <div
-      style={{
-        height: "90vh",
-        objectFit: "contain",
-        backgroundImage: `url(${tupacBack})`,
-        backgroundSize: "cover",
-      }}
-      className="flexCenter"
+      style={{ backgroundImage: `url(${tupacBack})` }}
+      className="flexCenter loginPageRoot"
     >
       <div className="row justify-content-center p-3" style={{ width: "100%" }}>
         <div
-          className="col-md-3 border border-3  backgroundGlassFilter"
+          className="col-xl-3 col-lg-4 col-md-5 border border-3  backgroundGlassFilter"
           style={{ borderRadius: "15px 0 0 15px", padding: "15px" }}
         >
           <Typography variant="h3" className="centerAlignText">
@@ -106,7 +67,7 @@ const Login = () => {
           </div>
         </div>
         <div
-          className="col-md-3 border border-3"
+          className="col-xl-3 col-lg-4 col-md-5 border border-3"
           style={{
             background: "white",
             borderRadius: "0 15px 15px 0",

@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import { useField, ErrorMessage } from "formik";
+import { useField, ErrorMessage, Field } from "formik";
 import { makeStyles } from "@mui/styles";
 
 // const useStyles = makeStyles({
@@ -13,25 +13,21 @@ const TextField = ({ label, name, type, formik }) => {
   //   const [field, meta] = useField(props);
 
   return (
-    <div className="">
-      <div className="form-outline form-white mb-4">
-        <input
-          type={type}
-          id={name}
-          className="form-control"
-          onChange={formik.handleChange(name)}
-          value={formik.values[name]}
-        />
-        <label className="form-label" htmlFor="form5Example21">
-          {formik.touched[name] || formik.errors[name] ? (
-            <Fragment style={{ color: "white" }}>
-              {formik.errors[name]}
-            </Fragment>
-          ) : (
-            <div>{label}</div>
-          )}
-        </label>
-      </div>
+    <div className="form-outline form-white mb-2">
+      <input
+        type={type}
+        id={name}
+        className="form-control"
+        onChange={formik.handleChange(name)}
+        value={formik.values[name]}
+      />
+      <label className="form-label" htmlFor="form5Example21">
+        {formik.touched[name] && formik.errors[name] ? (
+          <Fragment style={{ color: "white" }}>{formik.errors[name]}</Fragment>
+        ) : (
+          <div>{label}</div>
+        )}
+      </label>
     </div>
   );
 };
